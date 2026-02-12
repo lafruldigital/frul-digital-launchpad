@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Pourquoi nous", href: "/#why-us" },
   { label: "FRUL'LAB AI", href: "/frul-lab" },
-  { label: "Résultats", href: "/#results" },
+  { label: "Résultats", href: "/resultats" },
   { label: "Process", href: "/#process" },
 ];
 
