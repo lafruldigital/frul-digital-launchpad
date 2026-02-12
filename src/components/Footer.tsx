@@ -19,11 +19,11 @@ const entreprise = [
 
 const socialLinks = [
   { label: "FRUL'DIGITAL", links: [
-    { platform: "Instagram", href: "https://www.instagram.com/lafruldigital/" },
+    { platform: "Instagram", href: "https://www.instagram.com/lafruldigital/?utm_source=ig_web_button_share_sheet" },
     { platform: "TikTok", href: "https://www.tiktok.com/@fruldigital2?_r=1&_t=ZN-93s2t30jBaw" },
   ]},
   { label: "FRULUX", links: [
-    { platform: "Instagram", href: "https://www.instagram.com/frulux_off/" },
+    { platform: "Instagram", href: "https://www.instagram.com/frulux_off?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
     { platform: "TikTok", href: "https://www.tiktok.com/@frulux_off?lang=fr" },
   ]},
 ];
