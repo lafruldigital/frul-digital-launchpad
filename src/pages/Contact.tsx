@@ -276,8 +276,8 @@ const Contact = () => {
                   <Mail className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold mb-2">Email</h3>
-                <a href="mailto:contact@fruldigital.com" className="text-primary hover:text-primary/80 transition-colors">
-                  contact@fruldigital.com
+                <a href="mailto:contactfruldigital@gmail.com" className="text-primary hover:text-primary/80 transition-colors">
+                  contactfruldigital@gmail.com
                 </a>
               </div>
             </AnimatedSection>
@@ -287,7 +287,10 @@ const Contact = () => {
                   <Phone className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold mb-2">Téléphone</h3>
-                <span className="text-surface-dark-foreground/60">+33 X XX XX XX XX</span>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:0652237736" className="text-surface-dark-foreground/60 hover:text-primary transition-colors">06 52 23 77 36</a>
+                  <a href="tel:0630563019" className="text-surface-dark-foreground/60 hover:text-primary transition-colors">06 30 56 30 19</a>
+                </div>
               </div>
             </AnimatedSection>
           </div>

@@ -1,6 +1,8 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import frulLogo from "@/assets/frul-digital-logo.jpg";
 
 const navLinks = [
   { label: "Accueil", href: "/" },
@@ -18,8 +20,15 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-surface-darker/80 backdrop-blur-xl border-b border-primary/10">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a href="/" className="font-heading text-2xl font-bold text-primary-foreground">
-          FRUL'<span className="text-primary">DIGITAL</span>
+        <a href="/" className="flex items-center">
+          <motion.img
+            src={frulLogo}
+            alt="FRUL'DIGITAL"
+            className="w-12 h-12 rounded-full object-cover border-2 border-primary/30 shadow-[0_0_12px_hsl(0_85%_50%/0.3)]"
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(0 85% 50% / 0.5)" }}
+          />
         </a>
 
         {/* Desktop */}
