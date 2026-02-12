@@ -8,6 +8,7 @@ import Services from "./pages/Services";
 import FrulLab from "./pages/FrulLab";
 import Results from "./pages/Results";
 import Process from "./pages/Process";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/frul-lab" element={<FrulLab />} />
           <Route path="/resultats" element={<Results />} />
           <Route path="/processus" element={<Process />} />
+          <Route path="/a-propos" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
