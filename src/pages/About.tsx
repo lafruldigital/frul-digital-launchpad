@@ -184,7 +184,7 @@ const About = () => {
               name="Omar (Frulux)"
               role="Fondateur — Vision & Innovation"
               badge="Fondateur"
-              photo={omarPhoto}
+              photo={gabrielPhoto}
               delay={0}
               bio={
                 <>
@@ -216,7 +216,7 @@ const About = () => {
               name="Gabriel"
               role="CEO — Stratégie & Croissance"
               badge="CEO"
-              photo={gabrielPhoto}
+              photo={omarPhoto}
               delay={0.15}
               bio={
                 <>
