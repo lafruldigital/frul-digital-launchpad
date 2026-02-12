@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Pourquoi nous", href: "/#why-us" },
   { label: "FRUL'LAB AI", href: "/frul-lab" },
   { label: "Résultats", href: "/resultats" },
-  { label: "Process", href: "/#process" },
+  { label: "Process", href: "/processus" },
 ];
 
 export const Navbar = () => {
