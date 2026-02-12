@@ -9,16 +9,16 @@ const stats = [
 
 export const CredibilityBar = () => {
   return (
-    <section className="section-dark py-16 border-y border-primary/10">
+    <section className="section-dark py-20 md:py-24 border-y border-primary/10">
       <div className="container mx-auto px-4">
         <AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-primary mb-3">
                   <CountUp end={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm text-surface-dark-foreground/60">{stat.label}</p>
+                <p className="text-base md:text-lg text-surface-dark-foreground/50 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>

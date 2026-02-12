@@ -116,15 +116,43 @@
   }
 
   .glow-red {
-    box-shadow: 0 0 30px hsl(0 85% 50% / 0.3), 0 0 60px hsl(0 85% 50% / 0.1);
+    box-shadow: 0 0 40px hsl(0 85% 50% / 0.35), 0 0 80px hsl(0 85% 50% / 0.12);
+  }
+
+  .glow-red-strong {
+    box-shadow: 0 0 60px hsl(0 85% 50% / 0.4), 0 0 120px hsl(0 85% 50% / 0.15);
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-2;
+    @apply transition-all duration-500 hover:-translate-y-3;
   }
 
   .card-hover:hover {
-    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.2), 0 0 30px hsl(0 85% 50% / 0.1);
+    box-shadow: 0 25px 50px hsl(0 0% 0% / 0.25), 0 0 40px hsl(0 85% 50% / 0.12);
+  }
+
+  /* Animated gradient background for hero */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animated-gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      hsl(0 0% 4%),
+      hsl(0 0% 6%),
+      hsl(0 30% 8%),
+      hsl(0 0% 4%)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  /* Glowing line for timeline */
+  .glow-line {
+    background: linear-gradient(180deg, hsl(0 85% 50% / 0.6), hsl(0 85% 50% / 0.1));
+    box-shadow: 0 0 12px hsl(0 85% 50% / 0.4);
   }
 }
 
