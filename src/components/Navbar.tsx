@@ -10,7 +10,6 @@ const navLinks = [
   { label: "Processus", href: "/processus" },
   { label: "Résultats", href: "/resultats" },
   { label: "FRUL'LAB IA", href: "/frul-lab" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -36,7 +35,7 @@ export const Navbar = () => {
           ))}
           <a href="/contact">
             <Button variant="hero" size="sm">
-              Audit gratuit
+              Contact
             </Button>
           </a>
         </div>
@@ -67,7 +66,7 @@ export const Navbar = () => {
           <div className="px-6 pt-2">
             <a href="/contact">
               <Button variant="hero" size="sm" className="w-full">
-                Audit gratuit
+                Contact
               </Button>
             </a>
           </div>

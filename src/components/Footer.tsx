@@ -16,8 +16,10 @@ const entreprise = [
 ];
 
 const socialLinks = [
-  { label: "FRUL'DIGITAL", href: "#" },
-  { label: "FRULUX", href: "#" },
+  { label: "FRUL'DIGITAL Instagram", href: "https://www.instagram.com/lafruldigital/" },
+  { label: "FRUL'DIGITAL TikTok", href: "https://www.tiktok.com/@fruldigital2?_r=1&_t=ZN-93s2t30jBaw" },
+  { label: "FRULUX Instagram", href: "https://www.instagram.com/frulux_off/" },
+  { label: "FRULUX TikTok", href: "https://www.tiktok.com/@frulux_off?lang=fr" },
 ];
 
 export const Footer = () => {
@@ -81,16 +83,21 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-surface-dark-foreground/50">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                Paris, France
+                <a href="https://maps.google.com/?q=60+avenue+François+1er+75008+Paris" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                  60 avenue François 1er, 75008 Paris
+                </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-surface-dark-foreground/50">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                +33 X XX XX XX XX
+                <div className="flex flex-col">
+                  <a href="tel:0652237736" className="hover:text-primary transition-colors duration-200">06 52 23 77 36</a>
+                  <a href="tel:0630563019" className="hover:text-primary transition-colors duration-200">06 30 56 30 19</a>
+                </div>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <a href="mailto:contact@fruldigital.com" className="text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
-                  contact@fruldigital.com
+                <a href="mailto:contactfruldigital@gmail.com" className="text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
+                  contactfruldigital@gmail.com
                 </a>
               </li>
             </ul>
