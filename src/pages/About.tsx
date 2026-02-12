@@ -179,35 +179,13 @@ const About = () => {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {/* Gabriel à gauche */}
-            <FounderCard
-              name="Gabriel"
-              role="CEO — Stratégie & Croissance"
-              badge="CEO"
-              photo={omarPhoto}
-              delay={0}
-              bio={
-                <>
-                  <p>Je suis Gabriel, <span className="font-semibold text-surface-dark-foreground/80">CEO</span>.</p>
-                  <p>Calme, à l'écoute, mais avec une <span className="font-semibold text-surface-dark-foreground/80">vision très claire</span> : aider les entreprises à exister dans un monde où le digital n'attend personne.</p>
-                  <p>Je n'ai pas cherché les projecteurs. J'ai cherché à <span className="font-semibold text-surface-dark-foreground/80">comprendre</span>.</p>
-                  <p>Comprendre comment les réseaux évoluent, comment une stratégie fonctionne, comment un contenu peut transformer un simple regard en client. Avec le temps, j'ai développé une expertise concrète : <span className="font-semibold text-surface-dark-foreground/80">marketing, stratégie, création, vente</span>. Pas de théorie — du terrain.</p>
-                  <p>J'ai vu trop d'entreprises passer à côté de leur potentiel parce qu'elles n'avaient pas les bons outils ou la bonne direction.</p>
-                  <p className="text-primary/80 font-medium">C'est là que j'interviens.</p>
-                  <p>En tant que CEO, je définis notre vision, j'oriente notre stratégie et j'accompagne nos clients pour qu'ils puissent enfin prendre leur place en ligne — celle qu'ils méritent.</p>
-                  <p>Mon approche est simple : <span className="font-semibold text-surface-dark-foreground/80">authenticité, clarté, croissance, fiabilité</span>.</p>
-                  <p>Pas de blabla, pas de faux semblants. Juste des résultats et une vraie compréhension du digital.</p>
-                  <p className="italic text-surface-dark-foreground/50 border-l-2 border-primary/50 pl-4 mt-4">Le futur appartient à ceux qui s'y préparent. Et je suis là pour les y conduire.</p>
-                </>
-              }
-            />
-            {/* Omar à droite */}
+            {/* Omar à gauche */}
             <FounderCard
               name="Omar (Frulux)"
               role="Fondateur — Vision & Innovation"
               badge="Fondateur"
-              photo={gabrielPhoto}
-              delay={0.15}
+              photo={omarPhoto}
+              delay={0}
               bio={
                 <>
                   <p><span className="font-semibold text-surface-dark-foreground/80">Frulux</span> est né d'une conviction simple : dans un monde où tout va vite, seuls ceux qui comprennent réellement les codes du digital peuvent créer un <span className="font-semibold text-surface-dark-foreground/80">impact durable</span>.</p>
@@ -230,6 +208,28 @@ const About = () => {
                     <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />les visions en <span className="font-semibold text-surface-dark-foreground/80">résultats concrets</span></li>
                   </ul>
                   <p className="italic text-surface-dark-foreground/50 border-l-2 border-primary/50 pl-4 mt-4">L'histoire continue — et elle ne fait que commencer.</p>
+                </>
+              }
+            />
+            {/* Gabriel à droite */}
+            <FounderCard
+              name="Gabriel"
+              role="CEO — Stratégie & Croissance"
+              badge="CEO"
+              photo={gabrielPhoto}
+              delay={0.15}
+              bio={
+                <>
+                  <p>Je suis Gabriel, <span className="font-semibold text-surface-dark-foreground/80">CEO</span>.</p>
+                  <p>Calme, à l'écoute, mais avec une <span className="font-semibold text-surface-dark-foreground/80">vision très claire</span> : aider les entreprises à exister dans un monde où le digital n'attend personne.</p>
+                  <p>Je n'ai pas cherché les projecteurs. J'ai cherché à <span className="font-semibold text-surface-dark-foreground/80">comprendre</span>.</p>
+                  <p>Comprendre comment les réseaux évoluent, comment une stratégie fonctionne, comment un contenu peut transformer un simple regard en client. Avec le temps, j'ai développé une expertise concrète : <span className="font-semibold text-surface-dark-foreground/80">marketing, stratégie, création, vente</span>. Pas de théorie — du terrain.</p>
+                  <p>J'ai vu trop d'entreprises passer à côté de leur potentiel parce qu'elles n'avaient pas les bons outils ou la bonne direction.</p>
+                  <p className="text-primary/80 font-medium">C'est là que j'interviens.</p>
+                  <p>En tant que CEO, je définis notre vision, j'oriente notre stratégie et j'accompagne nos clients pour qu'ils puissent enfin prendre leur place en ligne — celle qu'ils méritent.</p>
+                  <p>Mon approche est simple : <span className="font-semibold text-surface-dark-foreground/80">authenticité, clarté, croissance, fiabilité</span>.</p>
+                  <p>Pas de blabla, pas de faux semblants. Juste des résultats et une vraie compréhension du digital.</p>
+                  <p className="italic text-surface-dark-foreground/50 border-l-2 border-primary/50 pl-4 mt-4">Le futur appartient à ceux qui s'y préparent. Et je suis là pour les y conduire.</p>
                 </>
               }
             />
