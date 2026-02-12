@@ -35,9 +35,9 @@ const StatCard = ({ value, suffix, prefix, label, delay }: { value: number; suff
   </AnimatedSection>
 );
 
-/* ───── Founder card ───── */
-const FounderCard = ({ name, role, badge, photo, points, quote, delay }: {
-  name: string; role: string; badge: string; photo: string; points: string[]; quote: string; delay: number;
+/* ───── Founder card (full bio) ───── */
+const FounderCard = ({ name, role, badge, photo, bio, delay }: {
+  name: string; role: string; badge: string; photo: string; bio: React.ReactNode; delay: number;
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -47,36 +47,28 @@ const FounderCard = ({ name, role, badge, photo, points, quote, delay }: {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay }}
-      className="bg-surface-darker border border-primary/10 rounded-3xl overflow-hidden group"
+      className="bg-surface-darker border border-primary/10 rounded-3xl overflow-hidden group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]"
     >
       {/* Photo */}
-      <div className="relative overflow-hidden h-80 md:h-96">
+      <div className="relative overflow-hidden h-80 md:h-[420px]">
         <img
           src={photo}
           alt={name}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-darker via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface-darker via-surface-darker/30 to-transparent" />
         <span className="absolute top-4 left-4 bg-primary/90 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
           {badge}
         </span>
       </div>
 
       {/* Info */}
-      <div className="p-8">
-        <h3 className="text-2xl font-heading font-bold text-surface-dark-foreground">{name}</h3>
-        <p className="text-primary font-medium mb-5">{role}</p>
-        <ul className="space-y-2 mb-6">
-          {points.map((p) => (
-            <li key={p} className="flex items-start gap-2 text-surface-dark-foreground/60 text-[15px]">
-              <Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              {p}
-            </li>
-          ))}
-        </ul>
-        <blockquote className="border-l-2 border-primary/50 pl-4 italic text-surface-dark-foreground/50 text-[15px] leading-relaxed">
-          "{quote}"
-        </blockquote>
+      <div className="p-8 md:p-10">
+        <h3 className="text-2xl md:text-3xl font-heading font-bold text-surface-dark-foreground">{name}</h3>
+        <p className="text-primary font-medium text-lg mb-6">{role}</p>
+        <div className="space-y-4 text-[15px] md:text-base text-surface-dark-foreground/60 leading-relaxed">
+          {bio}
+        </div>
       </div>
     </motion.div>
   );
@@ -148,7 +140,7 @@ const About = () => {
                   <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center glow-red">
                     <TrendingUp className="w-12 h-12 text-primary" />
                   </div>
-                  <p className="text-3xl font-heading font-bold gradient-text">Depuis 2023</p>
+                  <p className="text-3xl font-heading font-bold gradient-text">Depuis 2025</p>
                   <p className="text-surface-dark-foreground/50 mt-2">Nous accélérons la croissance digitale</p>
                 </div>
               </div>
@@ -187,33 +179,59 @@ const About = () => {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <FounderCard
-              name="Omar (Frulux)"
-              role="Fondateur — Vision & Innovation"
-              badge="Fondateur"
-              photo={omarPhoto}
-              points={[
-                "Expertise digitale avancée",
-                "Maîtrise des réseaux sociaux",
-                "Capacité à capter l'attention",
-                "Vision stratégique long terme",
-              ]}
-              quote="Créer une marque, ce n'est pas exister. C'est marquer les esprits."
-              delay={0}
-            />
+            {/* Gabriel à gauche */}
             <FounderCard
               name="Gabriel"
               role="CEO — Stratégie & Croissance"
               badge="CEO"
               photo={gabrielPhoto}
-              points={[
-                "Vision business & leadership",
-                "Accompagnement des entreprises",
-                "Stratégie marketing avancée",
-                "Orientation résultats",
-              ]}
-              quote="Pas de blabla. Des résultats, une stratégie claire et une vraie compréhension du digital."
+              delay={0}
+              bio={
+                <>
+                  <p>Je suis Gabriel, <span className="font-semibold text-surface-dark-foreground/80">CEO</span>.</p>
+                  <p>Calme, à l'écoute, mais avec une <span className="font-semibold text-surface-dark-foreground/80">vision très claire</span> : aider les entreprises à exister dans un monde où le digital n'attend personne.</p>
+                  <p>Je n'ai pas cherché les projecteurs. J'ai cherché à <span className="font-semibold text-surface-dark-foreground/80">comprendre</span>.</p>
+                  <p>Comprendre comment les réseaux évoluent, comment une stratégie fonctionne, comment un contenu peut transformer un simple regard en client. Avec le temps, j'ai développé une expertise concrète : <span className="font-semibold text-surface-dark-foreground/80">marketing, stratégie, création, vente</span>. Pas de théorie — du terrain.</p>
+                  <p>J'ai vu trop d'entreprises passer à côté de leur potentiel parce qu'elles n'avaient pas les bons outils ou la bonne direction.</p>
+                  <p className="text-primary/80 font-medium">C'est là que j'interviens.</p>
+                  <p>En tant que CEO, je définis notre vision, j'oriente notre stratégie et j'accompagne nos clients pour qu'ils puissent enfin prendre leur place en ligne — celle qu'ils méritent.</p>
+                  <p>Mon approche est simple : <span className="font-semibold text-surface-dark-foreground/80">authenticité, clarté, croissance, fiabilité</span>.</p>
+                  <p>Pas de blabla, pas de faux semblants. Juste des résultats et une vraie compréhension du digital.</p>
+                  <p className="italic text-surface-dark-foreground/50 border-l-2 border-primary/50 pl-4 mt-4">Le futur appartient à ceux qui s'y préparent. Et je suis là pour les y conduire.</p>
+                </>
+              }
+            />
+            {/* Omar à droite */}
+            <FounderCard
+              name="Omar (Frulux)"
+              role="Fondateur — Vision & Innovation"
+              badge="Fondateur"
+              photo={omarPhoto}
               delay={0.15}
+              bio={
+                <>
+                  <p><span className="font-semibold text-surface-dark-foreground/80">Frulux</span> est né d'une conviction simple : dans un monde où tout va vite, seuls ceux qui comprennent réellement les codes du digital peuvent créer un <span className="font-semibold text-surface-dark-foreground/80">impact durable</span>.</p>
+                  <p>Je m'appelle Omar, plus connu sous le nom de <span className="font-semibold text-surface-dark-foreground/80">Frulux</span> — d'où le nom de notre entreprise FRUL'DIGITAL.</p>
+                  <p>Fondateur de FRUL'DIGITAL et créateur de communautés réunissant <span className="font-semibold text-surface-dark-foreground/80">plusieurs millions d'abonnés</span>, j'ai exploré pendant des années l'univers des réseaux sociaux comme un véritable laboratoire à ciel ouvert.</p>
+                  <p>J'y ai appris :</p>
+                  <ul className="space-y-1 pl-4">
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />comment <span className="font-semibold text-surface-dark-foreground/80">capter l'attention</span></li>
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />comment transformer une idée en <span className="font-semibold text-surface-dark-foreground/80">mouvement</span></li>
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />comment bâtir une <span className="font-semibold text-surface-dark-foreground/80">marque qui résonne</span></li>
+                  </ul>
+                  <p>Ce parcours m'a permis de maîtriser les leviers qui font la différence : <span className="font-semibold text-surface-dark-foreground/80">stratégie, marketing, création de contenu, digital design</span>, mais aussi la compréhension fine de ce qui fait réellement fonctionner une entreprise en ligne.</p>
+                  <p>J'ai accompagné des créateurs, des entrepreneurs et des marques à façonner leur image, raconter leur histoire et développer leur audience.</p>
+                  <p className="text-primary/80 font-medium">FRUL'DIGITAL est la continuité naturelle de cette aventure.</p>
+                  <p>Une startup pensée pour aider celles et ceux qui veulent créer, innover et s'imposer dans l'écosystème numérique.</p>
+                  <p>Ici, nous transformons :</p>
+                  <ul className="space-y-1 pl-4">
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />l'expérience en <span className="font-semibold text-surface-dark-foreground/80">solutions</span></li>
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />les idées en <span className="font-semibold text-surface-dark-foreground/80">stratégies</span></li>
+                    <li className="flex items-start gap-2"><Sparkles className="w-4 h-4 text-primary mt-0.5 shrink-0" />les visions en <span className="font-semibold text-surface-dark-foreground/80">résultats concrets</span></li>
+                  </ul>
+                  <p className="italic text-surface-dark-foreground/50 border-l-2 border-primary/50 pl-4 mt-4">L'histoire continue — et elle ne fait que commencer.</p>
+                </>
+              }
             />
           </div>
         </div>
