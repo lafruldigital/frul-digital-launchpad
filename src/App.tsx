@@ -11,6 +11,8 @@ import Process from "./pages/Process";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/processus" element={<Process />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

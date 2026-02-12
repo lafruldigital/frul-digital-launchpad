@@ -1,4 +1,6 @@
 import { Mail, MapPin, Phone, ExternalLink, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+import frulLogo from "@/assets/frul-digital-logo.jpg";
 
 const services = [
   { label: "Réseaux sociaux", href: "/services" },
@@ -39,8 +41,15 @@ export const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Col 1 — Brand */}
           <div>
-            <a href="/" className="font-heading text-2xl font-bold text-surface-dark-foreground inline-block">
-              FRUL'<span className="text-primary drop-shadow-[0_0_8px_hsl(0_85%_50%/0.4)]">DIGITAL</span>
+            <a href="/" className="inline-block">
+              <motion.img
+                src={frulLogo}
+                alt="FRUL'DIGITAL"
+                className="w-16 h-16 rounded-full object-cover border-2 border-primary/30 shadow-[0_0_12px_hsl(0_85%_50%/0.3)]"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(0 85% 50% / 0.5)" }}
+              />
             </a>
             <p className="text-surface-dark-foreground/50 mt-4 leading-relaxed text-sm">
               L'innovation au service de votre croissance.
@@ -134,10 +143,10 @@ export const Footer = () => {
             © {new Date().getFullYear()} FRUL'DIGITAL — Tous droits réservés.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
+            <a href="/mentions-legales" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Mentions légales
             </a>
-            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
+            <a href="/politique-de-confidentialite" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Politique de confidentialité
             </a>
           </div>
