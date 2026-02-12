@@ -1,53 +1,59 @@
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, ExternalLink } from "lucide-react";
 
-const links = [
-  { label: "Services", href: "#services" },
-  { label: "Pourquoi nous", href: "#why-us" },
-  { label: "FRUL'LAB AI", href: "#frul-lab" },
-  { label: "Résultats", href: "#results" },
-  { label: "Process", href: "#process" },
+const services = [
+  { label: "Réseaux sociaux", href: "/services" },
+  { label: "Publicité digitale", href: "/services" },
+  { label: "Création de contenu", href: "/services" },
+  { label: "Développement web", href: "/services" },
+  { label: "SEO", href: "/services" },
 ];
 
-const socials = [
-  { icon: Facebook, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Linkedin, href: "#" },
-  { icon: Twitter, href: "#" },
+const entreprise = [
+  { label: "À propos", href: "/a-propos" },
+  { label: "Témoignages", href: "/#testimonials" },
+  { label: "Processus", href: "/processus" },
+  { label: "Résultats", href: "/resultats" },
+];
+
+const socialLinks = [
+  { label: "FRUL'DIGITAL", href: "#" },
+  { label: "FRULUX", href: "#" },
 ];
 
 export const Footer = () => {
   return (
     <footer className="section-darker border-t border-primary/10 pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <a href="#" className="font-heading text-2xl font-bold text-surface-dark-foreground">
-              FRUL'<span className="text-primary">DIGITAL</span>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Col 1 — Brand */}
+          <div>
+            <a href="/" className="font-heading text-2xl font-bold text-surface-dark-foreground inline-block">
+              FRUL'<span className="text-primary drop-shadow-[0_0_8px_hsl(0_85%_50%/0.4)]">DIGITAL</span>
             </a>
-            <p className="text-surface-dark-foreground/50 mt-4 max-w-sm leading-relaxed text-sm">
-              Agence de marketing digital nouvelle génération. Nous aidons les entreprises à atteindre leur plein potentiel grâce au digital.
+            <p className="text-surface-dark-foreground/50 mt-4 leading-relaxed text-sm">
+              L'innovation au service de votre croissance.
             </p>
+            {/* Réseaux sociaux */}
             <div className="flex gap-3 mt-6">
-              {socials.map(({ icon: Icon, href }) => (
+              {socialLinks.map((s) => (
                 <a
-                  key={href + Icon.displayName}
-                  href={href}
-                  className="w-9 h-9 rounded-lg border border-primary/10 flex items-center justify-center text-surface-dark-foreground/40 hover:text-primary hover:border-primary/30 transition-colors"
+                  key={s.label}
+                  href={s.href}
+                  className="px-4 py-2 rounded-lg border border-primary/10 text-sm text-surface-dark-foreground/50 hover:text-primary hover:border-primary/30 hover:shadow-[0_0_12px_hsl(0_85%_50%/0.15)] transition-all duration-300 flex items-center gap-1.5"
                 >
-                  <Icon className="w-4 h-4" />
+                  {s.label} <ExternalLink className="w-3 h-3" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Col 2 — Services */}
           <div>
-            <h4 className="font-heading font-semibold text-surface-dark-foreground mb-4">Navigation</h4>
+            <h4 className="font-heading font-semibold text-surface-dark-foreground mb-4">Services</h4>
             <ul className="space-y-2.5">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors">
+              {services.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
                     {l.label}
                   </a>
                 </li>
@@ -55,35 +61,52 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Col 3 — Entreprise */}
+          <div>
+            <h4 className="font-heading font-semibold text-surface-dark-foreground mb-4">Entreprise</h4>
+            <ul className="space-y-2.5">
+              {entreprise.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4 — Contact */}
           <div>
             <h4 className="font-heading font-semibold text-surface-dark-foreground mb-4">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-surface-dark-foreground/50">
-                <Mail className="w-4 h-4 text-primary" />
-                contact@fruldigital.com
-              </li>
-              <li className="flex items-center gap-2 text-sm text-surface-dark-foreground/50">
-                <Phone className="w-4 h-4 text-primary" />
-                +33 1 23 45 67 89
-              </li>
-              <li className="flex items-center gap-2 text-sm text-surface-dark-foreground/50">
-                <MapPin className="w-4 h-4 text-primary" />
+              <li className="flex items-start gap-2 text-sm text-surface-dark-foreground/50">
+                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 Paris, France
+              </li>
+              <li className="flex items-center gap-2 text-sm text-surface-dark-foreground/50">
+                <Phone className="w-4 h-4 text-primary shrink-0" />
+                +33 X XX XX XX XX
+              </li>
+              <li className="flex items-center gap-2 text-sm">
+                <Mail className="w-4 h-4 text-primary shrink-0" />
+                <a href="mailto:contact@fruldigital.com" className="text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
+                  contact@fruldigital.com
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
+        {/* Bottom bar */}
         <div className="border-t border-primary/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-surface-dark-foreground/30">
-            © 2026 FRUL'DIGITAL. Tous droits réservés.
+            © {new Date().getFullYear()} FRUL'DIGITAL — Tous droits réservés.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors">
+            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Mentions légales
             </a>
-            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors">
+            <a href="#" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Politique de confidentialité
             </a>
           </div>
