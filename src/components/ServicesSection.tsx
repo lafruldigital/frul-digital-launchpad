@@ -27,39 +27,39 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section id="services" className="section-darker py-24">
+    <section id="services" className="section-darker py-28 md:py-32">
       <div className="container mx-auto px-4">
-        <AnimatedSection className="text-center mb-16">
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest">Nos services</span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-surface-dark-foreground mt-3 mb-4">
+        <AnimatedSection className="text-center mb-20">
+          <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Nos services</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-surface-dark-foreground mt-4 mb-6">
             Des solutions complètes pour votre <span className="gradient-text">croissance digitale</span>
           </h2>
-          <p className="text-surface-dark-foreground/60 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-surface-dark-foreground/55 max-w-2xl mx-auto leading-relaxed">
             Une approche 360° pour propulser votre présence en ligne et générer des résultats concrets.
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
-              <div className="group relative bg-surface-dark border border-primary/10 rounded-2xl p-6 card-hover h-full">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-6 h-6 text-primary" />
+              <div className="group relative bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover h-full">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.2)] transition-all duration-300">
+                  <service.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-heading font-semibold text-surface-dark-foreground mb-3">
+                <h3 className="text-xl font-heading font-semibold text-surface-dark-foreground mb-4">
                   {service.title}
                 </h3>
-                <p className="text-sm text-surface-dark-foreground/60 leading-relaxed">
+                <p className="text-base text-surface-dark-foreground/55 leading-relaxed">
                   {service.description}
                 </p>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary/0 group-hover:bg-primary rounded-b-2xl transition-all duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary/0 group-hover:bg-primary rounded-b-2xl transition-all duration-500" />
               </div>
             </AnimatedSection>
           ))}
         </div>
 
-        <AnimatedSection className="text-center mt-12" delay={0.4}>
-          <Button variant="hero-outline" size="lg" className="border-surface-dark-foreground/20 text-surface-dark-foreground">
+        <AnimatedSection className="text-center mt-14" delay={0.4}>
+          <Button variant="hero-outline" size="lg" className="border-surface-dark-foreground/20 text-surface-dark-foreground px-10 py-7 text-lg">
             Voir tous nos services
           </Button>
         </AnimatedSection>
