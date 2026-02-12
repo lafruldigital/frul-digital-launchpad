@@ -8,6 +8,7 @@ const navLinks = [
   { label: "FRUL'LAB AI", href: "/frul-lab" },
   { label: "Résultats", href: "/resultats" },
   { label: "Process", href: "/processus" },
+  { label: "À propos", href: "/a-propos" },
 ];
 
 export const Navbar = () => {
