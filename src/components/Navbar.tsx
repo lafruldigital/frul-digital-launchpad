@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import frulLogo from "@/assets/frul-digital-logo.jpg";
 
@@ -16,11 +17,22 @@ const navLinks = [
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const handleNavClick = (href: string) => {
+    setOpen(false);
+    if (href.includes("#")) {
+      const [path, hash] = href.split("#");
+      if (location.pathname === path || (path === "/" && location.pathname === "/")) {
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-surface-darker/80 backdrop-blur-xl border-b border-primary/10">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <motion.img
             src={frulLogo}
             alt="FRUL'DIGITAL"
@@ -29,24 +41,25 @@ export const Navbar = () => {
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(0 85% 50% / 0.5)" }}
           />
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
+              onClick={() => handleNavClick(l.href)}
               className="text-sm text-surface-dark-foreground/70 hover:text-primary transition-colors duration-200"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a href="/contact">
+          <Link to="/contact">
             <Button variant="hero" size="sm">
               Contact
             </Button>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -63,21 +76,21 @@ export const Navbar = () => {
       {open && (
         <div className="lg:hidden bg-surface-darker/95 backdrop-blur-xl border-t border-primary/10 pb-4 animate-fade-in">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
               className="block px-6 py-3 text-surface-dark-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors"
-              onClick={() => setOpen(false)}
+              onClick={() => handleNavClick(l.href)}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <div className="px-6 pt-2">
-            <a href="/contact">
+            <Link to="/contact" onClick={() => setOpen(false)}>
               <Button variant="hero" size="sm" className="w-full">
                 Contact
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       )}

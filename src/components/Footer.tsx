@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone, ExternalLink, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import frulLogo from "@/assets/frul-digital-logo.jpg";
 
 const services = [
@@ -41,7 +42,7 @@ export const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Col 1 — Brand */}
           <div>
-            <a href="/" className="inline-block">
+            <Link to="/" className="inline-block">
               <motion.img
                 src={frulLogo}
                 alt="FRUL'DIGITAL"
@@ -50,7 +51,7 @@ export const Footer = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(0 85% 50% / 0.5)" }}
               />
-            </a>
+            </Link>
             <p className="text-surface-dark-foreground/50 mt-4 leading-relaxed text-sm">
               L'innovation au service de votre croissance.
             </p>
@@ -88,9 +89,9 @@ export const Footer = () => {
             <ul className="space-y-2.5">
               {services.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
+                  <Link to={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -102,9 +103,9 @@ export const Footer = () => {
             <ul className="space-y-2.5">
               {entreprise.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
+                  <Link to={l.href} className="text-sm text-surface-dark-foreground/50 hover:text-primary transition-colors duration-200">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -143,12 +144,12 @@ export const Footer = () => {
             © {new Date().getFullYear()} FRUL'DIGITAL — Tous droits réservés.
           </p>
           <div className="flex gap-6">
-            <a href="/mentions-legales" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
+            <Link to="/mentions-legales" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Mentions légales
-            </a>
-            <a href="/politique-de-confidentialite" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
+            </Link>
+            <Link to="/politique-de-confidentialite" className="text-xs text-surface-dark-foreground/30 hover:text-primary transition-colors duration-200">
               Politique de confidentialité
-            </a>
+            </Link>
           </div>
         </div>
       </div>

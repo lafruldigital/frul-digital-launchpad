@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Zap, Users, Target, Cpu, Mail, Phone, Clock, ShieldCheck, Lock, Star,
-  ChevronDown, ArrowRight, Send, Sparkles, MessageSquare, BarChart3
+  ChevronDown, ArrowRight, Send, Sparkles, MessageSquare, BarChart3, Calendar
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -269,20 +269,20 @@ const Contact = () => {
       {/* ── CONTACT DIRECT ── */}
       <section className="section-darker py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8">
             <AnimatedSection>
-              <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center">
+              <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center h-full">
                 <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Mail className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold mb-2">Email</h3>
-                <a href="mailto:contactfruldigital@gmail.com" className="text-primary hover:text-primary/80 transition-colors">
+                <a href="mailto:contactfruldigital@gmail.com" className="text-primary hover:text-primary/80 transition-colors text-sm">
                   contactfruldigital@gmail.com
                 </a>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center">
+              <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center h-full">
                 <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Phone className="w-7 h-7 text-primary" />
                 </div>
@@ -292,6 +292,24 @@ const Contact = () => {
                   <a href="tel:0630563019" className="text-surface-dark-foreground/60 hover:text-primary transition-colors">06 30 56 30 19</a>
                 </div>
               </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <a
+                href="https://calendly.com/lafrul-digital/rendez-vous"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center h-full hover:border-primary/30 hover:shadow-[0_0_24px_hsl(0_85%_50%/0.15)] transition-all duration-300">
+                  <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <Calendar className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-heading font-semibold mb-2">Rendez-vous</h3>
+                  <span className="text-primary hover:text-primary/80 transition-colors text-sm">
+                    Réserver un créneau
+                  </span>
+                </div>
+              </a>
             </AnimatedSection>
           </div>
         </div>
