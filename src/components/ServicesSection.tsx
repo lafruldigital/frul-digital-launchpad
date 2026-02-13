@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Share2, Target, Palette, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -59,9 +60,11 @@ export const ServicesSection = () => {
         </div>
 
         <AnimatedSection className="text-center mt-14" delay={0.4}>
-          <Button variant="hero-outline" size="lg" className="border-surface-dark-foreground/20 text-surface-dark-foreground px-10 py-7 text-lg">
-            Voir tous nos services
-          </Button>
+          <Link to="/services">
+            <Button variant="hero-outline" size="lg" className="border-surface-dark-foreground/20 text-surface-dark-foreground px-10 py-7 text-lg">
+              Voir tous nos services
+            </Button>
+          </Link>
         </AnimatedSection>
       </div>
     </section>

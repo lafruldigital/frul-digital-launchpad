@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CtaSection = () => {
   return (
@@ -21,13 +22,15 @@ export const CtaSection = () => {
           <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed">
             Réservez un audit gratuit et découvrez comment nous pouvons accélérer votre croissance.
           </p>
-          <Button
-            size="lg"
-            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
-          >
-            Réserver mon audit gratuit
-            <ArrowRight className="w-6 h-6 ml-3" />
-          </Button>
+          <Link to="/contact">
+            <Button
+              size="lg"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+            >
+              Réserver mon audit gratuit
+              <ArrowRight className="w-6 h-6 ml-3" />
+            </Button>
+          </Link>
         </AnimatedSection>
       </div>
     </section>

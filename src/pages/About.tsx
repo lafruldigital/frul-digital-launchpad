@@ -54,7 +54,7 @@ const FounderCard = ({ name, role, badge, photo, bio, delay }: {
         <img
           src={photo}
           alt={name}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface-darker via-surface-darker/30 to-transparent" />
         <span className="absolute top-4 left-4 bg-primary/90 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
