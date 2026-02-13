@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import frulLabAi from "@/assets/frul-lab-ai.png";
 
 const GaugeBar = ({ label, value, delay }: { label: string; value: number; delay: number }) => {
@@ -94,9 +95,11 @@ export const FrulLabSection = () => {
               ))}
             </ul>
 
-            <Button variant="hero" size="lg" className="px-10 py-7 text-lg animate-pulse-glow">
-              Lancer mon audit IA
-            </Button>
+            <Link to="/frul-lab">
+              <Button variant="hero" size="lg" className="px-10 py-7 text-lg animate-pulse-glow">
+                Lancer mon audit IA
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </div>

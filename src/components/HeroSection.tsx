@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroDashboard from "@/assets/hero-dashboard.png";
 
 export const HeroSection = () => {
@@ -54,12 +55,16 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
-                Obtenir mon audit gratuit
-              </Button>
-              <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
-                Découvrir nos services
-              </Button>
+              <Link to="/contact">
+                <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
+                  Obtenir mon audit gratuit
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
+                  Découvrir nos services
+                </Button>
+              </Link>
             </div>
           </motion.div>
 
@@ -85,16 +90,6 @@ export const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-xs text-surface-dark-foreground/40 uppercase tracking-[0.2em]">Scroll</span>
-          <ChevronDown className="w-5 h-5 text-primary animate-scroll-hint" />
-        </motion.div>
       </div>
     </section>
   );
