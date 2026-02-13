@@ -13,7 +13,7 @@ const services = [
 
 const entreprise = [
   { label: "À propos", href: "/a-propos" },
-  { label: "Témoignages", href: "/#testimonials" },
+  { label: "Témoignages", href: "/temoignages" },
   { label: "Processus", href: "/processus" },
   { label: "Résultats", href: "/resultats" },
 ];
