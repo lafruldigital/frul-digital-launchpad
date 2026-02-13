@@ -99,11 +99,28 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      toast({ title: "Message envoyé !", description: "Nous reviendrons vers vous sous 24h." });
-      (e.target as HTMLFormElement).reset();
-    }, 1200);
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const nom = (formData.get("nom") as string) || "";
+    const email = (formData.get("email") as string) || "";
+    const telephone = (formData.get("telephone") as string) || "";
+    const entreprise = (formData.get("entreprise") as string) || "";
+    const site = (formData.get("site") as string) || "";
+    const budget = (formData.get("budget") as string) || "";
+    const objectif = (formData.get("objectif") as string) || "";
+    const message = (formData.get("message") as string) || "";
+
+    const subject = encodeURIComponent(`Nouvelle demande de ${nom} — ${entreprise || "Particulier"}`);
+    const body = encodeURIComponent(
+      `Nom : ${nom}\nEmail : ${email}\nTéléphone : ${telephone}\nEntreprise : ${entreprise}\nSite web : ${site}\nBudget : ${budget}\nObjectif : ${objectif}\n\nMessage :\n${message}`
+    );
+
+    window.open(`mailto:contactfruldigital@gmail.com?subject=${subject}&body=${body}`, "_blank");
+
+    setSending(false);
+    toast({ title: "Redirection vers votre boîte mail !", description: "Envoyez l'email pré-rempli pour nous contacter." });
+    form.reset();
   };
 
   const inputClass =
@@ -164,26 +181,26 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <AnimatedSection delay={0}>
-                <input type="text" placeholder="Nom *" required className={inputClass} maxLength={100} />
+                <input type="text" name="nom" placeholder="Nom *" required className={inputClass} maxLength={100} />
               </AnimatedSection>
               <AnimatedSection delay={0.05}>
-                <input type="email" placeholder="Email professionnel *" required className={inputClass} maxLength={255} />
+                <input type="email" name="email" placeholder="Email professionnel *" required className={inputClass} maxLength={255} />
               </AnimatedSection>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               <AnimatedSection delay={0.1}>
-                <input type="tel" placeholder="Téléphone" className={inputClass} maxLength={20} />
+                <input type="tel" name="telephone" placeholder="Téléphone" className={inputClass} maxLength={20} />
               </AnimatedSection>
               <AnimatedSection delay={0.15}>
-                <input type="text" placeholder="Nom de l'entreprise" className={inputClass} maxLength={100} />
+                <input type="text" name="entreprise" placeholder="Nom de l'entreprise" className={inputClass} maxLength={100} />
               </AnimatedSection>
             </div>
             <AnimatedSection delay={0.2}>
-              <input type="url" placeholder="Site web (optionnel)" className={inputClass} maxLength={200} />
+              <input type="url" name="site" placeholder="Site web (optionnel)" className={inputClass} maxLength={200} />
             </AnimatedSection>
             <div className="grid sm:grid-cols-2 gap-6">
               <AnimatedSection delay={0.25}>
-                <select className={inputClass + " appearance-none"} defaultValue="">
+                <select name="budget" className={inputClass + " appearance-none"} defaultValue="">
                   <option value="" disabled>Budget estimé</option>
                   <option value="< 1 000€">&lt; 1 000€</option>
                   <option value="1 000€ - 3 000€">1 000€ - 3 000€</option>
@@ -193,7 +210,7 @@ const Contact = () => {
                 </select>
               </AnimatedSection>
               <AnimatedSection delay={0.3}>
-                <select className={inputClass + " appearance-none"} defaultValue="">
+                <select name="objectif" className={inputClass + " appearance-none"} defaultValue="">
                   <option value="" disabled>Objectif principal</option>
                   <option value="leads">Générer des leads</option>
                   <option value="ventes">Augmenter les ventes</option>
@@ -204,7 +221,7 @@ const Contact = () => {
               </AnimatedSection>
             </div>
             <AnimatedSection delay={0.35}>
-              <textarea placeholder="Votre message *" required rows={5} className={inputClass + " resize-none"} maxLength={1000} />
+              <textarea name="message" placeholder="Votre message *" required rows={5} className={inputClass + " resize-none"} maxLength={1000} />
             </AnimatedSection>
             <AnimatedSection delay={0.4}>
               <Button
