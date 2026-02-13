@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Heart, Target, TrendingUp, Shield, BarChart3, Users, Eye, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import omarPhoto from "@/assets/omar-founder.png";
 import gabrielPhoto from "@/assets/gabriel-ceo.jpg";
 
@@ -50,13 +51,12 @@ const FounderCard = ({ name, role, badge, photo, bio, delay }: {
       className="bg-surface-darker border border-primary/10 rounded-3xl overflow-hidden group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]"
     >
       {/* Photo */}
-      <div className="relative overflow-hidden h-80 md:h-[420px]">
+      <div className="relative overflow-hidden aspect-[3/4] md:aspect-[4/5]">
         <img
           src={photo}
           alt={name}
-          className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-darker via-surface-darker/30 to-transparent" />
         <span className="absolute top-4 left-4 bg-primary/90 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
           {badge}
         </span>
@@ -331,9 +331,11 @@ const About = () => {
             <p className="text-lg text-surface-dark-foreground/55 max-w-xl mx-auto mb-10">
               Faites le premier pas vers une croissance digitale mesurable.
             </p>
-            <Button variant="hero" size="lg" className="text-lg px-10 py-6 glow-red">
-              Obtenir un audit gratuit
-            </Button>
+            <Link to="/contact">
+              <Button variant="hero" size="lg" className="text-lg px-10 py-6 glow-red">
+                Obtenir un audit gratuit
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
