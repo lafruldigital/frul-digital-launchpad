@@ -263,42 +263,7 @@ const Temoignages = () => {
         </div>
       </section>
 
-      {/* ── VIDEO TESTIMONIALS ── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Témoignages vidéo</span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-surface-dark-foreground mt-4">
-              Ils en parlent <span className="gradient-text">mieux que nous</span>
-            </h2>
-          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              { name: "Sophie M.", company: "Atelier Élégance", sector: "E-commerce" },
-              { name: "Thomas D.", company: "DataFlow", sector: "SaaS B2B" },
-              { name: "Marie L.", company: "Le Comptoir Doré", sector: "Restauration" },
-            ].map((v, i) => (
-              <AnimatedSection key={v.name} delay={i * 0.1}>
-                <div className="relative bg-surface-dark border border-primary/10 rounded-2xl overflow-hidden group cursor-pointer hover:border-primary/25 transition-all duration-500">
-                  {/* Video placeholder */}
-                  <div className="aspect-[9/16] sm:aspect-video bg-gradient-to-br from-surface-darker to-surface-dark flex items-center justify-center relative">
-                    <div className="absolute inset-0 bg-primary/5" />
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-500">
-                      <Play className="w-7 h-7 text-primary fill-primary" />
-                    </div>
-                    <span className="absolute bottom-4 left-4 text-xs text-surface-dark-foreground/30 uppercase tracking-wider">Bientôt disponible</span>
-                  </div>
-                  <div className="p-5">
-                    <p className="font-heading font-semibold text-surface-dark-foreground text-sm">{v.name}</p>
-                    <p className="text-xs text-surface-dark-foreground/40">{v.company} — {v.sector}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── CLIENT RESULTS ── */}
       <section className="py-24 md:py-32 section-darker">
