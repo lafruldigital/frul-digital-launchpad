@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
   { label: "À propos", href: "/a-propos" },
-  { label: "Témoignages", href: "/#testimonials" },
+  { label: "Témoignages", href: "/temoignages" },
   { label: "Processus", href: "/processus" },
   { label: "Résultats", href: "/resultats" },
   { label: "FRUL'LAB IA", href: "/frul-lab" },
