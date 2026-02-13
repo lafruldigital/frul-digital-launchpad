@@ -253,10 +253,12 @@ const Results = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
-              Obtenir mon audit gratuit
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/contact">
+              <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
+                Obtenir mon audit gratuit
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
@@ -453,13 +455,15 @@ const Results = () => {
             <p className="text-base text-primary-foreground/60 mb-12">
               ⏰ Places limitées chaque mois — ne manquez pas votre opportunité.
             </p>
-            <Button
-              size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              Réserver mon audit gratuit
-              <ArrowRight className="w-6 h-6 ml-3" />
-            </Button>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                Réserver mon audit gratuit
+                <ArrowRight className="w-6 h-6 ml-3" />
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </section>

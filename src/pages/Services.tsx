@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 /* ───────── SERVICES DATA ───────── */
 const services = [
@@ -255,10 +256,12 @@ const ServiceBlock = ({
               </li>
             ))}
           </ul>
-          <Button variant="hero" size="lg" className="mt-4 group/btn">
-            {service.cta}
-            <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-          </Button>
+          <Link to="/contact">
+            <Button variant="hero" size="lg" className="mt-4 group/btn">
+              {service.cta}
+              <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
       </div>
     </AnimatedSection>
@@ -330,13 +333,17 @@ const Services = () => {
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
-                Obtenir un audit gratuit
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
-                Parler à un expert
-              </Button>
+              <Link to="/contact">
+                <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
+                  Obtenir un audit gratuit
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
+                  Parler à un expert
+                </Button>
+              </Link>
             </div>
           </AnimatedSection>
         </div>
@@ -421,11 +428,13 @@ const Services = () => {
               </div>
 
               <div className="text-center mt-10">
-                <Button variant="hero" size="lg" className="px-10 py-7 text-lg glow-red">
-                  <Brain className="w-5 h-5 mr-2" />
-                  Lancer mon audit IA
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link to="/contact">
+                  <Button variant="hero" size="lg" className="px-10 py-7 text-lg glow-red">
+                    <Brain className="w-5 h-5 mr-2" />
+                    Lancer mon audit IA
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </AnimatedSection>
@@ -583,13 +592,15 @@ const Services = () => {
             <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed">
               Réservez un audit gratuit et découvrez votre potentiel de croissance.
             </p>
-            <Button
-              size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              Réserver un audit gratuit
-              <ArrowRight className="w-6 h-6 ml-3" />
-            </Button>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                Réserver un audit gratuit
+                <ArrowRight className="w-6 h-6 ml-3" />
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
