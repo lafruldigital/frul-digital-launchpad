@@ -331,7 +331,7 @@ const About = () => {
             <p className="text-lg text-surface-dark-foreground/55 max-w-xl mx-auto mb-10">
               Faites le premier pas vers une croissance digitale mesurable.
             </p>
-            <Link to="/contact">
+            <Link to="/frul-lab#analyse-ia">
               <Button variant="hero" size="lg" className="text-lg px-10 py-6 glow-red">
                 Obtenir un audit gratuit
               </Button>
