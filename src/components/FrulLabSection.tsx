@@ -95,7 +95,7 @@ export const FrulLabSection = () => {
               ))}
             </ul>
 
-            <Link to="/frul-lab">
+            <Link to="/frul-lab#analyse-ia">
               <Button variant="hero" size="lg" className="px-10 py-7 text-lg animate-pulse-glow">
                 Lancer mon audit IA
               </Button>

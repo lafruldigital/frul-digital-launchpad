@@ -55,7 +55,7 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
+              <Link to="/frul-lab#analyse-ia">
                 <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
                   Obtenir mon audit gratuit
                 </Button>

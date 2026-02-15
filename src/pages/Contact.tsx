@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnimatedSection, CountUp } from "@/components/AnimatedSection";
@@ -381,9 +382,11 @@ const Contact = () => {
             <p className="text-lg text-surface-dark-foreground/55 max-w-xl mx-auto mb-10">
               Ne laissez pas vos concurrents prendre de l'avance. Passez à l'action.
             </p>
-            <Button variant="hero" size="lg" className="text-lg px-10 py-6 glow-red">
-              Obtenir mon audit gratuit
-            </Button>
+            <Link to="/frul-lab#analyse-ia">
+              <Button variant="hero" size="lg" className="text-lg px-10 py-6 glow-red">
+                Obtenir mon audit gratuit
+              </Button>
+            </Link>
           </AnimatedSection>
         </div>
       </section>

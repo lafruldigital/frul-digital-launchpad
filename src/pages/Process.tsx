@@ -132,7 +132,7 @@ const Process = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <Link to="/contact">
+            <Link to="/frul-lab#analyse-ia">
               <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
                 Réserver un audit gratuit
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -384,7 +384,7 @@ const Process = () => {
             <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed">
               Commencez par un audit stratégique gratuit et découvrez votre plan d'action personnalisé.
             </p>
-            <Link to="/contact">
+            <Link to="/frul-lab#analyse-ia">
               <Button
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"

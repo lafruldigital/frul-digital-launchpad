@@ -143,18 +143,18 @@ const FrulLab = () => {
             </AnimatedSection>
             <AnimatedSection delay={0.3}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
+                <a href="#analyse-ia" onClick={(e) => { e.preventDefault(); document.getElementById('analyse-ia')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <Button variant="hero" size="lg" className="px-10 py-7 text-lg glow-red">
                     <Brain className="w-5 h-5 mr-2" />
                     Obtenir mon score digital gratuit
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
-                <Link to="/contact">
+                </a>
+                <a href="#analyse-ia" onClick={(e) => { e.preventDefault(); document.getElementById('analyse-ia')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
                     Découvrir comment ça fonctionne
                   </Button>
-                </Link>
+                </a>
               </div>
             </AnimatedSection>
 
@@ -487,11 +487,11 @@ const FrulLab = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact">
+                <a href="#analyse-ia" onClick={(e) => { e.preventDefault(); document.getElementById('analyse-ia')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <Button variant="hero-outline" size="lg" className="w-full mt-8 py-6 text-base">
                     Lancer l'audit gratuit
                   </Button>
-                </Link>
+                </a>
               </div>
 
               {/* Premium */}
@@ -589,6 +589,123 @@ const FrulLab = () => {
         </div>
       </section>
 
+      {/* ── FORMULAIRE D'ANALYSE IA ── */}
+      <section id="analyse-ia" className="py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-surface-dark/40" />
+        <motion.div
+          animate={{ opacity: [0.06, 0.12, 0.06] }}
+          transition={{ duration: 5, repeat: Infinity }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[160px]"
+          style={{ background: "radial-gradient(circle, hsl(0 85% 50%), transparent)" }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/25 bg-primary/8 text-primary text-sm font-medium mb-8">
+              <Brain className="w-4 h-4" />
+              Analyse personnalisée
+            </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-surface-dark-foreground mb-6 leading-tight">
+              Lancez votre analyse IA{" "}
+              <span className="gradient-text">personnalisée</span>
+            </h2>
+            <p className="text-lg md:text-xl text-surface-dark-foreground/55 leading-relaxed mb-6">
+              Notre agent IA analyse votre présence digitale et identifie vos opportunités de croissance.
+            </p>
+            <p className="text-base text-surface-dark-foreground/40 leading-relaxed max-w-2xl mx-auto">
+              Les champs ne sont pas tous obligatoires. Cependant, <span className="text-primary font-medium">plus vous fournissez de liens, plus l'analyse sera précise</span>.
+              Un manque d'informations peut entraîner une analyse partielle ou plus critique.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const data = Object.fromEntries(formData.entries());
+                const subject = encodeURIComponent(`Analyse IA — ${data.company || "Nouveau projet"}`);
+                const body = encodeURIComponent(
+                  `Nom de l'entreprise : ${data.company}\nEmail : ${data.email}\n\nSite web : ${data.website || "Non renseigné"}\nInstagram : ${data.instagram || "Non renseigné"}\nFacebook : ${data.facebook || "Non renseigné"}\nX / Twitter : ${data.twitter || "Non renseigné"}\nTikTok : ${data.tiktok || "Non renseigné"}\nLinkedIn : ${data.linkedin || "Non renseigné"}`
+                );
+                window.location.href = `mailto:contactfruldigital@gmail.com?subject=${subject}&body=${body}`;
+              }}
+              className="max-w-2xl mx-auto bg-surface-dark/80 backdrop-blur-xl border border-primary/15 rounded-3xl p-8 md:p-10 space-y-6"
+            >
+              {/* Required fields */}
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-surface-dark-foreground/80">
+                  Nom de l'entreprise ou du projet <span className="text-primary">*</span>
+                </label>
+                <input
+                  name="company"
+                  required
+                  placeholder="Ex : Mon Entreprise"
+                  className="w-full h-12 rounded-xl border border-primary/15 bg-surface-darker/80 px-4 text-base text-surface-dark-foreground placeholder:text-surface-dark-foreground/25 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-surface-dark-foreground/80">
+                  Email professionnel <span className="text-primary">*</span>
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="contact@monentreprise.com"
+                  className="w-full h-12 rounded-xl border border-primary/15 bg-surface-darker/80 px-4 text-base text-surface-dark-foreground placeholder:text-surface-dark-foreground/25 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                />
+              </div>
+
+              {/* Optional fields */}
+              <div className="pt-4 border-t border-primary/10">
+                <p className="text-sm text-surface-dark-foreground/40 mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                  Champs optionnels — améliorent la précision de l'analyse
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { name: "website", label: "Site web", placeholder: "https://monsite.com", icon: Globe },
+                    { name: "instagram", label: "Instagram", placeholder: "URL ou @compte", icon: Eye },
+                    { name: "facebook", label: "Facebook", placeholder: "URL de la page", icon: Share2 },
+                    { name: "twitter", label: "X / Twitter", placeholder: "URL ou @compte", icon: Zap },
+                    { name: "tiktok", label: "TikTok", placeholder: "URL ou @compte", icon: Sparkles },
+                    { name: "linkedin", label: "LinkedIn", placeholder: "URL du profil / page", icon: Users },
+                  ].map((field) => (
+                    <div key={field.name} className="space-y-1.5">
+                      <label className="text-sm font-medium text-surface-dark-foreground/60">{field.label}</label>
+                      <div className="relative">
+                        <field.icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-dark-foreground/25" />
+                        <input
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          className="w-full h-11 rounded-xl border border-primary/10 bg-surface-darker/60 pl-10 pr-4 text-sm text-surface-dark-foreground placeholder:text-surface-dark-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-surface-dark-foreground/30 mt-4">
+                  ⚠️ Ces informations ne sont pas obligatoires, mais leur absence peut réduire la précision de l'analyse.
+                </p>
+              </div>
+
+              {/* Submit */}
+              <Button
+                type="submit"
+                variant="hero"
+                size="lg"
+                className="w-full py-7 text-lg glow-red group"
+              >
+                <Brain className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                Lancer l'analyse IA
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </form>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ── CTA FINAL ── */}
       <section className="relative py-28 md:py-36 overflow-hidden">
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(0 85% 45%), hsl(0 70% 35%))" }} />
@@ -605,7 +722,7 @@ const FrulLab = () => {
             <p className="text-base text-primary-foreground/60 mb-12">
               ⏰ Audit gratuit — places limitées chaque mois.
             </p>
-            <Link to="/contact">
+            <a href="#analyse-ia" onClick={(e) => { e.preventDefault(); document.getElementById('analyse-ia')?.scrollIntoView({ behavior: 'smooth' }); }}>
               <Button
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
@@ -614,7 +731,7 @@ const FrulLab = () => {
                 Lancer mon audit IA
                 <ArrowRight className="w-6 h-6 ml-3" />
               </Button>
-            </Link>
+            </a>
           </AnimatedSection>
         </div>
       </section>

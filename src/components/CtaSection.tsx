@@ -22,7 +22,7 @@ export const CtaSection = () => {
           <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed">
             Réservez un audit gratuit et découvrez comment nous pouvons accélérer votre croissance.
           </p>
-          <Link to="/contact">
+          <Link to="/frul-lab#analyse-ia">
             <Button
               size="lg"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
