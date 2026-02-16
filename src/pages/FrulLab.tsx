@@ -35,6 +35,7 @@ import {
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "@/hooks/use-toast";
 
 /* ───────── ANIMATED GAUGE ───────── */
 const AnimGauge = ({ label, value, size = 100 }: { label: string; value: number; size?: number }) => {
@@ -620,15 +621,30 @@ const FrulLab = () => {
 
           <AnimatedSection delay={0.15}>
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                const formData = new FormData(e.currentTarget);
+                const form = e.currentTarget;
+                const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
-                const subject = encodeURIComponent(`Analyse IA — ${data.company || "Nouveau projet"}`);
-                const body = encodeURIComponent(
-                  `Nom de l'entreprise : ${data.company}\nEmail : ${data.email}\n\nSite web : ${data.website || "Non renseigné"}\nInstagram : ${data.instagram || "Non renseigné"}\nFacebook : ${data.facebook || "Non renseigné"}\nX / Twitter : ${data.twitter || "Non renseigné"}\nTikTok : ${data.tiktok || "Non renseigné"}\nLinkedIn : ${data.linkedin || "Non renseigné"}`
-                );
-                window.location.href = `mailto:contactfruldigital@gmail.com?subject=${subject}&body=${body}`;
+                try {
+                  const res = await fetch("https://gabriel77229.app.n8n.cloud/webhook-test/audit-request", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      company_name: data.company || "",
+                      email: data.email || "",
+                      website_url: data.website || "",
+                      social_instagram: data.instagram || "",
+                      social_facebook: data.facebook || "",
+                      social_linkedin: data.linkedin || "",
+                    }),
+                  });
+                  if (!res.ok) throw new Error("Erreur réseau");
+                  toast({ title: "Analyse en cours !", description: "Vérifiez vos emails dans 2 minutes." });
+                  form.reset();
+                } catch {
+                  toast({ title: "Erreur", description: "Une erreur est survenue. Réessayez.", variant: "destructive" });
+                }
               }}
               className="max-w-2xl mx-auto bg-surface-dark/80 backdrop-blur-xl border border-primary/15 rounded-3xl p-8 md:p-10 space-y-6"
             >
