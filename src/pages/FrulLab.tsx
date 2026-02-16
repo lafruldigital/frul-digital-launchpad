@@ -636,7 +636,10 @@ const FrulLab = () => {
                       website_url: data.website || "",
                       social_instagram: data.instagram || "",
                       social_facebook: data.facebook || "",
+                      social_twitter: data.twitter || "",
                       social_linkedin: data.linkedin || "",
+                      industry: data.industry || "",
+                      objective: data.objective || "",
                     }),
                   });
                   if (!res.ok) throw new Error("Erreur réseau");
@@ -671,6 +674,34 @@ const FrulLab = () => {
                   placeholder="contact@monentreprise.com"
                   className="w-full h-12 rounded-xl border border-primary/15 bg-surface-darker/80 px-4 text-base text-surface-dark-foreground placeholder:text-surface-dark-foreground/25 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
                 />
+              </div>
+
+              {/* Select fields */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium text-surface-dark-foreground/80">Secteur d'activité</label>
+                  <select
+                    name="industry"
+                    className="w-full h-12 rounded-xl border border-primary/15 bg-surface-darker/80 px-4 text-base text-surface-dark-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all appearance-none"
+                  >
+                    <option value="">Sélectionnez...</option>
+                    {["E-commerce & Retail","Immobilier & Construction","Santé & Bien-être","Restauration & Hôtellerie","Services aux entreprises (B2B)","Technologie & SaaS","Artisanat & Services locaux","Éducation & Formation","Finance & Juridique","Autre"].map(o => (
+                      <option key={o} value={o} className="bg-surface-darker text-surface-dark-foreground">{o}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium text-surface-dark-foreground/80">Objectif principal</label>
+                  <select
+                    name="objective"
+                    className="w-full h-12 rounded-xl border border-primary/15 bg-surface-darker/80 px-4 text-base text-surface-dark-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all appearance-none"
+                  >
+                    <option value="">Sélectionnez...</option>
+                    {["Générer plus de leads/contacts","Augmenter les ventes en ligne","Améliorer la visibilité sur les réseaux","Automatiser les tâches répétitives","Gagner du temps au quotidien","Refondre l'image de marque"].map(o => (
+                      <option key={o} value={o} className="bg-surface-darker text-surface-dark-foreground">{o}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               {/* Optional fields */}
