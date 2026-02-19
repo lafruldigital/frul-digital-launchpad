@@ -637,6 +637,7 @@ const FrulLab = () => {
                       social_instagram: data.instagram || "",
                       social_facebook: data.facebook || "",
                       social_twitter: data.twitter || "",
+                      social_tiktok: data.tiktok || "",
                       social_linkedin: data.linkedin || "",
                       industry: data.industry || "",
                       objective: data.objective || "",
