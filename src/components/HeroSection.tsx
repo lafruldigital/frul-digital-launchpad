@@ -45,23 +45,23 @@ export const HeroSection = () => {
               <span className="text-sm font-medium text-primary">Propulsé par l'intelligence artificielle</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-[1.05] text-surface-dark-foreground mb-8 text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-heading font-bold leading-[1.05] text-surface-dark-foreground mb-6 md:mb-8 text-balance">
               Nous transformons votre présence digitale en{" "}
               <span className="gradient-text">machine à croissance.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-surface-dark-foreground/60 max-w-xl mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-2xl text-surface-dark-foreground/60 max-w-xl mb-8 md:mb-10 leading-relaxed">
               Nous aidons les marques à attirer plus de clients, convertir davantage et accélérer leur croissance.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/frul-lab#analyse-ia">
-                <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
+                <Button variant="hero" size="lg" className="px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg w-full sm:w-auto">
                   Obtenir mon audit gratuit
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
+                <Button variant="hero-outline" size="lg" className="px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg w-full sm:w-auto">
                   Découvrir nos services
                 </Button>
               </Link>

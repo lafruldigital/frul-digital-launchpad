@@ -147,7 +147,7 @@ const Temoignages = () => {
             </span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
               Ils nous ont fait confiance.{" "}
               <span className="gradient-text">Voici leurs résultats.</span>
             </h1>
@@ -381,7 +381,7 @@ const Temoignages = () => {
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-surface-dark-foreground mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-surface-dark-foreground mb-6 leading-tight">
               Et si votre entreprise devenait{" "}
               <span className="gradient-text">notre prochain succès ?</span>
             </h2>

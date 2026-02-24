@@ -121,7 +121,7 @@ const Process = () => {
             </span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
               Une méthode claire pour{" "}
               <span className="gradient-text">générer votre croissance.</span>
             </h1>

@@ -242,7 +242,7 @@ const Results = () => {
             </span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
               Des résultats mesurables.{" "}
               <span className="gradient-text">Une croissance réelle.</span>
             </h1>
@@ -446,7 +446,7 @@ const Results = () => {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, hsl(0 0% 100%), transparent 60%)" }} />
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 leading-tight text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 leading-tight text-balance">
               Et si votre entreprise devenait notre prochain succès ?
             </h2>
             <p className="text-xl md:text-2xl text-primary-foreground/80 mb-4 leading-relaxed">
@@ -458,7 +458,7 @@ const Results = () => {
             <Link to="/contact">
               <Button
                 size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 Réserver mon audit gratuit
                 <ArrowRight className="w-6 h-6 ml-3" />

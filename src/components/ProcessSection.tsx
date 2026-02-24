@@ -26,7 +26,7 @@ export const ProcessSection = () => {
           <div className="space-y-12 md:space-y-0">
             {steps.map((step, i) => (
               <AnimatedSection key={step.number} delay={i * 0.15}>
-                <div className={`md:flex items-center gap-10 mb-16 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+                <div className={`md:flex items-center gap-6 md:gap-10 mb-10 md:mb-16 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
                   <div className={`flex-1 ${i % 2 === 1 ? "md:text-left" : "md:text-right"}`}>
                     <div className="bg-surface-darker border border-primary/10 rounded-2xl p-8 card-hover inline-block w-full">
                       <div className="flex items-center gap-4 mb-4">
