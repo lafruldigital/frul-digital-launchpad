@@ -24,6 +24,10 @@ serve(async (req) => {
     const user = data.user;
     if (!user?.email) throw new Error("User not authenticated");
 
+    // Get price_id from request body
+    const body = await req.json().catch(() => ({}));
+    const priceId = body.price_id || "price_1T4NxvDMDOcx2jX0GzWKKNAF";
+
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", { apiVersion: "2025-08-27.basil" });
     const customers = await stripe.customers.list({ email: user.email, limit: 1 });
     let customerId: string | undefined;
@@ -31,13 +35,15 @@ serve(async (req) => {
       customerId = customers.data[0].id;
     }
 
+    const origin = req.headers.get("origin") || "http://localhost:3000";
+
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       customer_email: customerId ? undefined : user.email,
-      line_items: [{ price: "price_1T4NxvDMDOcx2jX0GzWKKNAF", quantity: 1 }],
+      line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
-      success_url: `${req.headers.get("origin")}/dashboard?checkout=success`,
-      cancel_url: `${req.headers.get("origin")}/subscription?checkout=cancelled`,
+      success_url: `${origin}/dashboard`,
+      cancel_url: `${origin}/subscription`,
     });
 
     return new Response(JSON.stringify({ url: session.url }), {
