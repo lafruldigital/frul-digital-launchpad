@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Processus", href: "/processus" },
   { label: "Résultats", href: "/resultats" },
   { label: "FRUL'LAB IA", href: "/frul-lab" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -55,9 +56,15 @@ export const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <Link to="/contact">
+          <Link
+            to="/login"
+            className="text-sm text-surface-dark-foreground/70 hover:text-primary transition-colors duration-200"
+          >
+            Connexion
+          </Link>
+          <Link to="/signup">
             <Button variant="hero" size="sm">
-              Contact
+              S'inscrire
             </Button>
           </Link>
         </div>
@@ -85,10 +92,15 @@ export const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <div className="px-6 pt-2">
-            <Link to="/contact" onClick={() => setOpen(false)}>
+          <div className="px-6 pt-2 space-y-2">
+            <Link to="/login" onClick={() => setOpen(false)}>
+              <Button variant="ghost" size="sm" className="w-full justify-center text-surface-dark-foreground/70">
+                Connexion
+              </Button>
+            </Link>
+            <Link to="/signup" onClick={() => setOpen(false)}>
               <Button variant="hero" size="sm" className="w-full">
-                Contact
+                S'inscrire
               </Button>
             </Link>
           </div>
