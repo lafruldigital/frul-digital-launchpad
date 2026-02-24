@@ -16,7 +16,7 @@ export const CtaSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 text-balance leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 text-balance leading-tight">
             Prêt à prendre une longueur d'avance sur vos concurrents ?
           </h2>
           <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed">
@@ -25,7 +25,7 @@ export const CtaSection = () => {
           <Link to="/frul-lab#analyse-ia">
             <Button
               size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl shadow-2xl transition-all duration-300 hover:scale-105"
             >
               Réserver mon audit gratuit
               <ArrowRight className="w-6 h-6 ml-3" />

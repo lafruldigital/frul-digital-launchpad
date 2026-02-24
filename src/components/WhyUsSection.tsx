@@ -28,7 +28,7 @@ export const WhyUsSection = () => {
   return (
     <section id="why-us" className="section-dark py-28 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <AnimatedSection>
             <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Pourquoi nous</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-surface-dark-foreground mt-4 mb-8 leading-tight">

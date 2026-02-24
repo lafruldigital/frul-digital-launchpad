@@ -101,7 +101,7 @@ const About = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection>
             <span className="text-primary text-sm font-semibold uppercase tracking-[0.25em]">Qui sommes-nous</span>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mt-4 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-bold mt-4 mb-6 leading-tight">
               À propos de <span className="gradient-text">FRUL'DIGITAL</span>
             </h1>
             <p className="text-lg md:text-xl text-surface-dark-foreground/55 max-w-2xl mx-auto leading-relaxed">

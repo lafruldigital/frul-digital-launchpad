@@ -320,7 +320,7 @@ const Services = () => {
             </span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
               Nos Services{" "}
               <span className="gradient-text">Digitaux</span>
             </h1>
@@ -334,16 +334,16 @@ const Services = () => {
           <AnimatedSection delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/frul-lab#analyse-ia">
-                <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
+                <Button variant="hero" size="lg" className="px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg w-full sm:w-auto">
                   Obtenir un audit gratuit
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link to="/contact">
-                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-lg">
+              <a href="https://calendly.com/lafrul-digital/rendez-vous" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero-outline" size="lg" className="px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg w-full sm:w-auto">
                   Parler à un expert
                 </Button>
-              </Link>
+              </a>
             </div>
           </AnimatedSection>
         </div>

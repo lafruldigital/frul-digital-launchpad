@@ -132,7 +132,7 @@ const FrulLab = () => {
               </span>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-surface-dark-foreground leading-[1.05] mb-8 text-balance">
                 FRUL'LAB AI —{" "}
                 <span className="gradient-text">Transformez vos données en moteur de croissance.</span>
               </h1>
@@ -761,7 +761,7 @@ const FrulLab = () => {
         <ParticleField />
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 leading-tight text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-primary-foreground mb-8 leading-tight text-balance">
               Découvrez votre véritable potentiel digital.
             </h2>
             <p className="text-xl md:text-2xl text-primary-foreground/80 mb-4 leading-relaxed">
@@ -773,7 +773,7 @@ const FrulLab = () => {
             <a href="#analyse-ia" onClick={(e) => { e.preventDefault(); document.getElementById('analyse-ia')?.scrollIntoView({ behavior: 'smooth' }); }}>
               <Button
                 size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-12 py-8 text-xl shadow-2xl transition-all duration-300 hover:scale-105"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 <Brain className="w-6 h-6 mr-3" />
                 Lancer mon audit IA

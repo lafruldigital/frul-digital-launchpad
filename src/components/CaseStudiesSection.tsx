@@ -55,7 +55,7 @@ export const CaseStudiesSection = () => {
                 </div>
 
                 <div className="flex items-end gap-3 mb-3">
-                  <span className="text-5xl md:text-6xl font-heading font-bold gradient-text">{c.metric}</span>
+                  <span className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold gradient-text">{c.metric}</span>
                   <TrendingUp className="w-7 h-7 text-primary mb-2" />
                 </div>
                 <p className="text-base text-surface-dark-foreground/50 mb-8">{c.description}</p>

@@ -63,7 +63,7 @@ const ChoiceCard = ({ icon: Icon, title, text, cta, delay }: {
   icon: React.ElementType; title: string; text: string; cta: string; delay: number;
 }) => (
   <AnimatedSection delay={delay} className="h-full">
-    <div className="bg-surface-darker border border-primary/10 rounded-3xl p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
+    <div className="bg-surface-darker border border-primary/10 rounded-3xl p-6 sm:p-8 md:p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
       <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.3)] transition-shadow">
         <Icon className="w-8 h-8 text-primary" />
       </div>
@@ -137,7 +137,7 @@ const Contact = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection>
             <span className="text-primary text-sm font-semibold uppercase tracking-[0.25em]">Contact</span>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mt-4 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-bold mt-4 mb-6 leading-tight">
               Parlons de votre <span className="gradient-text">croissance</span>.
             </h1>
             <p className="text-lg md:text-xl text-surface-dark-foreground/55 max-w-2xl mx-auto leading-relaxed">
@@ -158,13 +158,25 @@ const Contact = () => {
               cta="Lancer mon audit"
               delay={0}
             />
-            <ChoiceCard
-              icon={MessageSquare}
-              title="Parler à un expert"
-              text="Un échange rapide pour comprendre vos enjeux et identifier les meilleures stratégies."
-              cta="Prendre rendez-vous"
-              delay={0.1}
-            />
+            <AnimatedSection delay={0.1} className="h-full">
+              <a
+                href="https://calendly.com/lafrul-digital/rendez-vous"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="bg-surface-darker border border-primary/10 rounded-3xl p-6 sm:p-8 md:p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.3)] transition-shadow">
+                    <MessageSquare className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold mb-4">Parler à un expert</h3>
+                  <p className="text-surface-dark-foreground/55 leading-relaxed mb-8 flex-1">Un échange rapide pour comprendre vos enjeux et identifier les meilleures stratégies.</p>
+                  <Button variant="hero" className="w-full group/btn">
+                    Prendre rendez-vous <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </a>
+            </AnimatedSection>
           </div>
         </div>
       </section>
