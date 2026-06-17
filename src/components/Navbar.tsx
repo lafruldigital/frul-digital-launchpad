@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import frulLogo from "@/assets/frul-digital-logo.jpg";
+import frulLogo from "@/assets/frul-logo-navbar.png.asset.json";
 
 type DropdownItem = { label: string; href: string; description?: string };
 type NavItem =
@@ -131,22 +131,12 @@ export const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group shrink-0 min-w-0">
               <span className="relative shrink-0">
-                <span className="absolute inset-0 rounded-full bg-primary/30 blur-md opacity-60 group-hover:opacity-90 transition-opacity" />
-                <motion.img
-                  src={frulLogo}
+                <span className="absolute inset-0 rounded-lg bg-primary/20 blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+                <img
+                  src={frulLogo.url}
                   alt="FRUL'DIGITAL"
-                  className="relative w-9 h-9 rounded-full object-cover border border-primary/40 shadow-[0_0_14px_hsl(0_85%_50%/0.45)]"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+                  className="relative h-9 w-auto object-contain rounded-md"
                 />
-              </span>
-              <span className="hidden sm:flex flex-col leading-none min-w-0">
-                <span className="font-heading font-bold tracking-[0.16em] text-[13px] text-surface-dark-foreground truncate">
-                  FRUL<span className="text-primary">'</span>DIGITAL
-                </span>
-                <span className="text-[9px] uppercase tracking-[0.32em] text-surface-dark-foreground/40 mt-0.5">
-                  Agency · AI
-                </span>
               </span>
             </Link>
 
