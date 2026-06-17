@@ -13,6 +13,7 @@ import Temoignages from "./pages/Temoignages";
 import Process from "./pages/Process";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Realisations from "./pages/Realisations";
 import NotFound from "./pages/NotFound";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/processus" element={<Process />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/realisations" element={<Realisations />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
             <Route path="/login" element={<Login />} />
