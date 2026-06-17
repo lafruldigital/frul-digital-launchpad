@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import { useRef, useState, Suspense } from "react";
+import { useMemo, useRef, useState, Suspense } from "react";
 import * as THREE from "three";
 import logoAsset from "@/assets/frulcars-logo.jpg.asset.json";
 
@@ -9,11 +9,17 @@ function Coin({ hovered }: { hovered: boolean }) {
   const texture = useTexture(logoAsset.url);
   texture.anisotropy = 8;
 
-  // Clone texture and flip horizontally so the logo reads correctly on the back face
-  const backTexture = texture.clone();
-  backTexture.repeat.set(-1, 1);
-  backTexture.center.set(0.5, 0.5);
-  backTexture.anisotropy = 8;
+  const logoMaterial = useMemo(
+    () => (
+      <meshBasicMaterial
+        map={texture}
+        transparent
+        toneMapped={false}
+        side={THREE.DoubleSide}
+      />
+    ),
+    [texture]
+  );
 
   useFrame((_, delta) => {
     if (!group.current) return;
@@ -29,12 +35,12 @@ function Coin({ hovered }: { hovered: boolean }) {
       {/* Front face */}
       <mesh position={[0, 0, 0.041]} rotation={[0, 0, 0]}>
         <circleGeometry args={[1.0, 64]} />
-        <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} />
+        {logoMaterial}
       </mesh>
       {/* Back face */}
-      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]}>
+      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, Math.PI]}>
         <circleGeometry args={[1.0, 64]} />
-        <meshStandardMaterial map={backTexture} metalness={0.2} roughness={0.55} />
+        {logoMaterial}
       </mesh>
     </group>
   );
