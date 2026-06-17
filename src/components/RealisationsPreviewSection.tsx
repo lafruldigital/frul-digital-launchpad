@@ -1,11 +1,12 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import frulcarsPreview from "@/assets/frulcars-preview.png";
 
 const projects = [
-  { name: "FRUL'CARS", type: "Site & branding auto", benefit: "Présence premium pour une agence automobile.", tone: "from-red-600/30 to-rose-900/20" },
+  { name: "FRUL'CARS", type: "Site & branding auto", benefit: "Présence premium pour une agence automobile.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", image: frulcarsPreview },
   { name: "FRUL'SCHOOL", type: "Plateforme éducation", benefit: "Écosystème digital pour la formation.", tone: "from-orange-500/25 to-red-900/20" },
   { name: "RMA DISTRIBUTION", type: "Site B2B & identité", benefit: "Image structurée pour scaler la distribution.", tone: "from-zinc-700/30 to-red-900/20" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
@@ -29,36 +30,68 @@ export const RealisationsPreviewSection = () => (
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((p, i) => (
-          <AnimatedSection key={p.name} delay={(i % 3) * 0.1}>
+        {projects.map((p, i) => {
+          const Card = (
             <motion.div
               whileHover={{ y: -8 }}
-              className="group relative rounded-2xl overflow-hidden border border-white/[0.06] bg-surface-darker hover:border-primary/30 transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden border border-white/[0.06] bg-surface-darker hover:border-primary/30 transition-all duration-500 h-full"
             >
-              {/* Visual placeholder */}
               <div className={`relative aspect-[4/3] bg-gradient-to-br ${p.tone} overflow-hidden`}>
-                <div className="absolute inset-0 opacity-30" style={{
-                  backgroundImage: "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
-                  backgroundSize: "32px 32px",
-                }} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-heading font-bold text-3xl md:text-4xl text-white/80 tracking-tight">{p.name}</span>
-                </div>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                />
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md border border-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-500">
-                  <ArrowUpRight className="w-4 h-4 text-primary" />
+                {p.image ? (
+                  <>
+                    <img
+                      src={p.image}
+                      alt={`Aperçu du site ${p.name}`}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                    />
+                    {/* Browser chrome */}
+                    <div className="absolute top-0 left-0 right-0 h-7 bg-black/70 backdrop-blur-md border-b border-white/10 flex items-center px-3 gap-1.5 z-10">
+                      <span className="w-2 h-2 rounded-full bg-red-500/80" />
+                      <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                      <span className="w-2 h-2 rounded-full bg-green-500/80" />
+                      <span className="ml-3 text-[10px] text-white/50 font-mono tracking-wide truncate">frulcars.fr</span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 opacity-30" style={{
+                      backgroundImage: "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
+                      backgroundSize: "32px 32px",
+                    }} />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-heading font-bold text-3xl md:text-4xl text-white/80 tracking-tight">{p.name}</span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </>
+                )}
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md border border-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-500 z-20">
+                  {p.href ? <ExternalLink className="w-4 h-4 text-primary" /> : <ArrowUpRight className="w-4 h-4 text-primary" />}
                 </div>
               </div>
               <div className="p-6">
                 <div className="text-xs uppercase tracking-wider text-primary/70 mb-2">{p.type}</div>
-                <h3 className="font-heading font-semibold text-surface-dark-foreground text-lg mb-2">{p.name}</h3>
+                <h3 className="font-heading font-semibold text-surface-dark-foreground text-lg mb-2 flex items-center gap-2">
+                  {p.name}
+                  {p.href && <span className="text-[10px] font-normal text-primary/70 uppercase tracking-wider">↗ Visiter</span>}
+                </h3>
                 <p className="text-sm text-surface-dark-foreground/55 leading-relaxed">{p.benefit}</p>
               </div>
             </motion.div>
-          </AnimatedSection>
-        ))}
+          );
+          return (
+            <AnimatedSection key={p.name} delay={(i % 3) * 0.1}>
+              {p.href ? (
+                <a href={p.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                  {Card}
+                </a>
+              ) : (
+                Card
+              )}
+            </AnimatedSection>
+          );
+        })}
       </div>
 
       <AnimatedSection className="text-center mt-14" delay={0.2}>
