@@ -9,6 +9,12 @@ function Coin({ hovered }: { hovered: boolean }) {
   const texture = useTexture(logoAsset.url);
   texture.anisotropy = 8;
 
+  // Clone texture and flip horizontally so the logo reads correctly on the back face
+  const backTexture = texture.clone();
+  backTexture.repeat.set(-1, 1);
+  backTexture.center.set(0.5, 0.5);
+  backTexture.anisotropy = 8;
+
   useFrame((_, delta) => {
     if (!group.current) return;
     const target = hovered ? 3.2 : 0.35;
@@ -26,9 +32,9 @@ function Coin({ hovered }: { hovered: boolean }) {
         <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} />
       </mesh>
       {/* Back face */}
-      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]} scale={[-1, 1, 1]}>
+      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]}>
         <circleGeometry args={[1.0, 64]} />
-        <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} side={THREE.DoubleSide} />
+        <meshStandardMaterial map={backTexture} metalness={0.2} roughness={0.55} />
       </mesh>
     </group>
   );
