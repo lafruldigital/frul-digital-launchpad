@@ -90,10 +90,6 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
             <div className="absolute inset-0 pt-7">
               <FrulCarsLogo3D hovered={hovered} />
             </div>
-            {/* hover hint */}
-            <div className="absolute bottom-3 left-0 right-0 text-center text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 group-hover:text-primary/80 transition-colors duration-500">
-              {hovered ? "spinning" : "hover to spin"}
-            </div>
           </>
         ) : (
           <>
