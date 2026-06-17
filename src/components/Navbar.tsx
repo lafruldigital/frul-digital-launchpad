@@ -227,71 +227,21 @@ export const Navbar = () => {
             >
               <ul className="space-y-1">
                 {navItems.map((item) => {
-                  if (item.type === "link") {
-                    const active = isActiveItem(location.pathname, item);
-                    return (
-                      <li key={item.label}>
-                        <Link
-                          to={item.href}
-                          onClick={() => setMobileOpen(false)}
-                          className={cn(
-                            "block px-4 py-3.5 rounded-xl text-base font-medium transition-colors border",
-                            active
-                              ? "bg-primary/10 text-primary border-primary/30"
-                              : "border-white/5 text-surface-dark-foreground/80 hover:text-primary hover:border-primary/20",
-                          )}
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    );
-                  }
-                  const open = mobileSection === item.label;
+                  const active = isActiveHref(location.pathname, item.href);
                   return (
                     <li key={item.label}>
-                      <button
-                        type="button"
-                        onClick={() => setMobileSection(open ? null : item.label)}
+                      <Link
+                        to={item.href}
+                        onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium border transition-colors",
-                          open
-                            ? "border-primary/20 bg-white/[0.03] text-surface-dark-foreground"
-                            : "border-white/5 text-surface-dark-foreground/80",
+                          "block px-4 py-3.5 rounded-xl text-base font-medium transition-colors border",
+                          active
+                            ? "bg-primary/15 text-primary border-primary/40 shadow-[0_0_20px_-5px_hsl(0_85%_50%/0.6)]"
+                            : "border-white/5 text-surface-dark-foreground/80 hover:text-primary hover:border-primary/20",
                         )}
-                        aria-expanded={open}
                       >
                         {item.label}
-                        <ChevronDown
-                          className={cn(
-                            "w-4 h-4 transition-transform duration-300",
-                            open ? "rotate-180 text-primary" : "text-surface-dark-foreground/40",
-                          )}
-                        />
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {open && (
-                          <motion.ul
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: "easeOut" }}
-                            className="overflow-hidden pl-3"
-                          >
-                            {item.items.map((sub) => (
-                              <li key={sub.href + sub.label}>
-                                <Link
-                                  to={sub.href}
-                                  onClick={() => setMobileOpen(false)}
-                                  className="flex items-center gap-3 px-4 py-3 text-sm text-surface-dark-foreground/70 hover:text-primary transition-colors"
-                                >
-                                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                                  {sub.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </motion.ul>
-                        )}
-                      </AnimatePresence>
+                      </Link>
                     </li>
                   );
                 })}
