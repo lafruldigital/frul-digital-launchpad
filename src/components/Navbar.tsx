@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import frulLogo from "@/assets/frul-logo-navbar.png.asset.json";
+import frulLogo from "@/assets/frul-emblem.png.asset.json";
 
 type DropdownItem = { label: string; href: string; description?: string };
 type NavItem =
@@ -129,14 +129,49 @@ export const Navbar = () => {
             )}
           >
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group shrink-0 min-w-0">
-              <span className="relative shrink-0">
-                <span className="absolute inset-0 rounded-lg bg-primary/20 blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
-                <img
+            <Link to="/" className="flex items-center gap-2.5 group shrink-0 min-w-0" aria-label="FRUL'DIGITAL">
+              <span className="relative shrink-0 flex items-center">
+                {/* Animated ambient glow */}
+                <motion.span
+                  aria-hidden
+                  className="absolute -inset-2 rounded-full bg-[radial-gradient(circle,hsl(0_85%_55%/0.55),transparent_70%)] blur-xl"
+                  animate={{ opacity: [0.35, 0.7, 0.35], scale: [0.95, 1.08, 0.95] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                />
+                {/* Orbiting HUD ring */}
+                <motion.span
+                  aria-hidden
+                  className="absolute inset-[-6px] rounded-full border border-primary/30"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                  style={{
+                    maskImage:
+                      "conic-gradient(from 0deg, black 0deg, transparent 120deg, black 180deg, transparent 300deg, black 360deg)",
+                    WebkitMaskImage:
+                      "conic-gradient(from 0deg, black 0deg, transparent 120deg, black 180deg, transparent 300deg, black 360deg)",
+                  }}
+                />
+                {/* Logo with floating + shine */}
+                <motion.img
                   src={frulLogo.url}
                   alt="FRUL'DIGITAL"
-                  className="relative h-9 w-auto object-contain rounded-md"
+                  className="relative h-10 w-auto object-contain drop-shadow-[0_0_12px_hsl(0_85%_50%/0.55)] group-hover:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.85)] transition-[filter] duration-500"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  whileHover={{ scale: 1.06, rotate: -2 }}
                 />
+                {/* Sweeping shine */}
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-full overflow-hidden"
+                >
+                  <motion.span
+                    className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-md"
+                    initial={{ x: "-120%" }}
+                    animate={{ x: ["-120%", "320%"] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+                  />
+                </motion.span>
               </span>
             </Link>
 
