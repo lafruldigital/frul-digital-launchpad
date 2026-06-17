@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import frulLogo from "@/assets/frul-digital-logo.jpg";
+import frulLogo from "@/assets/frul-logo-navbar.png.asset.json";
 
 type DropdownItem = { label: string; href: string; description?: string };
 type NavItem =
