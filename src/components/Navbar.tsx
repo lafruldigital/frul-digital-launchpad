@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
     items: [
       { label: "Résultats", href: "/resultats", description: "Études de cas chiffrées." },
       { label: "Témoignages", href: "/temoignages", description: "Ils nous ont fait confiance." },
-      { label: "Réalisations", href: "/realisations", description: "Portfolio & nos créations." },
+      { label: "Nos réalisations", href: "/realisations", description: "Portfolio & nos créations." },
     ],
   },
   {
@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
     label: "Agence",
     intro: "Notre méthode, notre vision, notre manière de travailler.",
     items: [
-      { label: "À propos", href: "/a-propos", description: "L'équipe & l'ADN Frul'digital." },
+      { label: "À propos de nous", href: "/a-propos", description: "L'équipe & l'ADN Frul'digital." },
       { label: "Processus", href: "/processus", description: "Notre méthode étape par étape." },
     ],
   },
@@ -211,7 +211,7 @@ export const Navbar = () => {
 
             {/* Desktop nav */}
             <ul
-              className="hidden lg:flex items-center gap-0.5"
+              className="hidden lg:flex flex-1 items-center justify-center gap-0.5"
               onMouseLeave={() => setOpenDropdown(null)}
             >
               {navItems.map((item) => {
