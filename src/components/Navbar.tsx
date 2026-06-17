@@ -129,50 +129,60 @@ export const Navbar = () => {
             )}
           >
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group shrink-0 min-w-0" aria-label="FRUL'DIGITAL">
-              <span className="relative shrink-0 flex items-center">
-                {/* Animated ambient glow */}
-                <motion.span
+            <Link
+              to="/"
+              className="group/logo relative flex items-center shrink-0 outline-none"
+              aria-label="FRUL'DIGITAL"
+            >
+              {/* Icon */}
+              <span className="relative shrink-0 flex items-center justify-center w-11 h-11">
+                {/* Halo glow (intensifies on hover) */}
+                <span
                   aria-hidden
-                  className="absolute -inset-2 rounded-full bg-[radial-gradient(circle,hsl(0_85%_55%/0.55),transparent_70%)] blur-xl"
-                  animate={{ opacity: [0.35, 0.7, 0.35], scale: [0.95, 1.08, 0.95] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-full bg-[radial-gradient(circle,hsl(0_85%_55%/0.55),transparent_70%)] blur-xl opacity-50 group-hover/logo:opacity-100 group-focus-visible/logo:opacity-100 transition-opacity duration-500"
                 />
-                {/* Orbiting HUD ring */}
-                <motion.span
+                {/* Speed streaks on hover */}
+                <span
                   aria-hidden
-                  className="absolute inset-[-6px] rounded-full border border-primary/30"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-[-4px] rounded-full opacity-0 group-hover/logo:opacity-100 group-focus-visible/logo:opacity-100 transition-opacity duration-300"
                   style={{
-                    maskImage:
-                      "conic-gradient(from 0deg, black 0deg, transparent 120deg, black 180deg, transparent 300deg, black 360deg)",
-                    WebkitMaskImage:
-                      "conic-gradient(from 0deg, black 0deg, transparent 120deg, black 180deg, transparent 300deg, black 360deg)",
+                    background:
+                      "conic-gradient(from 0deg, transparent 0deg, hsl(0 85% 55% / 0.6) 40deg, transparent 80deg, transparent 180deg, hsl(0 85% 55% / 0.6) 220deg, transparent 260deg, transparent 360deg)",
+                    maskImage: "radial-gradient(circle, transparent 55%, black 60%, transparent 75%)",
+                    WebkitMaskImage: "radial-gradient(circle, transparent 55%, black 60%, transparent 75%)",
                   }}
                 />
-                {/* Logo with floating + shine */}
-                <motion.img
+                <img
                   src={frulLogo.url}
-                  alt="FRUL'DIGITAL"
-                  className="relative h-10 w-auto object-contain drop-shadow-[0_0_12px_hsl(0_85%_50%/0.55)] group-hover:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.85)] transition-[filter] duration-500"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ scale: 1.06, rotate: -2 }}
-                />
-                {/* Sweeping shine */}
-                <motion.span
+                  alt=""
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-full overflow-hidden"
-                >
-                  <motion.span
-                    className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-md"
-                    initial={{ x: "-120%" }}
-                    animate={{ x: ["-120%", "320%"] }}
-                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-                  />
-                </motion.span>
+                  className="relative h-9 w-auto object-contain drop-shadow-[0_0_10px_hsl(0_85%_50%/0.5)] transition-[transform,filter] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] group-hover/logo:[transform:rotate(720deg)] group-focus-visible/logo:[transform:rotate(720deg)] group-hover/logo:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.9)] motion-reduce:group-hover/logo:[transform:none] motion-reduce:transition-[filter]"
+                />
               </span>
+
+              {/* Expanding wordmark */}
+              <span
+                aria-hidden
+                className="relative ml-0 overflow-hidden whitespace-nowrap max-w-0 opacity-0 -translate-x-1 group-hover/logo:max-w-[220px] group-hover/logo:opacity-100 group-hover/logo:translate-x-0 group-hover/logo:ml-2 group-focus-visible/logo:max-w-[220px] group-focus-visible/logo:opacity-100 group-focus-visible/logo:translate-x-0 group-focus-visible/logo:ml-2 transition-all duration-500 ease-[cubic-bezier(.2,.8,.2,1)]"
+              >
+                <span className="relative inline-flex items-baseline text-[15px] font-semibold tracking-[0.18em] text-white drop-shadow-[0_0_8px_hsl(0_0%_100%/0.25)]">
+                  FRUL
+                  <span className="text-primary drop-shadow-[0_0_8px_hsl(0_85%_55%/0.9)]">'</span>
+                  DIGITAL
+                  {/* Sweeping shine across the text on reveal */}
+                  <span
+                    className="pointer-events-none absolute inset-0 -translate-x-full group-hover/logo:translate-x-full group-focus-visible/logo:translate-x-full transition-transform duration-[900ms] ease-out bg-gradient-to-r from-transparent via-white/60 to-transparent mix-blend-overlay"
+                  />
+                </span>
+                {/* Underline accent */}
+                <span
+                  aria-hidden
+                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover/logo:w-full group-focus-visible/logo:w-full bg-gradient-to-r from-primary/80 via-white/60 to-transparent transition-[width] duration-700 ease-out"
+                />
+              </span>
+
+              {/* Screen reader text */}
+              <span className="sr-only">FRUL'DIGITAL</span>
             </Link>
 
             {/* Desktop nav */}
