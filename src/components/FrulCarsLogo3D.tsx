@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import { useMemo, useRef, useState, Suspense } from "react";
+import { useRef, Suspense } from "react";
 import * as THREE from "three";
 import logoAsset from "@/assets/frulcars-logo.jpg.asset.json";
 
@@ -8,18 +8,6 @@ function Coin({ hovered }: { hovered: boolean }) {
   const group = useRef<THREE.Group>(null);
   const texture = useTexture(logoAsset.url);
   texture.anisotropy = 8;
-
-  const logoMaterial = useMemo(
-    () => (
-      <meshBasicMaterial
-        map={texture}
-        transparent
-        toneMapped={false}
-        side={THREE.DoubleSide}
-      />
-    ),
-    [texture]
-  );
 
   useFrame((_, delta) => {
     if (!group.current) return;
@@ -35,12 +23,12 @@ function Coin({ hovered }: { hovered: boolean }) {
       {/* Front face */}
       <mesh position={[0, 0, 0.041]} rotation={[0, 0, 0]}>
         <circleGeometry args={[1.0, 64]} />
-        {logoMaterial}
+        <meshBasicMaterial map={texture} transparent toneMapped={false} side={THREE.DoubleSide} />
       </mesh>
       {/* Back face */}
-      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, Math.PI]}>
+      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]}>
         <circleGeometry args={[1.0, 64]} />
-        {logoMaterial}
+        <meshBasicMaterial map={texture} transparent toneMapped={false} side={THREE.DoubleSide} />
       </mesh>
     </group>
   );
