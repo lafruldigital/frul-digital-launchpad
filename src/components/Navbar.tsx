@@ -133,8 +133,27 @@ export const Navbar = () => {
               className="group/logo relative flex items-center shrink-0 outline-none"
               aria-label="FRUL'DIGITAL"
             >
-              {/* Icon */}
-              <span className="relative shrink-0 flex items-center justify-center w-11 h-11">
+              {/* Retro-reflection glow behind */}
+              <span
+                aria-hidden
+                className="absolute -inset-6 rounded-full bg-[radial-gradient(circle_at_50%_40%,hsl(0_85%_55%/0.35),hsl(0_85%_55%/0.08)_40%,transparent_70%)] blur-2xl opacity-60 group-hover/logo:opacity-100 transition-opacity duration-700"
+              />
+              <span
+                aria-hidden
+                className="absolute -inset-4 rounded-[40%_60%_60%_40%/60%_40%_60%_40%] bg-[radial-gradient(ellipse_at_50%_0%,hsl(0_0%_100%/0.12),transparent_60%)] blur-lg opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500"
+              />
+
+              {/* Icon with float */}
+              <motion.span
+                className="relative shrink-0 flex items-center justify-center w-11 h-11"
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                {/* Reflection floor */}
+                <span
+                  aria-hidden
+                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,hsl(0_85%_55%/0.35),transparent_70%)] blur-sm opacity-60"
+                />
                 {/* Halo glow (intensifies on hover) */}
                 <span
                   aria-hidden
@@ -151,13 +170,15 @@ export const Navbar = () => {
                     WebkitMaskImage: "radial-gradient(circle, transparent 55%, black 60%, transparent 75%)",
                   }}
                 />
-                <img
+                <motion.img
                   src={frulLogo.url}
                   alt=""
                   aria-hidden
                   className="relative h-9 w-auto object-contain drop-shadow-[0_0_10px_hsl(0_85%_50%/0.5)] transition-[transform,filter] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] group-hover/logo:[transform:rotate(720deg)] group-focus-visible/logo:[transform:rotate(720deg)] group-hover/logo:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.9)] motion-reduce:group-hover/logo:[transform:none] motion-reduce:transition-[filter]"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
                 />
-              </span>
+              </motion.span>
 
               {/* Expanding wordmark */}
               <span
