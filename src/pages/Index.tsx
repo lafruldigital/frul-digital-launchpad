@@ -1,31 +1,29 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { PositioningSection } from "@/components/PositioningSection";
-import { CredibilityBar } from "@/components/CredibilityBar";
+import { ProblemSection } from "@/components/ProblemSection";
+import { TransformationSection } from "@/components/TransformationSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { WhyUsSection } from "@/components/WhyUsSection";
 import { FrulLabSection } from "@/components/FrulLabSection";
-import { CaseStudiesSection } from "@/components/CaseStudiesSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { RealisationsPreviewSection } from "@/components/RealisationsPreviewSection";
+import { CredibilityBar } from "@/components/CredibilityBar";
 import { ProcessSection } from "@/components/ProcessSection";
-import { AuthoritySection } from "@/components/AuthoritySection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-surface-darker">
+    <div className="min-h-screen bg-surface-darker overflow-x-hidden">
       <Navbar />
       <HeroSection />
-      <PositioningSection />
-      <CredibilityBar />
+      <ProblemSection />
+      <TransformationSection />
       <ServicesSection />
-      <WhyUsSection />
       <FrulLabSection />
-      <CaseStudiesSection />
-      <TestimonialsSection />
+      <RealisationsPreviewSection />
+      <CredibilityBar />
       <ProcessSection />
-      <AuthoritySection />
+      <TestimonialsSection />
       <CtaSection />
       <Footer />
     </div>
