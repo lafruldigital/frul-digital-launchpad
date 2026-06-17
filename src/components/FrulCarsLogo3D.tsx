@@ -26,9 +26,9 @@ function Coin({ hovered }: { hovered: boolean }) {
         <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} />
       </mesh>
       {/* Back face */}
-      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]}>
+      <mesh position={[0, 0, -0.041]} rotation={[0, Math.PI, 0]} scale={[-1, 1, 1]}>
         <circleGeometry args={[1.0, 64]} />
-        <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} />
+        <meshStandardMaterial map={texture} metalness={0.2} roughness={0.55} side={THREE.DoubleSide} />
       </mesh>
     </group>
   );
