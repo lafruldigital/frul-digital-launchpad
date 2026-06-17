@@ -16,6 +16,7 @@ const entreprise = [
   { label: "Témoignages", href: "/temoignages" },
   { label: "Processus", href: "/processus" },
   { label: "Résultats", href: "/resultats" },
+  { label: "Nos créations", href: "/realisations" },
 ];
 
 const socialLinks = [
