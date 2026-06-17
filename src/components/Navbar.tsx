@@ -170,14 +170,18 @@ export const Navbar = () => {
                     WebkitMaskImage: "radial-gradient(circle, transparent 55%, black 60%, transparent 75%)",
                   }}
                 />
-                <motion.img
-                  src={frulLogo.url}
-                  alt=""
-                  aria-hidden
-                  className="relative h-9 w-auto object-contain drop-shadow-[0_0_10px_hsl(0_85%_50%/0.5)] transition-[transform,filter] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] group-hover/logo:[transform:rotate(720deg)] group-focus-visible/logo:[transform:rotate(720deg)] group-hover/logo:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.9)] motion-reduce:group-hover/logo:[transform:none] motion-reduce:transition-[filter]"
+                <motion.span
+                  className="relative inline-block"
                   animate={{ y: [0, -2, 0] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                />
+                >
+                  <img
+                    src={frulLogo.url}
+                    alt=""
+                    aria-hidden
+                    className="relative h-9 w-auto object-contain drop-shadow-[0_0_10px_hsl(0_85%_50%/0.5)] transition-[transform,filter] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] group-hover/logo:[transform:rotate(720deg)] group-focus-visible/logo:[transform:rotate(720deg)] group-hover/logo:drop-shadow-[0_0_18px_hsl(0_85%_55%/0.9)] motion-reduce:group-hover/logo:[transform:none] motion-reduce:transition-[filter]"
+                  />
+                </motion.span>
               </motion.span>
 
               {/* Expanding wordmark */}
