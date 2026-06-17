@@ -20,11 +20,6 @@ function Coin({ hovered }: { hovered: boolean }) {
 
   return (
     <group ref={group}>
-      {/* Edge of the coin */}
-      <mesh>
-        <cylinderGeometry args={[1.05, 1.05, 0.08, 64]} />
-        <meshStandardMaterial color="#0a0a0a" metalness={0.85} roughness={0.35} />
-      </mesh>
       {/* Front face */}
       <mesh position={[0, 0, 0.041]} rotation={[0, 0, 0]}>
         <circleGeometry args={[1.0, 64]} />
