@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import frulcarsPreview from "@/assets/frulcars-preview.png";
 
 const projects = [
-  { name: "FRUL'CARS", type: "Site & branding auto", benefit: "Présence premium pour une agence automobile.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", image: frulcarsPreview },
+  { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", image: frulcarsPreview },
   { name: "FRUL'SCHOOL", type: "Plateforme éducation", benefit: "Écosystème digital pour la formation.", tone: "from-orange-500/25 to-red-900/20" },
   { name: "RMA DISTRIBUTION", type: "Site B2B & identité", benefit: "Image structurée pour scaler la distribution.", tone: "from-zinc-700/30 to-red-900/20" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
