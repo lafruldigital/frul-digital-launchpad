@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import frulLabAi from "@/assets/frul-lab-ai.png";
+import { Brain3D } from "@/components/Brain3D";
 
 const GaugeBar = ({ label, value, delay }: { label: string; value: number; delay: number }) => {
   const ref = useRef(null);
@@ -163,42 +163,21 @@ const HolographicBrain = () => {
           animate={{ y: [-8, 8, -8] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* spinning rotation */}
-          <motion.div
-            className="relative w-full h-full"
-            style={{ transformStyle: "preserve-3d" }}
-            animate={{ rotateY: [0, 360] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-          >
-            <img
-              src={frulLabAi}
-              alt="FRUL'LAB AI - Cerveau IA holographique"
-              className="w-full h-full object-contain drop-shadow-[0_0_40px_hsl(0_85%_50%/0.7)]"
-              style={{ filter: "contrast(1.05) saturate(1.1)" }}
-            />
+          <div className="relative w-full h-full">
+            <Brain3D />
             {/* energy overlay scan */}
             <motion.div
               aria-hidden
               className="absolute inset-0 mix-blend-screen pointer-events-none"
               style={{
                 background:
-                  "linear-gradient(180deg, transparent 0%, hsl(0 90% 60% / 0.35) 50%, transparent 100%)",
-                maskImage: "radial-gradient(circle, black 60%, transparent 75%)",
+                  "linear-gradient(180deg, transparent 0%, hsl(0 90% 60% / 0.25) 50%, transparent 100%)",
+                maskImage: "radial-gradient(circle, black 55%, transparent 75%)",
               }}
               animate={{ y: ["-100%", "100%"] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
             />
-            {/* pulse glow */}
-            <motion.div
-              aria-hidden
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{
-                boxShadow: "inset 0 0 80px hsl(0 90% 55% / 0.5)",
-              }}
-              animate={{ opacity: [0.4, 0.9, 0.4] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
 
