@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/nouveau-logo-frulcars.png.asset.json";
+import logoAsset from "@/assets/logo-frulcars-2.jpg.asset.json";
 
 export const FrulCarsLogo3D = ({ hovered }: { hovered: boolean }) => {
   return (
