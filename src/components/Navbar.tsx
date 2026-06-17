@@ -6,36 +6,68 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import frulLogo from "@/assets/frul-digital-logo.jpg";
 
-type NavItem = { label: string; href: string };
+type DropdownItem = { label: string; href: string; description?: string };
+type NavItem =
+  | { type: "link"; label: string; href: string }
+  | { type: "dropdown"; label: string; intro?: string; items: DropdownItem[] };
 
 const navItems: NavItem[] = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "À propos", href: "/a-propos" },
-  { label: "Résultats", href: "/resultats" },
-  { label: "Témoignages", href: "/temoignages" },
-  { label: "Processus", href: "/processus" },
-  { label: "FRUL'LAB AI", href: "/frul-lab" },
-  { label: "Contact", href: "/contact" },
+  { type: "link", label: "Accueil", href: "/" },
+  {
+    type: "dropdown",
+    label: "Services",
+    intro: "Des solutions concrètes pour accélérer votre présence digitale.",
+    items: [
+      { label: "Création de sites web", href: "/services", description: "Sites premium, rapides, sur-mesure." },
+      { label: "Publicité en ligne", href: "/services", description: "Meta & Google Ads, ROAS optimisé." },
+      { label: "Gestion des réseaux sociaux", href: "/services", description: "Stratégie & community management." },
+      { label: "Création de contenu", href: "/services", description: "Photo, vidéo, motion design." },
+    ],
+  },
+  {
+    type: "dropdown",
+    label: "Preuves",
+    intro: "Des résultats concrets, vérifiables et inspirants.",
+    items: [
+      { label: "Résultats", href: "/resultats", description: "Études de cas chiffrées." },
+      { label: "Témoignages", href: "/temoignages", description: "Ils nous ont fait confiance." },
+      { label: "Réalisations", href: "/realisations", description: "Portfolio & nos créations." },
+    ],
+  },
+  {
+    type: "dropdown",
+    label: "Agence",
+    intro: "Notre méthode, notre vision, notre manière de travailler.",
+    items: [
+      { label: "À propos", href: "/a-propos", description: "L'équipe & l'ADN Frul'digital." },
+      { label: "Processus", href: "/processus", description: "Notre méthode étape par étape." },
+    ],
+  },
+  { type: "link", label: "FRUL'LAB AI", href: "/frul-lab" },
+  { type: "link", label: "Contact", href: "/contact" },
 ];
 
 const isActiveHref = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
-/* ───────── Decorative HUD corners ───────── */
+const isActiveItem = (pathname: string, item: NavItem) =>
+  item.type === "link"
+    ? isActiveHref(pathname, item.href)
+    : item.items.some((i) => isActiveHref(pathname, i.href));
+
+/* HUD micro-detail (purely decorative, coded) */
 const HudCorner = ({ className }: { className?: string }) => (
   <span
     aria-hidden
-    className={cn(
-      "absolute w-3 h-3 border-primary/60 pointer-events-none",
-      className,
-    )}
+    className={cn("absolute w-2.5 h-2.5 border-primary/60 pointer-events-none", className)}
   />
 );
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileSection, setMobileSection] = useState<string | null>("Services");
   const location = useLocation();
 
   useEffect(() => {
@@ -47,109 +79,95 @@ export const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false);
+    setOpenDropdown(null);
   }, [location.pathname]);
 
   return (
     <div
       className={cn(
         "fixed left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "top-2" : "top-4",
+        scrolled ? "top-2" : "top-3",
       )}
     >
-      <div className="mx-auto px-3 sm:px-6 max-w-[1400px]">
+      <div className="mx-auto px-3 sm:px-4 max-w-[1320px]">
         <nav
           className={cn(
-            "relative transition-all duration-500",
-            scrolled ? "scale-[0.985]" : "scale-100",
+            "relative rounded-2xl border backdrop-blur-xl transition-all duration-500",
+            "border-white/[0.08] bg-[hsl(0_0%_6%/0.78)]",
+            scrolled
+              ? "shadow-[0_8px_30px_-12px_hsl(0_85%_50%/0.35),inset_0_0_0_1px_hsl(0_0%_100%/0.03)] bg-[hsl(0_0%_5%/0.88)]"
+              : "shadow-[0_10px_40px_-18px_hsl(0_85%_50%/0.4),inset_0_0_0_1px_hsl(0_0%_100%/0.03)]",
           )}
         >
-          {/* Outer ambient red glow */}
+          {/* Subtle red glow underline */}
           <span
             aria-hidden
-            className="pointer-events-none absolute -inset-x-6 -inset-y-3 bg-[radial-gradient(60%_80%_at_0%_50%,hsl(0_85%_50%/0.18),transparent_70%),radial-gradient(60%_80%_at_100%_50%,hsl(0_85%_50%/0.18),transparent_70%)] blur-2xl"
+            className="pointer-events-none absolute -bottom-px left-12 right-12 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-80"
           />
+          {/* HUD top center detail */}
+          <span aria-hidden className="pointer-events-none absolute -top-px left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1.5">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/70" />
+            <span className="flex items-center gap-[3px]">
+              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
+              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
+              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
+            </span>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/70" />
+          </span>
+          {/* HUD corners */}
+          <HudCorner className="top-1.5 left-1.5 border-l border-t rounded-tl" />
+          <HudCorner className="top-1.5 right-1.5 border-r border-t rounded-tr" />
+          <HudCorner className="bottom-1.5 left-1.5 border-l border-b rounded-bl" />
+          <HudCorner className="bottom-1.5 right-1.5 border-r border-b rounded-br" />
 
           <div
             className={cn(
-              "relative flex items-stretch gap-2 sm:gap-3 transition-all duration-500",
-              scrolled ? "h-16" : "h-[72px]",
+              "relative flex items-center justify-between gap-3 px-3 sm:px-4 transition-all duration-500",
+              scrolled ? "h-14" : "h-16",
             )}
           >
-            {/* ── LOGO POD ───────────────────────────── */}
-            <Link
-              to="/"
-              className="group relative shrink-0 flex items-center gap-3 pl-3 pr-5 sm:pr-7
-                         bg-surface-darker/70 backdrop-blur-xl
-                         border border-white/10
-                         shadow-[0_10px_40px_-15px_hsl(0_85%_50%/0.35),inset_0_0_0_1px_hsl(0_0%_100%/0.03)]
-                         [clip-path:polygon(0_0,calc(100%-22px)_0,100%_50%,calc(100%-22px)_100%,0_100%,0_0)]
-                         hover:border-primary/30 transition-colors"
-            >
-              <span aria-hidden className="absolute inset-y-2 left-0 w-[2px] bg-gradient-to-b from-transparent via-primary/60 to-transparent" />
-              <span className="relative">
-                <span className="absolute inset-0 rounded-full bg-primary/40 blur-md opacity-70 group-hover:opacity-100 transition-opacity" />
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2.5 group shrink-0 min-w-0">
+              <span className="relative shrink-0">
+                <span className="absolute inset-0 rounded-full bg-primary/30 blur-md opacity-60 group-hover:opacity-90 transition-opacity" />
                 <motion.img
                   src={frulLogo}
                   alt="FRUL'DIGITAL"
-                  className="relative w-11 h-11 rounded-full object-cover border border-primary/50 shadow-[0_0_18px_hsl(0_85%_50%/0.55)]"
+                  className="relative w-9 h-9 rounded-full object-cover border border-primary/40 shadow-[0_0_14px_hsl(0_85%_50%/0.45)]"
                   animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
                 />
               </span>
-              <span className="hidden sm:flex flex-col leading-none">
-                <span className="font-heading font-bold tracking-[0.16em] text-[15px] text-surface-dark-foreground">
+              <span className="hidden sm:flex flex-col leading-none min-w-0">
+                <span className="font-heading font-bold tracking-[0.16em] text-[13px] text-surface-dark-foreground truncate">
                   FRUL<span className="text-primary">'</span>DIGITAL
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.4em] text-surface-dark-foreground/40 mt-1">
+                <span className="text-[9px] uppercase tracking-[0.32em] text-surface-dark-foreground/40 mt-0.5">
                   Agency · AI
                 </span>
               </span>
-              {/* HUD ticks */}
-              <span aria-hidden className="absolute top-1.5 left-2 w-2 h-2 border-t border-l border-primary/60" />
-              <span aria-hidden className="absolute bottom-1.5 left-2 w-2 h-2 border-b border-l border-primary/60" />
-              <span aria-hidden className="absolute -bottom-px left-3 right-8 h-px bg-gradient-to-r from-primary/70 via-primary/30 to-transparent" />
             </Link>
 
-            {/* ── MAIN POD ───────────────────────────── */}
-            <div
-              className="relative flex-1 hidden lg:flex items-center justify-center
-                         bg-surface-darker/70 backdrop-blur-xl
-                         border border-white/10 rounded-[18px]
-                         shadow-[0_10px_40px_-15px_hsl(0_85%_50%/0.25),inset_0_0_0_1px_hsl(0_0%_100%/0.03)]"
+            {/* Desktop nav */}
+            <ul
+              className="hidden lg:flex items-center gap-0.5"
+              onMouseLeave={() => setOpenDropdown(null)}
             >
-              {/* HUD top center detail */}
-              <span aria-hidden className="absolute -top-px left-1/2 -translate-x-1/2 flex items-center gap-1">
-                <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/70" />
-                <span className="flex items-center gap-[3px] px-1.5">
-                  <span className="w-1 h-1 rounded-full bg-primary/80 shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
-                  <span className="w-1 h-1 rounded-full bg-primary/50" />
-                  <span className="w-1 h-1 rounded-full bg-primary/80 shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
-                  <span className="w-1 h-1 rounded-full bg-primary/50" />
-                  <span className="w-1 h-1 rounded-full bg-primary/80 shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
-                </span>
-                <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/70" />
-              </span>
-              {/* HUD bottom ticks */}
-              <span aria-hidden className="absolute -bottom-px left-12 h-px w-16 bg-gradient-to-r from-primary/70 to-transparent" />
-              <span aria-hidden className="absolute -bottom-px right-12 h-px w-16 bg-gradient-to-l from-primary/70 to-transparent" />
-              {/* HUD corners */}
-              <HudCorner className="top-1 left-1 border-l border-t rounded-tl-md" />
-              <HudCorner className="top-1 right-1 border-r border-t rounded-tr-md" />
-              <HudCorner className="bottom-1 left-1 border-l border-b rounded-bl-md" />
-              <HudCorner className="bottom-1 right-1 border-r border-b rounded-br-md" />
-
-              <ul className="flex items-center gap-1 px-4">
-                {navItems.map((item) => {
-                  const active = isActiveHref(location.pathname, item.href);
+              {navItems.map((item) => {
+                const active = isActiveItem(location.pathname, item);
+                if (item.type === "link") {
                   return (
                     <li key={item.label}>
                       <Link
                         to={item.href}
+                        onMouseEnter={() => setOpenDropdown(null)}
                         className={cn(
-                          "relative inline-flex items-center px-4 py-2 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-300",
+                          "relative inline-flex items-center px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all duration-300 whitespace-nowrap",
                           active
-                            ? "text-primary-foreground bg-primary/95 shadow-[0_0_24px_hsl(0_85%_50%/0.65),inset_0_0_0_1px_hsl(0_85%_70%/0.6)]"
-                            : "text-surface-dark-foreground/75 hover:text-surface-dark-foreground hover:bg-white/[0.04]",
+                            ? "text-primary-foreground bg-primary/95 shadow-[0_0_22px_hsl(0_85%_50%/0.6),inset_0_0_0_1px_hsl(0_85%_70%/0.55)]"
+                            : "text-surface-dark-foreground/75 hover:text-surface-dark-foreground hover:bg-white/[0.05]",
                         )}
                       >
                         {item.label}
@@ -159,34 +177,101 @@ export const Navbar = () => {
                       </Link>
                     </li>
                   );
-                })}
-              </ul>
-            </div>
+                }
+                const open = openDropdown === item.label;
+                return (
+                  <li key={item.label} className="relative" onMouseEnter={() => setOpenDropdown(item.label)}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenDropdown(open ? null : item.label)}
+                      className={cn(
+                        "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all duration-300 whitespace-nowrap",
+                        active || open
+                          ? "text-surface-dark-foreground bg-white/[0.05]"
+                          : "text-surface-dark-foreground/75 hover:text-surface-dark-foreground hover:bg-white/[0.05]",
+                      )}
+                      aria-expanded={open}
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={cn(
+                          "w-3.5 h-3.5 transition-transform duration-300",
+                          open ? "rotate-180 text-primary" : "text-surface-dark-foreground/40",
+                        )}
+                      />
+                    </button>
 
-            {/* ── RIGHT POD (Auth) ───────────────────── */}
-            <div
-              className="relative hidden lg:flex items-center gap-2 px-3
-                         bg-surface-darker/70 backdrop-blur-xl
-                         border border-white/10 rounded-[18px]
-                         shadow-[0_10px_40px_-15px_hsl(0_85%_50%/0.35),inset_0_0_0_1px_hsl(0_0%_100%/0.03)]"
-            >
-              <HudCorner className="top-1 left-1 border-l border-t rounded-tl-md" />
-              <HudCorner className="top-1 right-1 border-r border-t rounded-tr-md" />
-              <HudCorner className="bottom-1 left-1 border-l border-b rounded-bl-md" />
-              <HudCorner className="bottom-1 right-1 border-r border-b rounded-br-md" />
-              <span aria-hidden className="absolute -bottom-px right-6 h-px w-20 bg-gradient-to-l from-primary/70 to-transparent" />
+                    <AnimatePresence>
+                      {open && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[340px]"
+                        >
+                          <div className="relative rounded-2xl border border-white/[0.08] bg-[hsl(0_0%_5%/0.96)] backdrop-blur-xl p-2 shadow-[0_24px_60px_-12px_hsl(0_0%_0%/0.7),0_0_30px_-8px_hsl(0_85%_50%/0.25)]">
+                            <span
+                              aria-hidden
+                              className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent"
+                            />
+                            {item.intro && (
+                              <p className="px-3 pt-2 pb-3 text-[10px] uppercase tracking-[0.18em] text-surface-dark-foreground/40 border-b border-white/5 mb-2">
+                                {item.intro}
+                              </p>
+                            )}
+                            <ul className="space-y-0.5">
+                              {item.items.map((sub) => {
+                                const subActive = isActiveHref(location.pathname, sub.href);
+                                return (
+                                  <li key={sub.href + sub.label}>
+                                    <Link
+                                      to={sub.href}
+                                      onClick={() => setOpenDropdown(null)}
+                                      className={cn(
+                                        "group flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-200",
+                                        subActive
+                                          ? "bg-primary/10 text-surface-dark-foreground"
+                                          : "hover:bg-white/[0.04] text-surface-dark-foreground/85 hover:text-surface-dark-foreground",
+                                      )}
+                                    >
+                                      <span className="mt-1 w-1.5 h-1.5 rounded-full bg-primary/70 group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(0_85%_50%/0.85)] transition-all" />
+                                      <span className="flex-1 min-w-0">
+                                        <span className="block text-sm font-medium">{sub.label}</span>
+                                        {sub.description && (
+                                          <span className="block text-[11px] text-surface-dark-foreground/45 mt-0.5">
+                                            {sub.description}
+                                          </span>
+                                        )}
+                                      </span>
+                                      <ArrowUpRight className="w-3.5 h-3.5 mt-1 text-surface-dark-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                );
+              })}
+            </ul>
 
+            {/* Right cluster */}
+            <div className="hidden lg:flex items-center gap-2 shrink-0">
               <Link
                 to="/login"
-                className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] text-surface-dark-foreground/85 hover:text-surface-dark-foreground hover:bg-white/[0.04] transition-all"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] text-surface-dark-foreground/85 hover:text-surface-dark-foreground hover:bg-white/[0.05] transition-all"
               >
-                <User className="w-4 h-4" />
+                <User className="w-3.5 h-3.5" />
                 Connexion
               </Link>
               <Link to="/signup" className="group">
                 <Button
                   size="sm"
-                  className="rounded-xl h-10 px-4 bg-primary hover:bg-primary text-primary-foreground border border-primary/70 shadow-[0_0_24px_hsl(0_85%_50%/0.6),inset_0_0_0_1px_hsl(0_85%_75%/0.5)] hover:shadow-[0_0_34px_hsl(0_85%_50%/0.85)] transition-all"
+                  className="h-9 rounded-lg px-3.5 bg-primary hover:bg-primary text-primary-foreground border border-primary/70 shadow-[0_0_22px_hsl(0_85%_50%/0.55),inset_0_0_0_1px_hsl(0_85%_75%/0.45)] hover:shadow-[0_0_30px_hsl(0_85%_50%/0.8)] transition-all"
                 >
                   S'inscrire
                   <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -197,12 +282,12 @@ export const Navbar = () => {
             {/* Mobile toggle */}
             <button
               type="button"
-              className="lg:hidden ml-auto flex items-center justify-center w-12 h-12 self-center rounded-2xl border border-white/10 bg-surface-darker/70 backdrop-blur-xl text-surface-dark-foreground hover:border-primary/40 hover:text-primary transition-colors shadow-[0_0_20px_-5px_hsl(0_85%_50%/0.4)]"
+              className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] text-surface-dark-foreground hover:border-primary/40 hover:text-primary transition-colors"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Menu"
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </nav>
@@ -216,7 +301,7 @@ export const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden fixed inset-0 top-0 z-40 bg-surface-darker/95 backdrop-blur-xl pt-24 px-4 overflow-y-auto"
+            className="lg:hidden fixed inset-0 top-0 z-40 bg-[hsl(0_0%_4%/0.96)] backdrop-blur-xl pt-24 px-4 overflow-y-auto"
           >
             <motion.div
               initial={{ y: -10, opacity: 0 }}
@@ -227,21 +312,71 @@ export const Navbar = () => {
             >
               <ul className="space-y-1">
                 {navItems.map((item) => {
-                  const active = isActiveHref(location.pathname, item.href);
+                  if (item.type === "link") {
+                    const active = isActiveItem(location.pathname, item);
+                    return (
+                      <li key={item.label}>
+                        <Link
+                          to={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className={cn(
+                            "block px-4 py-3.5 rounded-xl text-base font-medium transition-colors border",
+                            active
+                              ? "bg-primary/15 text-primary border-primary/40 shadow-[0_0_20px_-5px_hsl(0_85%_50%/0.6)]"
+                              : "border-white/5 text-surface-dark-foreground/85 hover:text-primary hover:border-primary/20",
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    );
+                  }
+                  const open = mobileSection === item.label;
                   return (
                     <li key={item.label}>
-                      <Link
-                        to={item.href}
-                        onClick={() => setMobileOpen(false)}
+                      <button
+                        type="button"
+                        onClick={() => setMobileSection(open ? null : item.label)}
                         className={cn(
-                          "block px-4 py-3.5 rounded-xl text-base font-medium transition-colors border",
-                          active
-                            ? "bg-primary/15 text-primary border-primary/40 shadow-[0_0_20px_-5px_hsl(0_85%_50%/0.6)]"
-                            : "border-white/5 text-surface-dark-foreground/80 hover:text-primary hover:border-primary/20",
+                          "w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium border transition-colors",
+                          open
+                            ? "border-primary/25 bg-white/[0.04] text-surface-dark-foreground"
+                            : "border-white/5 text-surface-dark-foreground/85",
                         )}
+                        aria-expanded={open}
                       >
                         {item.label}
-                      </Link>
+                        <ChevronDown
+                          className={cn(
+                            "w-4 h-4 transition-transform duration-300",
+                            open ? "rotate-180 text-primary" : "text-surface-dark-foreground/40",
+                          )}
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {open && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className="overflow-hidden pl-3"
+                          >
+                            {item.items.map((sub) => (
+                              <li key={sub.href + sub.label}>
+                                <Link
+                                  to={sub.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="flex items-center gap-3 px-4 py-3 text-sm text-surface-dark-foreground/75 hover:text-primary transition-colors"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                                  {sub.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
                     </li>
                   );
                 })}
@@ -251,14 +386,14 @@ export const Navbar = () => {
                 <Link to="/login" onClick={() => setMobileOpen(false)}>
                   <Button
                     variant="outline"
-                    className="w-full rounded-full border-white/10 bg-white/[0.02] text-surface-dark-foreground/80 hover:text-surface-dark-foreground"
+                    className="w-full rounded-xl border-white/10 bg-white/[0.03] text-surface-dark-foreground/85 hover:text-surface-dark-foreground"
                   >
                     <User className="w-4 h-4 mr-1.5" />
                     Connexion
                   </Button>
                 </Link>
                 <Link to="/signup" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_hsl(0_85%_50%/0.45)]">
+                  <Button className="w-full rounded-xl bg-primary text-primary-foreground shadow-[0_0_20px_hsl(0_85%_50%/0.5)]">
                     S'inscrire
                     <ArrowUpRight className="w-4 h-4 ml-1" />
                   </Button>
@@ -271,3 +406,5 @@ export const Navbar = () => {
     </div>
   );
 };
+
+export default Navbar;
