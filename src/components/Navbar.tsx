@@ -62,6 +62,43 @@ const HudCorner = ({ className }: { className?: string }) => (
   />
 );
 
+/* Heartbeat core + energy-flow border styles (scoped via class names) */
+const NavbarFxStyles = () => (
+  <style>{`
+    @keyframes frul-heartbeat {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px hsl(0 85% 55% / 0.7)); }
+      14% { transform: scale(1.55); filter: drop-shadow(0 0 10px hsl(0 85% 60% / 1)); }
+      28% { transform: scale(1); filter: drop-shadow(0 0 6px hsl(0 85% 55% / 0.8)); }
+      42% { transform: scale(1.35); filter: drop-shadow(0 0 8px hsl(0 85% 60% / 0.95)); }
+      70% { transform: scale(1); filter: drop-shadow(0 0 4px hsl(0 85% 55% / 0.7)); }
+    }
+    .frul-core-dot { animation: frul-heartbeat 1.9s ease-in-out infinite; transform-origin: center; }
+    .frul-core-dot.d2 { animation-delay: .08s; }
+    .frul-core-dot.d3 { animation-delay: .16s; }
+    .frul-core-dot.d4 { animation-delay: .24s; }
+    .frul-core-dot.d5 { animation-delay: .32s; }
+
+    @keyframes frul-energy-flow {
+      0%   { stroke-dashoffset: 0;    opacity: 0; }
+      6%   { opacity: 1; }
+      55%  { opacity: 1; }
+      70%  { stroke-dashoffset: -1000; opacity: 0; }
+      100% { stroke-dashoffset: -1000; opacity: 0; }
+    }
+    .frul-energy-path {
+      stroke-dasharray: 180 1000;
+      animation: frul-energy-flow 5.2s cubic-bezier(.55,.1,.25,1) infinite;
+      filter: drop-shadow(0 0 6px hsl(0 85% 55% / 0.9));
+    }
+    .frul-energy-path.reverse { animation-direction: reverse; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .frul-core-dot { animation: none !important; }
+      .frul-energy-path { animation: none !important; opacity: .35; stroke-dasharray: none; }
+    }
+  `}</style>
+);
+
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -88,6 +125,7 @@ export const Navbar = () => {
         scrolled ? "top-2" : "top-3",
       )}
     >
+      <NavbarFxStyles />
       <div className="mx-auto px-3 sm:px-4 max-w-[1320px]">
         <nav
           className={cn(
@@ -98,6 +136,34 @@ export const Navbar = () => {
               : "shadow-[0_10px_40px_-18px_hsl(0_85%_50%/0.4),inset_0_0_0_1px_hsl(0_0%_100%/0.03)]",
           )}
         >
+          {/* Energy flow around the navbar border */}
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 w-full h-full overflow-visible"
+            preserveAspectRatio="none"
+          >
+            <rect
+              x="0.5" y="0.5"
+              width="calc(100% - 1px)" height="calc(100% - 1px)"
+              rx="16" ry="16"
+              fill="none"
+              stroke="hsl(0 85% 55% / 0.95)"
+              strokeWidth="1.2"
+              pathLength="1000"
+              className="frul-energy-path"
+            />
+            <rect
+              x="0.5" y="0.5"
+              width="calc(100% - 1px)" height="calc(100% - 1px)"
+              rx="16" ry="16"
+              fill="none"
+              stroke="hsl(0 85% 60% / 0.8)"
+              strokeWidth="1.2"
+              pathLength="1000"
+              className="frul-energy-path reverse"
+            />
+          </svg>
+
           {/* Subtle red glow underline */}
           <span
             aria-hidden
@@ -107,11 +173,11 @@ export const Navbar = () => {
           <span aria-hidden className="pointer-events-none absolute -top-px left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1.5">
             <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/70" />
             <span className="flex items-center gap-[3px]">
-              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
-              <span className="w-1 h-1 rounded-full bg-primary/40" />
-              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
-              <span className="w-1 h-1 rounded-full bg-primary/40" />
-              <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(0_85%_50%/0.9)]" />
+              <span className="frul-core-dot d1 w-1 h-1 rounded-full bg-primary shadow-[0_0_8px_hsl(0_85%_55%/0.95)]" />
+              <span className="frul-core-dot d2 w-1 h-1 rounded-full bg-primary shadow-[0_0_8px_hsl(0_85%_55%/0.95)]" />
+              <span className="frul-core-dot d3 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(0_85%_60%/1)]" />
+              <span className="frul-core-dot d4 w-1 h-1 rounded-full bg-primary shadow-[0_0_8px_hsl(0_85%_55%/0.95)]" />
+              <span className="frul-core-dot d5 w-1 h-1 rounded-full bg-primary shadow-[0_0_8px_hsl(0_85%_55%/0.95)]" />
             </span>
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/70" />
           </span>
