@@ -76,12 +76,12 @@ const identityLogos = [
   { name: "Sora Pet Care", category: "Santé", sector: "Veterinary & Wellness", style: "Soin rassurant", description: "Identité fictive développée pour une structure vétérinaire premium, douce, accessible et immédiatement rassurante.", imageUrl: soraPetCare.url, accent: "from-emerald-300/18 via-transparent to-rose-300/12" },
 ] as const;
 
-const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile", "Bien-être", "Finance", "Santé"] as const;
+const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile", "Bien-être", "Finance", "Santé", "Média"] as const;
 
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
   { name: "FRUL'IMMO", type: "Immobilier", benefit: "Site vitrine premium pour agence immobilière haut de gamme.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulimmo.fr", logo3d: true as const, logoUrl: logoFrulImmo.url, domain: "frulimmo.fr" },
-  { name: "RMA DISTRIBUTION", type: "Site B2B & identité", benefit: "Image structurée pour scaler la distribution.", tone: "from-zinc-700/30 to-red-900/20" },
+  { name: "FRUL'UX", type: "Blog Connecté", benefit: "Plateforme éditoriale premium mêlant culture, lifestyle et tech.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulux.fr", logo3d: true as const, logoUrl: fruluxLogo.url, domain: "frulux.fr" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
   { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20" },
