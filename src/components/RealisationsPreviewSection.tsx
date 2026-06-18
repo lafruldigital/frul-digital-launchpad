@@ -167,13 +167,16 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
         ) : (
           <>
             <div className="absolute inset-0 opacity-30" style={{
-              backgroundImage: "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
+              backgroundImage: "portfolioModal" in p && p.portfolioModal
+                ? "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
+                : "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }} />
             {"portfolioModal" in p && p.portfolioModal ? (
               <>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(239,68,68,0.18),transparent_56%)]" />
-                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/6 to-transparent" />
+                <div className="absolute inset-0 bg-black" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.06),transparent_60%)]" />
+                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/5 to-transparent" />
                 <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
                   <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/55">
                     <span>Logo Gallery</span>
@@ -285,10 +288,10 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
             exit={{ opacity: 0, y: 18, scale: 0.985 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="identity-portfolio-shell relative flex h-full max-h-[96vh] w-full max-w-7xl flex-col overflow-hidden rounded-[28px] border border-white/10 bg-black/95 shadow-[0_30px_120px_rgba(0,0,0,0.6)]"
+            className="identity-portfolio-shell relative flex h-full max-h-[96vh] w-full max-w-7xl flex-col overflow-hidden rounded-[28px] border border-white/10 bg-surface-darker/92 shadow-[0_30px_120px_rgba(0,0,0,0.6)]"
           >
             <div className="identity-portfolio-header relative border-b border-white/8 px-5 pb-5 pt-5 md:px-8 md:pb-6 md:pt-7">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_58%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(239,68,68,0.16),transparent_58%)]" />
               <div className="relative flex items-start justify-between gap-4">
                 <div className="max-w-3xl">
                   <span className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.32em] text-primary/80">
