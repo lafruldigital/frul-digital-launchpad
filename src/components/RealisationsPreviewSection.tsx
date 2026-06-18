@@ -16,6 +16,16 @@ import monteza from "@/assets/logo-gallery/monteza.png.asset.json";
 import mimiPop from "@/assets/logo-gallery/mimi-pop.png.asset.json";
 import helionStudio from "@/assets/logo-gallery/helion-studio.png.asset.json";
 import pixelHarbor from "@/assets/logo-gallery/pixel-harbor.png.asset.json";
+import velmoraTravel from "@/assets/logo-gallery/velmora-travel.png.asset.json";
+import orbynStudio from "@/assets/logo-gallery/orbyn-studio.png.asset.json";
+import solenne from "@/assets/logo-gallery/solenne.png.asset.json";
+import kintaroFit from "@/assets/logo-gallery/kintaro-fit.png.asset.json";
+import cimaCoffee from "@/assets/logo-gallery/cima-coffee.png.asset.json";
+import riveo from "@/assets/logo-gallery/riveo.png.asset.json";
+import drivion from "@/assets/logo-gallery/drivion.png.asset.json";
+import noxora from "@/assets/logo-gallery/noxora.png.asset.json";
+import atelierVera from "@/assets/logo-gallery/atelier-vera.png.asset.json";
+import altisRealty from "@/assets/logo-gallery/altis-realty.png.asset.json";
 
 const identityLogos = [
   { name: "Bloomora", category: "Lifestyle", sector: "Floral Atelier", style: "Éditorial floral", description: "Concept identitaire fictif imaginé pour une maison florale premium à l'élégance sensible.", imageUrl: bloomora.url, accent: "from-rose-500/18 via-transparent to-amber-500/12" },
@@ -28,9 +38,19 @@ const identityLogos = [
   { name: "Pixel Harbor", category: "Gaming", sector: "Gaming / Streaming", style: "Néon communautaire", description: "Direction identitaire fictive pensée pour une plateforme gaming orientée stream, communauté et culture digitale.", imageUrl: pixelHarbor.url, accent: "from-fuchsia-500/18 via-transparent to-sky-500/12" },
   { name: "Hélion Studio", category: "Créatif", sector: "Motion Design", style: "Cinétique éditorial", description: "Signature fictive conçue pour un studio créatif focalisé sur le motion design, la direction et la précision graphique.", imageUrl: helionStudio.url, accent: "from-amber-500/18 via-transparent to-red-500/10" },
   { name: "Noir Muse", category: "Luxe", sector: "Parfum & Beauté", style: "Luxe sculptural", description: "Concept identitaire fictif développé pour une maison beauté haut de gamme à l'aura couture.", imageUrl: noirMuse.url, accent: "from-amber-400/16 via-transparent to-rose-500/10" },
+  { name: "Velmora Travel", category: "Voyage", sector: "Luxury Travel", style: "Voyage prestige", description: "Concept identitaire fictif imaginé pour une maison de voyage premium orientée expériences rares et destinations signature.", imageUrl: velmoraTravel.url, accent: "from-amber-400/18 via-transparent to-red-500/10" },
+  { name: "Orbyn Studio", category: "Mode", sector: "Fashion & Streetwear", style: "Streetwear premium", description: "Direction de marque fictive pensée pour un label mode à l'esthétique urbaine, structurée et haut de gamme.", imageUrl: orbynStudio.url, accent: "from-zinc-100/10 via-transparent to-red-500/14" },
+  { name: "Solenne", category: "Luxe", sector: "Jewelry & Luxury Accessories", style: "Bijou signature", description: "Identité fictive conçue pour une maison d'accessoires précieux mêlant élégance intemporelle et détail couture.", imageUrl: solenne.url, accent: "from-amber-300/18 via-transparent to-stone-200/10" },
+  { name: "Kintaro Fit", category: "Sport", sector: "Fitness Performance", style: "Performance athlétique", description: "Concept identitaire fictif développé pour une marque sport orientée discipline, puissance et performance premium.", imageUrl: kintaroFit.url, accent: "from-red-500/20 via-transparent to-zinc-100/10" },
+  { name: "Cima Coffee", category: "Food", sector: "Coffee House", style: "Coffee alpine", description: "Direction visuelle fictive pensée pour une enseigne café premium à l'univers chaleureux, minéral et sensoriel.", imageUrl: cimaCoffee.url, accent: "from-orange-400/16 via-transparent to-stone-300/12" },
+  { name: "Riveo", category: "Food", sector: "Restaurant & Lounge", style: "Table élégante", description: "Concept fictif imaginé pour un restaurant lounge raffiné, entre gastronomie, soirée et art de recevoir.", imageUrl: riveo.url, accent: "from-rose-500/16 via-transparent to-zinc-100/10" },
+  { name: "Drivion", category: "Automobile", sector: "Mobility Brand", style: "Vitesse premium", description: "Identité fictive conçue pour une marque mobilité à la narration rapide, technologique et impactante.", imageUrl: drivion.url, accent: "from-red-500/20 via-transparent to-zinc-100/10" },
+  { name: "Noxora", category: "Tech", sector: "AI Automation", style: "Tech futuriste", description: "Direction de marque fictive conçue pour une structure IA premium mêlant automatisation, précision et ambition futuriste.", imageUrl: noxora.url, accent: "from-red-500/18 via-transparent to-slate-200/10" },
+  { name: "Atelier Véra", category: "Beauté", sector: "Beauty & Skincare", style: "Beauté éditoriale", description: "Univers fictif imaginé pour une maison skincare élégante, sensible et hautement premium.", imageUrl: atelierVera.url, accent: "from-amber-200/18 via-transparent to-rose-300/10" },
+  { name: "Altis Realty", category: "Immobilier", sector: "Luxury Realty", style: "Immobilier signature", description: "Concept identitaire fictif pensé pour une structure immobilière premium, architecturée et rassurante.", imageUrl: altisRealty.url, accent: "from-zinc-100/10 via-transparent to-red-500/14" },
 ] as const;
 
-const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure"] as const;
+const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile"] as const;
 
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
