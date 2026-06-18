@@ -102,6 +102,53 @@
 }
 
 @layer components {
+  .identity-portfolio-shell {
+    background-image:
+      linear-gradient(180deg, hsl(0 0% 100% / 0.035), transparent 22%),
+      linear-gradient(135deg, hsl(0 0% 4% / 0.96), hsl(0 0% 8% / 0.96));
+    box-shadow:
+      0 32px 120px hsl(0 0% 0% / 0.56),
+      inset 0 1px 0 hsl(0 0% 100% / 0.05),
+      0 0 0 1px hsl(0 85% 50% / 0.08);
+  }
+
+  .identity-portfolio-header::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(0 85% 50% / 0.32), transparent);
+    pointer-events: none;
+  }
+
+  .identity-portfolio-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(0 85% 50% / 0.38) hsl(0 0% 100% / 0.04);
+  }
+
+  .identity-portfolio-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .identity-portfolio-scroll::-webkit-scrollbar-track {
+    background: hsl(0 0% 100% / 0.04);
+    border-radius: 999px;
+  }
+
+  .identity-portfolio-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(0 85% 50% / 0.55), hsl(0 85% 50% / 0.2));
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .identity-logo-card,
+  .identity-preview-panel {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
   .section-dark {
     @apply bg-surface-dark text-surface-dark-foreground;
   }
@@ -239,6 +286,12 @@
     .logo-3d-inner {
       animation: none;
       transform: rotateY(0deg);
+    }
+
+    .identity-logo-card,
+    .identity-preview-panel,
+    .identity-portfolio-shell {
+      scroll-behavior: auto;
     }
   }
 }
