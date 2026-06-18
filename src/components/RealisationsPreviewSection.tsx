@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import { FrulCarsLogo3D } from "@/components/FrulCarsLogo3D";
+import { LandingPageLabModal } from "@/components/LandingPageLabModal";
 import logoFrulImmo from "@/assets/logo-frulimmo.png.asset.json";
 import casaNuvea from "@/assets/logo-gallery/casa-nuvea.png.asset.json";
 import vertikLabs from "@/assets/logo-gallery/vertik-labs.png.asset.json";
@@ -84,7 +85,7 @@ const projects = [
   { name: "FRULUX", type: "Blog Connecté", benefit: "Plateforme éditoriale premium mêlant culture, lifestyle et tech.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulux.fr", logo3d: true as const, logoUrl: fruluxLogo.url, domain: "frulux.fr" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
-  { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20" },
+  { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20", landingLab: true as const },
 ];
 
 export const RealisationsPreviewSection = () => (
