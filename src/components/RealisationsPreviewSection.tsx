@@ -248,7 +248,7 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
 
 const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => {
   const [activeFilter, setActiveFilter] = useState<(typeof identityFilters)[number]>("Tous");
-  const [selectedLogo, setSelectedLogo] = useState<(typeof identityLogos)[number]>(identityLogos[0]);
+  const [lightboxLogo, setLightboxLogo] = useState<(typeof identityLogos)[number] | null>(null);
 
   const visibleLogos = useMemo(() => {
     if (activeFilter === "Tous") return identityLogos;
@@ -259,18 +259,15 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
     if (!open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onOpenChange(false);
+      if (event.key === "Escape") {
+        if (lightboxLogo) setLightboxLogo(null);
+        else onOpenChange(false);
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open, onOpenChange]);
-
-  useEffect(() => {
-    if (!visibleLogos.some((logo) => logo.name === selectedLogo.name)) {
-      setSelectedLogo(visibleLogos[0]);
-    }
-  }, [visibleLogos, selectedLogo.name]);
+  }, [open, onOpenChange, lightboxLogo]);
 
   return (
     <AnimatePresence>
@@ -327,72 +324,100 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
               </div>
             </div>
 
-            <div className="identity-portfolio-scroll grid min-h-0 flex-1 gap-5 overflow-y-auto px-5 pb-5 pt-5 md:grid-cols-[minmax(0,1.25fr)_320px] md:px-8 md:pb-8 md:pt-6 xl:grid-cols-[minmax(0,1.4fr)_360px]">
-              <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {visibleLogos.map((logo, index) => {
-                  const isActive = selectedLogo.name === logo.name;
-
-                  return (
-                    <motion.button
-                      key={logo.name}
-                      type="button"
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.28, delay: index * 0.03 }}
-                      onClick={() => setSelectedLogo(logo)}
-                      className={`identity-logo-card group relative overflow-hidden rounded-[22px] border text-left transition-all duration-300 ${isActive ? "border-primary/35 bg-white/[0.045] shadow-[0_18px_60px_rgba(239,68,68,0.12)]" : "border-white/10 bg-white/[0.03] hover:-translate-y-1.5 hover:border-white/20 hover:bg-white/[0.045]"}`}
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${logo.accent} opacity-70`} />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_30%,rgba(0,0,0,0.34))]" />
-                      <div className="relative flex h-full flex-col p-3.5">
-                        <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black/30">
-                          <img src={logo.imageUrl} alt={`${logo.name} — ${logo.sector}`} className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
+            <div className="identity-portfolio-scroll min-h-0 flex-1 overflow-y-auto px-5 pb-5 pt-5 md:px-8 md:pb-8 md:pt-6">
+              <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {visibleLogos.map((logo, index) => (
+                  <motion.button
+                    key={logo.name}
+                    type="button"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.28, delay: index * 0.03 }}
+                    onClick={() => setLightboxLogo(logo)}
+                    className="identity-logo-card group relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:bg-white/[0.045]"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${logo.accent} opacity-70`} />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_30%,rgba(0,0,0,0.34))]" />
+                    <div className="relative flex h-full flex-col p-3.5">
+                      <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black/30">
+                        <img src={logo.imageUrl} alt={`${logo.name} — ${logo.sector}`} className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
+                      </div>
+                      <div className="mt-4 space-y-2.5">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-primary/80">{logo.category}</span>
+                          <span className="text-[10px] uppercase tracking-[0.22em] text-surface-dark-foreground/42">{logo.style}</span>
                         </div>
-                        <div className="mt-4 space-y-2.5">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-primary/80">{logo.category}</span>
-                            <span className="text-[10px] uppercase tracking-[0.22em] text-surface-dark-foreground/42">{logo.style}</span>
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-heading font-semibold text-surface-dark-foreground">{logo.name}</h4>
-                            <p className="mt-1 text-sm text-surface-dark-foreground/58">{logo.sector}</p>
-                          </div>
+                        <div>
+                          <h4 className="text-lg font-heading font-semibold text-surface-dark-foreground">{logo.name}</h4>
+                          <p className="mt-1 text-sm text-surface-dark-foreground/58">{logo.sector}</p>
                         </div>
                       </div>
-                    </motion.button>
-                  );
-                })}
+                    </div>
+                  </motion.button>
+                ))}
               </div>
-
-              <motion.aside
-                key={selectedLogo.name}
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.24 }}
-                className="identity-preview-panel sticky top-0 h-fit overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04]"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${selectedLogo.accent} opacity-75`} />
-                <div className="relative p-4 md:p-5">
-                  <div className="overflow-hidden rounded-[20px] border border-white/10 bg-black/30">
-                    <img src={selectedLogo.imageUrl} alt={selectedLogo.name} className="aspect-square w-full object-cover" loading="lazy" />
-                  </div>
-                  <div className="mt-5 space-y-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-primary/85">{selectedLogo.category}</span>
-                      <span className="rounded-full border border-white/10 bg-black/15 px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-surface-dark-foreground/52">{selectedLogo.style}</span>
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-heading font-semibold text-surface-dark-foreground">{selectedLogo.name}</h4>
-                      <p className="mt-1 text-sm uppercase tracking-[0.24em] text-surface-dark-foreground/46">{selectedLogo.sector}</p>
-                    </div>
-                    <p className="text-sm leading-relaxed text-surface-dark-foreground/62">{selectedLogo.description}</p>
-                  </div>
-                </div>
-              </motion.aside>
             </div>
           </motion.div>
         </motion.div>
       )}
+
+      {/* Lightbox overlay */}
+      <AnimatePresence>
+        {lightboxLogo && (
+          <motion.div
+            key="lightbox"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 px-4 py-4 backdrop-blur-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxLogo(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-[28px] border border-white/10 bg-surface-darker shadow-[0_40px_140px_rgba(0,0,0,0.7)]"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${lightboxLogo.accent} opacity-60`} />
+
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={() => setLightboxLogo(null)}
+                className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-surface-dark-foreground/80 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:bg-primary/15 hover:text-primary"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="relative flex flex-col items-center gap-6 p-6 md:flex-row md:gap-8 md:p-8">
+                {/* Large logo image */}
+                <div className="w-full flex-shrink-0 overflow-hidden rounded-[24px] border border-white/10 bg-black/30 md:w-[55%]">
+                  <img
+                    src={lightboxLogo.imageUrl}
+                    alt={lightboxLogo.name}
+                    className="aspect-square w-full object-cover"
+                  />
+                </div>
+
+                {/* Logo info */}
+                <div className="flex flex-1 flex-col items-start gap-4 text-left">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-primary/85">{lightboxLogo.category}</span>
+                    <span className="rounded-full border border-white/10 bg-black/15 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-surface-dark-foreground/52">{lightboxLogo.style}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-3xl font-heading font-bold text-surface-dark-foreground md:text-4xl">{lightboxLogo.name}</h4>
+                    <p className="mt-1 text-sm uppercase tracking-[0.24em] text-surface-dark-foreground/46">{lightboxLogo.sector}</p>
+                  </div>
+                  <p className="text-base leading-relaxed text-surface-dark-foreground/65">{lightboxLogo.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AnimatePresence>
   );
 };
