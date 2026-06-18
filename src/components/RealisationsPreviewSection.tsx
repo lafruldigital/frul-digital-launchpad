@@ -28,7 +28,7 @@ import atelierVera from "@/assets/logo-gallery/atelier-vera.png.asset.json";
 import altisRealty from "@/assets/logo-gallery/altis-realty.png.asset.json";
 import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
 import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
-import rmaDistributionLogo from "@/assets/logo-gallery/rma-distribution.jpeg.asset.json";
+import fruluxLogo from "@/assets/logo-gallery/frulux.jpg.asset.json";
 import nomadPeakExpeditions from "@/assets/logo-gallery/nomad-peak-expeditions.png.asset.json";
 import haloDistrict from "@/assets/logo-gallery/halo-district.png.asset.json";
 import velvetEmber from "@/assets/logo-gallery/velvet-ember.png.asset.json";
@@ -63,7 +63,7 @@ const identityLogos = [
   { name: "Altis Realty", category: "Immobilier", sector: "Luxury Realty", style: "Immobilier signature", description: "Concept identitaire fictif pensé pour une structure immobilière premium, architecturée et rassurante.", imageUrl: altisRealty.url, accent: "from-zinc-100/10 via-transparent to-red-500/14" },
   { name: "FRUL'IMMO", category: "Immobilier", sector: "Agence Immobilière Premium", style: "Immobilier signature", description: "Identité de marque conçue pour FRUL'IMMO, agence immobilière haut de gamme à la signature rouge sculpturale.", imageUrl: frulImmoLogo.url, accent: "from-red-600/20 via-transparent to-zinc-200/10" },
   { name: "FRUL'CARS", category: "Automobile", sector: "Concessionnaire Premium", style: "Automobile cinétique", description: "Identité visuelle imaginée pour FRUL'CARS, concessionnaire premium au territoire racing et rouge signature.", imageUrl: frulCarsLogo.url, accent: "from-red-600/22 via-transparent to-zinc-900/10" },
-  { name: "RMA Distribution", category: "Luxe", sector: "Grossiste Premium", style: "Or éditorial", description: "Direction de marque pensée pour RMA Distribution, grossiste nouvelle génération à l'image or et noire haut de gamme.", imageUrl: rmaDistributionLogo.url, accent: "from-amber-400/20 via-transparent to-zinc-900/10" },
+  { name: "FRUL'UX", category: "Média", sector: "Blog Connecté", style: "Éditorial rouge premium", description: "Direction de marque conçue pour FRUL'UX, blog connecté premium mêlant culture, lifestyle et tech avec une signature rouge cinématique.", imageUrl: fruluxLogo.url, accent: "from-red-500/25 via-transparent to-zinc-900/20" },
   { name: "Nomad Peak Expeditions", category: "Aventure", sector: "Outdoor Expeditions", style: "Exploration emblématique", description: "Concept identitaire fictif pensé pour une marque d'expédition premium, entre esprit outdoor, robustesse et aspiration haut de gamme.", imageUrl: nomadPeakExpeditions.url, accent: "from-emerald-700/18 via-transparent to-amber-500/12" },
   { name: "Halo District", category: "Créatif", sector: "Coworking & Creative Hub", style: "Signal urbain", description: "Direction visuelle fictive conçue pour un hub créatif premium, avec une énergie graphique forte, collaborative et métropolitaine.", imageUrl: haloDistrict.url, accent: "from-blue-500/20 via-transparent to-orange-500/14" },
   { name: "Velvet Ember", category: "Luxe", sector: "Parfum Maison", style: "Velours couture", description: "Univers de marque fictif développé pour une maison de parfum au langage visuel sensuel, profond et résolument premium.", imageUrl: velvetEmber.url, accent: "from-rose-900/30 via-transparent to-amber-300/12" },
@@ -76,12 +76,12 @@ const identityLogos = [
   { name: "Sora Pet Care", category: "Santé", sector: "Veterinary & Wellness", style: "Soin rassurant", description: "Identité fictive développée pour une structure vétérinaire premium, douce, accessible et immédiatement rassurante.", imageUrl: soraPetCare.url, accent: "from-emerald-300/18 via-transparent to-rose-300/12" },
 ] as const;
 
-const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile", "Bien-être", "Finance", "Santé"] as const;
+const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile", "Bien-être", "Finance", "Santé", "Média"] as const;
 
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
   { name: "FRUL'IMMO", type: "Immobilier", benefit: "Site vitrine premium pour agence immobilière haut de gamme.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulimmo.fr", logo3d: true as const, logoUrl: logoFrulImmo.url, domain: "frulimmo.fr" },
-  { name: "RMA DISTRIBUTION", type: "Site B2B & identité", benefit: "Image structurée pour scaler la distribution.", tone: "from-zinc-700/30 to-red-900/20" },
+  { name: "FRUL'UX", type: "Blog Connecté", benefit: "Plateforme éditoriale premium mêlant culture, lifestyle et tech.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulux.fr", logo3d: true as const, logoUrl: fruluxLogo.url, domain: "frulux.fr" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
   { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20" },
