@@ -26,6 +26,9 @@ import drivion from "@/assets/logo-gallery/drivion.png.asset.json";
 import noxora from "@/assets/logo-gallery/noxora.png.asset.json";
 import atelierVera from "@/assets/logo-gallery/atelier-vera.png.asset.json";
 import altisRealty from "@/assets/logo-gallery/altis-realty.png.asset.json";
+import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
+import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
+import rmaDistributionLogo from "@/assets/logo-gallery/rma-distribution.jpeg.asset.json";
 
 const identityLogos = [
   { name: "Bloomora", category: "Lifestyle", sector: "Floral Atelier", style: "Éditorial floral", description: "Concept identitaire fictif imaginé pour une maison florale premium à l'élégance sensible.", imageUrl: bloomora.url, accent: "from-rose-500/18 via-transparent to-amber-500/12" },
@@ -48,6 +51,9 @@ const identityLogos = [
   { name: "Noxora", category: "Tech", sector: "AI Automation", style: "Tech futuriste", description: "Direction de marque fictive conçue pour une structure IA premium mêlant automatisation, précision et ambition futuriste.", imageUrl: noxora.url, accent: "from-red-500/18 via-transparent to-slate-200/10" },
   { name: "Atelier Véra", category: "Beauté", sector: "Beauty & Skincare", style: "Beauté éditoriale", description: "Univers fictif imaginé pour une maison skincare élégante, sensible et hautement premium.", imageUrl: atelierVera.url, accent: "from-amber-200/18 via-transparent to-rose-300/10" },
   { name: "Altis Realty", category: "Immobilier", sector: "Luxury Realty", style: "Immobilier signature", description: "Concept identitaire fictif pensé pour une structure immobilière premium, architecturée et rassurante.", imageUrl: altisRealty.url, accent: "from-zinc-100/10 via-transparent to-red-500/14" },
+  { name: "FRUL'IMMO", category: "Immobilier", sector: "Agence Immobilière Premium", style: "Immobilier signature", description: "Identité de marque conçue pour FRUL'IMMO, agence immobilière haut de gamme à la signature rouge sculpturale.", imageUrl: frulImmoLogo.url, accent: "from-red-600/20 via-transparent to-zinc-200/10" },
+  { name: "FRUL'CARS", category: "Automobile", sector: "Concessionnaire Premium", style: "Automobile cinétique", description: "Identité visuelle imaginée pour FRUL'CARS, concessionnaire premium au territoire racing et rouge signature.", imageUrl: frulCarsLogo.url, accent: "from-red-600/22 via-transparent to-zinc-900/10" },
+  { name: "RMA Distribution", category: "Luxe", sector: "Grossiste Premium", style: "Or éditorial", description: "Direction de marque pensée pour RMA Distribution, grossiste nouvelle génération à l'image or et noire haut de gamme.", imageUrl: rmaDistributionLogo.url, accent: "from-amber-400/20 via-transparent to-zinc-900/10" },
 ] as const;
 
 const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile"] as const;
