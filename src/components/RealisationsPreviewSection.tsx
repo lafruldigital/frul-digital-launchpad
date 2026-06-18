@@ -1,6 +1,6 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Search, Sparkles, X } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Search, Sparkles, X, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
