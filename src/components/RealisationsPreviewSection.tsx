@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { FrulCarsLogo3D } from "@/components/FrulCarsLogo3D";
+import logoFrulImmo from "@/assets/logo-frulimmo.png.asset.json";
 
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
-  { name: "FRUL'SCHOOL", type: "Plateforme éducation", benefit: "Écosystème digital pour la formation.", tone: "from-orange-500/25 to-red-900/20" },
+  { name: "FRUL'IMMO", type: "Immobilier", benefit: "Site vitrine premium pour agence immobilière haut de gamme.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulimmo.fr", logo3d: true as const, logoUrl: logoFrulImmo.url, domain: "frulimmo.fr" },
   { name: "RMA DISTRIBUTION", type: "Site B2B & identité", benefit: "Image structurée pour scaler la distribution.", tone: "from-zinc-700/30 to-red-900/20" },
   { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30" },
@@ -84,11 +85,11 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
               <span className="w-2 h-2 rounded-full bg-red-500/80" />
               <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
               <span className="w-2 h-2 rounded-full bg-green-500/80" />
-              <span className="ml-3 text-[10px] text-white/50 font-mono tracking-wide truncate">frulcars.fr</span>
+              <span className="ml-3 text-[10px] text-white/50 font-mono tracking-wide truncate">{"domain" in p && p.domain ? p.domain : "frulcars.fr"}</span>
             </div>
             {/* 3D logo */}
             <div className="absolute inset-0 pt-7">
-              <FrulCarsLogo3D hovered={hovered} />
+              <FrulCarsLogo3D hovered={hovered} logoUrl={"logoUrl" in p ? p.logoUrl : undefined} alt={p.name} />
             </div>
           </>
         ) : (
