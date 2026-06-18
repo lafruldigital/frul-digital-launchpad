@@ -167,7 +167,9 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
         ) : (
           <>
             <div className="absolute inset-0 opacity-30" style={{
-              backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+              backgroundImage: "portfolioModal" in p && p.portfolioModal
+                ? "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
+                : "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }} />
             {"portfolioModal" in p && p.portfolioModal ? (
