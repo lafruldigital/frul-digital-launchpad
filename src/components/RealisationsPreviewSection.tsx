@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, Search, Sparkles, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FrulCarsLogo3D } from "@/components/FrulCarsLogo3D";
 import logoFrulImmo from "@/assets/logo-frulimmo.png.asset.json";
 import casaNuvea from "@/assets/logo-gallery/casa-nuvea.png.asset.json";
@@ -208,6 +208,23 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
     if (activeFilter === "Tous") return identityLogos;
     return identityLogos.filter((logo) => logo.category === activeFilter);
   }, [activeFilter]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onOpenChange(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open, onOpenChange]);
+
+  useEffect(() => {
+    if (!visibleLogos.some((logo) => logo.name === selectedLogo.name)) {
+      setSelectedLogo(visibleLogos[0]);
+    }
+  }, [visibleLogos, selectedLogo.name]);
 
   return (
     <AnimatePresence>
