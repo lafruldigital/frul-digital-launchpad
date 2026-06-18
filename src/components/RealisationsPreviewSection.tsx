@@ -29,6 +29,16 @@ import altisRealty from "@/assets/logo-gallery/altis-realty.png.asset.json";
 import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
 import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
 import rmaDistributionLogo from "@/assets/logo-gallery/rma-distribution.jpeg.asset.json";
+import nomadPeakExpeditions from "@/assets/logo-gallery/nomad-peak-expeditions.png.asset.json";
+import haloDistrict from "@/assets/logo-gallery/halo-district.png.asset.json";
+import velvetEmber from "@/assets/logo-gallery/velvet-ember.png.asset.json";
+import circuitBloom from "@/assets/logo-gallery/circuit-bloom.png.asset.json";
+import ironValeSecurity from "@/assets/logo-gallery/iron-vale-security.png.asset.json";
+import nomaTerraSpa from "@/assets/logo-gallery/noma-terra-spa.png.asset.json";
+import lyseaJoaillerie from "@/assets/logo-gallery/lysea-joaillerie.png.asset.json";
+import atelierBrasa from "@/assets/logo-gallery/atelier-brasa.png.asset.json";
+import virelioCapital from "@/assets/logo-gallery/virelio-capital.png.asset.json";
+import soraPetCare from "@/assets/logo-gallery/sora-pet-care.png.asset.json";
 
 const identityLogos = [
   { name: "Bloomora", category: "Lifestyle", sector: "Floral Atelier", style: "Éditorial floral", description: "Concept identitaire fictif imaginé pour une maison florale premium à l'élégance sensible.", imageUrl: bloomora.url, accent: "from-rose-500/18 via-transparent to-amber-500/12" },
@@ -54,9 +64,19 @@ const identityLogos = [
   { name: "FRUL'IMMO", category: "Immobilier", sector: "Agence Immobilière Premium", style: "Immobilier signature", description: "Identité de marque conçue pour FRUL'IMMO, agence immobilière haut de gamme à la signature rouge sculpturale.", imageUrl: frulImmoLogo.url, accent: "from-red-600/20 via-transparent to-zinc-200/10" },
   { name: "FRUL'CARS", category: "Automobile", sector: "Concessionnaire Premium", style: "Automobile cinétique", description: "Identité visuelle imaginée pour FRUL'CARS, concessionnaire premium au territoire racing et rouge signature.", imageUrl: frulCarsLogo.url, accent: "from-red-600/22 via-transparent to-zinc-900/10" },
   { name: "RMA Distribution", category: "Luxe", sector: "Grossiste Premium", style: "Or éditorial", description: "Direction de marque pensée pour RMA Distribution, grossiste nouvelle génération à l'image or et noire haut de gamme.", imageUrl: rmaDistributionLogo.url, accent: "from-amber-400/20 via-transparent to-zinc-900/10" },
+  { name: "Nomad Peak Expeditions", category: "Aventure", sector: "Outdoor Expeditions", style: "Exploration emblématique", description: "Concept identitaire fictif pensé pour une marque d'expédition premium, entre esprit outdoor, robustesse et aspiration haut de gamme.", imageUrl: nomadPeakExpeditions.url, accent: "from-emerald-700/18 via-transparent to-amber-500/12" },
+  { name: "Halo District", category: "Créatif", sector: "Coworking & Creative Hub", style: "Signal urbain", description: "Direction visuelle fictive conçue pour un hub créatif premium, avec une énergie graphique forte, collaborative et métropolitaine.", imageUrl: haloDistrict.url, accent: "from-blue-500/20 via-transparent to-orange-500/14" },
+  { name: "Velvet Ember", category: "Luxe", sector: "Parfum Maison", style: "Velours couture", description: "Univers de marque fictif développé pour une maison de parfum au langage visuel sensuel, profond et résolument premium.", imageUrl: velvetEmber.url, accent: "from-rose-900/30 via-transparent to-amber-300/12" },
+  { name: "Circuit Bloom", category: "Tech", sector: "Green Robotics", style: "Nature augmentée", description: "Concept identitaire fictif imaginé pour une marque tech orientée robotique, innovation durable et esthétique néon organique.", imageUrl: circuitBloom.url, accent: "from-cyan-500/20 via-transparent to-lime-400/14" },
+  { name: "Iron Vale Security", category: "Tech", sector: "Cybersecurity", style: "Défense digitale", description: "Identité fictive conçue pour une marque cybersécurité premium, à la présence métallique, défensive et technologique.", imageUrl: ironValeSecurity.url, accent: "from-cyan-500/18 via-transparent to-slate-200/12" },
+  { name: "Noma Terra Spa", category: "Bien-être", sector: "Spa & Wellbeing", style: "Rituel minéral", description: "Concept visuel fictif imaginé pour une maison bien-être premium, portée par une esthétique apaisée, naturelle et sensorielle.", imageUrl: nomaTerraSpa.url, accent: "from-stone-300/20 via-transparent to-amber-300/10" },
+  { name: "Lyséa Joaillerie", category: "Luxe", sector: "Fine Jewelry", style: "Joaillerie noire", description: "Direction identitaire fictive pensée pour une maison joaillière haut de gamme mêlant minimalisme noir et finitions dorées précieuses.", imageUrl: lyseaJoaillerie.url, accent: "from-amber-300/16 via-transparent to-zinc-900/20" },
+  { name: "Atelier Brasa", category: "Food", sector: "Bakery & Bistro", style: "Artisan chic", description: "Univers fictif conçu pour une boulangerie-bistrot premium, chaleureuse, artisanale et finement éditorialisée.", imageUrl: atelierBrasa.url, accent: "from-orange-400/18 via-transparent to-stone-200/12" },
+  { name: "Virelio Capital", category: "Finance", sector: "Wealth & Strategy", style: "Finance statutaire", description: "Concept de marque fictif pensé pour un cabinet de gestion de patrimoine premium, avec codes institutionnels, précision et autorité.", imageUrl: virelioCapital.url, accent: "from-blue-500/18 via-transparent to-slate-200/12" },
+  { name: "Sora Pet Care", category: "Santé", sector: "Veterinary & Wellness", style: "Soin rassurant", description: "Identité fictive développée pour une structure vétérinaire premium, douce, accessible et immédiatement rassurante.", imageUrl: soraPetCare.url, accent: "from-emerald-300/18 via-transparent to-rose-300/12" },
 ] as const;
 
-const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile"] as const;
+const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobilier", "Beauté", "Mode", "Sport", "Voyage", "Kids", "Créatif", "Lifestyle", "Gaming", "Aventure", "Automobile", "Bien-être", "Finance", "Santé"] as const;
 
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
