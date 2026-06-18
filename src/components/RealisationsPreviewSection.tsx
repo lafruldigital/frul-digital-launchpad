@@ -167,13 +167,14 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
         ) : (
           <>
             <div className="absolute inset-0 opacity-30" style={{
-              backgroundImage: "linear-gradient(hsl(0 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 85% 50% / 0.4) 1px, transparent 1px)",
+              backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }} />
             {"portfolioModal" in p && p.portfolioModal ? (
               <>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(239,68,68,0.18),transparent_56%)]" />
-                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/6 to-transparent" />
+                <div className="absolute inset-0 bg-black" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.06),transparent_60%)]" />
+                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/5 to-transparent" />
                 <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
                   <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/55">
                     <span>Logo Gallery</span>
