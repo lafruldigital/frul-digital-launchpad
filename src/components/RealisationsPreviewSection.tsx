@@ -209,48 +209,27 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
               </>
             ) : "landingLab" in p && p.landingLab ? (
               <>
-                <div className="absolute inset-0 bg-[#0a0a0d]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(239,68,68,0.22),transparent_55%)]" />
+                <img
+                  src={landingPagesPreview.url}
+                  alt="Landing Page Lab — prévisualisations de pages de conversion"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30" />
                 <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/55">
-                    <span>Landing Page Lab</span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/25 bg-primary/8 px-2.5 py-1 text-primary/80">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/80">
+                    <span className="drop-shadow-md">Landing Page Lab</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary/90 backdrop-blur-md">
                       <Zap className="h-3 w-3" /> Voir les démos
                     </span>
                   </div>
-                  {/* Stacked mini browser windows */}
-                  <div className="relative mx-auto h-32 w-full max-w-[280px]">
-                    <div className="absolute left-0 top-3 h-28 w-44 rotate-[-6deg] overflow-hidden rounded-lg border border-white/10 bg-[#15151b] shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
-                      <div className="flex h-3 items-center gap-0.5 border-b border-white/10 bg-black/40 px-1.5"><span className="h-1 w-1 rounded-full bg-red-500/70" /><span className="h-1 w-1 rounded-full bg-yellow-500/70" /><span className="h-1 w-1 rounded-full bg-green-500/70" /></div>
-                      <div className="space-y-1 p-2">
-                        <div className="h-1 w-3/5 rounded bg-white/30" />
-                        <div className="h-1 w-4/5 rounded bg-white/15" />
-                        <div className="mt-2 h-6 w-full rounded bg-gradient-to-br from-primary/40 to-white/5" />
-                        <div className="mt-1 h-1.5 w-12 rounded bg-primary/70" />
-                      </div>
-                    </div>
-                    <div className="absolute right-0 top-0 h-32 w-48 rotate-[5deg] overflow-hidden rounded-lg border border-primary/30 bg-[#0e1320] shadow-[0_18px_44px_rgba(239,68,68,0.22)]">
-                      <div className="flex h-3 items-center gap-0.5 border-b border-white/10 bg-black/50 px-1.5"><span className="h-1 w-1 rounded-full bg-red-500/70" /><span className="h-1 w-1 rounded-full bg-yellow-500/70" /><span className="h-1 w-1 rounded-full bg-green-500/70" /></div>
-                      <div className="space-y-1 p-2">
-                        <div className="h-1 w-1/2 rounded bg-white/30" />
-                        <div className="h-1.5 w-4/5 rounded bg-white/70" />
-                        <div className="h-1 w-3/4 rounded bg-white/15" />
-                        <div className="mt-1 grid grid-cols-3 gap-0.5">
-                          <div className="h-5 rounded bg-cyan-400/30" />
-                          <div className="h-5 rounded bg-cyan-400/45" />
-                          <div className="h-5 rounded bg-cyan-400/25" />
-                        </div>
-                        <div className="mt-1 h-1.5 w-14 rounded bg-primary/80" />
-                      </div>
-                    </div>
-                  </div>
                   <div className="space-y-2">
-                    <div className="flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/45">
-                      <span className="rounded-full border border-white/10 px-2 py-0.5">Auto</span>
-                      <span className="rounded-full border border-white/10 px-2 py-0.5">SaaS</span>
-                      <span className="rounded-full border border-white/10 px-2 py-0.5">Food</span>
-                      <span className="rounded-full border border-white/10 px-2 py-0.5">Immo</span>
-                      <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-primary/80">+6</span>
+                    <div className="flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/80">
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Auto</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">SaaS</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Food</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Immo</span>
+                      <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-primary/90">+6</span>
                     </div>
                   </div>
                 </div>
