@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Target, X, Zap } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, Star, Target, X, Zap } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type LandingDemo = {
   name: string;
@@ -185,54 +185,252 @@ const landings: LandingDemo[] = [
 
 const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; large?: boolean }) => {
   const { palette: c, variant } = landing;
-  const fontTitle = large ? "text-[15px] md:text-[17px]" : "text-[9px]";
-  const fontSub = large ? "text-[11px] md:text-[12px]" : "text-[7px]";
-  const fontMicro = large ? "text-[10px]" : "text-[6px]";
-  const pad = large ? "p-6 md:p-8" : "p-2.5";
-  const gap = large ? "gap-4 md:gap-5" : "gap-2";
+  // Scaling presets
+  const s = large
+    ? {
+        title: "text-[22px] md:text-[28px]",
+        sub: "text-[13px]",
+        micro: "text-[11px]",
+        nano: "text-[10px]",
+        pad: "p-6 md:p-8",
+        gap: "gap-5",
+        cta: "px-4 py-2 text-[12px]",
+        chip: "px-2.5 py-1 text-[10px]",
+        heroH: "h-44 md:h-52",
+        cardH: "h-16",
+      }
+    : {
+        title: "text-[10px]",
+        sub: "text-[7px]",
+        micro: "text-[6.5px]",
+        nano: "text-[5.5px]",
+        pad: "p-2.5",
+        gap: "gap-2",
+        cta: "px-2 py-1 text-[6.5px]",
+        chip: "px-1.5 py-0.5 text-[5.5px]",
+        heroH: "h-14",
+        cardH: "h-6",
+      };
+
+  const benefits = ["Hero impactant", "CTA clair", "Preuve sociale"];
+  const rating = landing.proof.match(/[\d.,]+/)?.[0] ?? "4.9";
 
   return (
     <div className="relative h-full w-full overflow-hidden" style={{ background: c.bg, color: c.text }}>
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute -top-1/3 left-1/2 h-2/3 w-2/3 -translate-x-1/2 rounded-full opacity-60 blur-3xl"
+        style={{ background: `radial-gradient(circle, ${c.accent}38, transparent 70%)` }}
+      />
       {/* Browser chrome */}
-      <div className="flex items-center gap-1 border-b px-2 py-1.5" style={{ borderColor: c.border, background: `${c.surface}cc` }}>
+      <div
+        className="relative flex items-center gap-1 border-b px-2 py-1.5"
+        style={{ borderColor: c.border, background: `${c.surface}cc` }}
+      >
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#ef4444" }} />
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#f59e0b" }} />
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#10b981" }} />
-        <span className={`ml-2 truncate ${fontMicro}`} style={{ color: c.sub }}>{landing.name.toLowerCase().replace(/\s+/g, "")}.fr</span>
+        <span className={`ml-2 truncate ${s.nano}`} style={{ color: c.sub }}>
+          {landing.name.toLowerCase().replace(/\s+/g, "")}.fr
+        </span>
       </div>
 
-      <div className={`flex flex-col ${pad} ${gap}`}>
-        {/* Nav */}
+      <div className={`relative flex flex-col ${s.pad} ${s.gap}`}>
+        {/* Navbar */}
         <div className="flex items-center justify-between">
-          <div className={`font-semibold tracking-tight ${fontSub}`} style={{ color: c.text }}>{landing.name}</div>
           <div className="flex items-center gap-1.5">
-            {[1, 2, 3].map((i) => (
-              <span key={i} className={`${fontMicro}`} style={{ color: c.sub }}>•</span>
+            <span
+              className={`flex items-center justify-center rounded ${large ? "h-5 w-5 text-[10px]" : "h-3 w-3 text-[5px]"} font-bold`}
+              style={{ background: c.accent, color: c.accentText }}
+            >
+              {landing.name[0]}
+            </span>
+            <div className={`font-semibold tracking-tight ${s.sub}`} style={{ color: c.text }}>
+              {landing.name}
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5">
+            {["Accueil", "Offre", "Contact"].map((m) => (
+              <span key={m} className={s.nano} style={{ color: c.sub }}>
+                {large ? m : "•"}
+              </span>
             ))}
-            <span className={`rounded ${fontMicro} px-1.5 py-0.5`} style={{ background: c.accent, color: c.accentText }}>{large ? "Réserver" : "→"}</span>
+            <span className={`rounded font-medium ${s.chip}`} style={{ background: c.accent, color: c.accentText }}>
+              {large ? landing.cta : "→"}
+            </span>
           </div>
         </div>
 
-        {/* Hero */}
-        <div className="flex flex-col gap-1.5">
-          <span className={`inline-flex w-fit items-center rounded-full border px-1.5 py-0.5 ${fontMicro}`} style={{ borderColor: c.border, color: c.sub }}>
-            {landing.tagline}
-          </span>
-          <div className={`font-bold leading-tight ${fontTitle}`}>{landing.headline}</div>
-          <div className={`${fontSub}`} style={{ color: c.sub }}>{landing.summary.split(".")[0]}.</div>
-          <div className="mt-1 flex items-center gap-1.5">
-            <span className={`rounded ${fontMicro} px-2 py-1 font-medium`} style={{ background: c.accent, color: c.accentText }}>{landing.cta}</span>
-            <span className={`rounded border ${fontMicro} px-2 py-1`} style={{ borderColor: c.border, color: c.sub }}>{large ? "En savoir plus" : "Voir"}</span>
+        {/* Hero block */}
+        <div
+          className={`relative ${s.heroH} overflow-hidden rounded-md border`}
+          style={{
+            borderColor: c.border,
+            background: `linear-gradient(135deg, ${c.accent}30, ${c.surface} 60%, ${c.bg})`,
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-25"
+            style={{
+              backgroundImage: `linear-gradient(${c.text}10 1px, transparent 1px), linear-gradient(90deg, ${c.text}10 1px, transparent 1px)`,
+              backgroundSize: large ? "24px 24px" : "8px 8px",
+            }}
+          />
+          <div
+            className="absolute -right-6 -top-6 h-24 w-24 rounded-full blur-2xl"
+            style={{ background: `${c.accent}55` }}
+          />
+          <div className={`relative flex h-full flex-col justify-between ${large ? "p-5" : "p-2"}`}>
+            <span
+              className={`inline-flex w-fit items-center rounded-full border ${s.chip}`}
+              style={{ borderColor: c.border, color: c.sub, background: `${c.bg}88` }}
+            >
+              {landing.tagline}
+            </span>
+            <div className="flex flex-col gap-1">
+              <div className={`font-bold leading-tight ${s.title}`} style={{ color: c.text }}>
+                {landing.headline}
+              </div>
+              {large && (
+                <div className={`${s.sub} max-w-md`} style={{ color: c.sub }}>
+                  {landing.summary}
+                </div>
+              )}
+              <div className="mt-1 flex items-center gap-1.5">
+                <span
+                  className={`rounded font-semibold shadow-lg ${s.cta}`}
+                  style={{
+                    background: c.accent,
+                    color: c.accentText,
+                    boxShadow: `0 6px 20px ${c.accent}55`,
+                  }}
+                >
+                  {landing.cta}
+                </span>
+                <span className={`rounded border ${s.cta}`} style={{ borderColor: c.border, color: c.text }}>
+                  {large ? "En savoir plus" : "Voir"}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Variant block */}
+        {/* Sector-specific block */}
         <VariantBlock variant={variant} c={c} large={large} />
 
-        {/* Trust strip */}
-        <div className="mt-1 flex items-center justify-between rounded-md border px-2 py-1.5" style={{ borderColor: c.border, background: `${c.surface}88` }}>
-          <span className={`${fontMicro}`} style={{ color: c.sub }}>★ {landing.proof}</span>
-          <span className={`${fontMicro}`} style={{ color: c.accent }}>{landing.objective.split(" / ")[0]}</span>
+        {/* Benefits row */}
+        <div className="grid grid-cols-3 gap-1.5">
+          {benefits.map((b, i) => (
+            <div
+              key={i}
+              className={`rounded border ${large ? "p-2.5" : "p-1.5"}`}
+              style={{ borderColor: c.border, background: `${c.surface}88` }}
+            >
+              <div
+                className={`mb-1 inline-flex items-center justify-center rounded ${large ? "h-5 w-5" : "h-2.5 w-2.5"}`}
+                style={{ background: `${c.accent}25`, color: c.accent }}
+              >
+                <Check className={large ? "h-3 w-3" : "h-1.5 w-1.5"} />
+              </div>
+              <div className={`font-medium leading-tight ${s.nano}`} style={{ color: c.text }}>
+                {large ? b : ""}
+              </div>
+              {large && (
+                <div className={`${s.micro}`} style={{ color: c.sub }}>
+                  Structure étudiée pour convertir.
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Social proof + testimonial */}
+        <div className="grid grid-cols-5 gap-1.5">
+          <div
+            className={`col-span-3 rounded border ${large ? "p-3" : "p-1.5"}`}
+            style={{ borderColor: c.border, background: `${c.surface}88` }}
+          >
+            <div className="flex items-center gap-0.5" style={{ color: c.accent }}>
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className={large ? "h-3 w-3 fill-current" : "h-1.5 w-1.5 fill-current"} />
+              ))}
+            </div>
+            <div className={`mt-1 italic leading-snug ${s.micro}`} style={{ color: c.text }}>
+              {large
+                ? `« Une expérience qui change tout. ${landing.name} a dépassé nos attentes. »`
+                : "« Excellence et résultat. »"}
+            </div>
+            <div className={`mt-1 ${s.nano}`} style={{ color: c.sub }}>
+              — Client vérifié
+            </div>
+          </div>
+          <div
+            className={`col-span-2 flex flex-col items-center justify-center rounded border ${large ? "p-3" : "p-1.5"}`}
+            style={{
+              borderColor: c.border,
+              background: `linear-gradient(135deg, ${c.accent}22, ${c.surface})`,
+            }}
+          >
+            <div className={`font-bold ${large ? "text-2xl" : "text-[10px]"}`} style={{ color: c.text }}>
+              {rating}/5
+            </div>
+            <div className={s.nano} style={{ color: c.sub }}>
+              {large ? "Note moyenne" : "Note"}
+            </div>
+          </div>
+        </div>
+
+        {/* Offer / form mini block */}
+        <div
+          className={`rounded-md border ${large ? "p-4" : "p-2"}`}
+          style={{
+            borderColor: c.border,
+            background: `linear-gradient(135deg, ${c.surface}, ${c.accent}10)`,
+          }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex-1">
+              <div className={`font-semibold ${s.sub}`} style={{ color: c.text }}>
+                {large ? landing.objective : "Offre"}
+              </div>
+              {large && (
+                <div className={`mt-0.5 ${s.micro}`} style={{ color: c.sub }}>
+                  Réservez votre créneau — réponse sous 24h.
+                </div>
+              )}
+            </div>
+            <span
+              className={`rounded font-semibold ${s.cta}`}
+              style={{ background: c.accent, color: c.accentText }}
+            >
+              {landing.cta}
+            </span>
+          </div>
+          {large && (
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <div
+                className={`rounded border ${s.micro}`}
+                style={{ borderColor: c.border, background: `${c.bg}88`, color: c.sub, padding: "8px 10px" }}
+              >
+                Votre nom
+              </div>
+              <div
+                className={`rounded border ${s.micro}`}
+                style={{ borderColor: c.border, background: `${c.bg}88`, color: c.sub, padding: "8px 10px" }}
+              >
+                Votre email
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div
+          className={`flex items-center justify-between border-t pt-1.5 ${s.nano}`}
+          style={{ borderColor: c.border, color: c.sub }}
+        >
+          <span>© {landing.name}</span>
+          <span>{large ? "Mentions · Contact · CGU" : "•••"}</span>
         </div>
       </div>
     </div>
@@ -240,7 +438,7 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
 };
 
 const VariantBlock = ({ variant, c, large }: { variant: LandingDemo["variant"]; c: LandingDemo["palette"]; large: boolean }) => {
-  const blockSize = large ? "h-20 md:h-24" : "h-10";
+  const blockSize = large ? "h-24 md:h-28" : "h-10";
   const microFont = large ? "text-[10px]" : "text-[6px]";
 
   if (variant === "auto" || variant === "fitness" || variant === "japan") {
