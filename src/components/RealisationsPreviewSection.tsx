@@ -334,11 +334,20 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onOpenChange, lightboxLogo]);
 
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-start justify-center bg-black/72 px-3 py-3 backdrop-blur-md md:px-6 md:py-6"
+          className="fixed inset-0 z-50 flex items-start justify-center bg-black/72 px-2 py-2 backdrop-blur-md md:px-6 md:py-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -350,19 +359,19 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
             exit={{ opacity: 0, y: 18, scale: 0.985 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="identity-portfolio-shell relative flex h-full max-h-[96vh] w-full max-w-7xl flex-col overflow-hidden rounded-[28px] border border-white/10 bg-surface-darker/92 shadow-[0_30px_120px_rgba(0,0,0,0.6)]"
+            className="identity-portfolio-shell relative flex max-h-[96vh] h-[96vh] w-full max-w-7xl flex-col overflow-hidden rounded-[20px] md:rounded-[28px] border border-white/10 bg-surface-darker/92 shadow-[0_30px_120px_rgba(0,0,0,0.6)]"
           >
-            <div className="identity-portfolio-header relative border-b border-white/8 px-5 pb-5 pt-5 md:px-8 md:pb-6 md:pt-7">
+            <div className="identity-portfolio-header relative shrink-0 border-b border-white/8 px-4 pb-3 pt-4 md:px-8 md:pb-6 md:pt-7">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(239,68,68,0.16),transparent_58%)]" />
               <div className="relative flex items-start justify-between gap-4">
                 <div className="max-w-3xl">
-                  <span className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.32em] text-primary/80">
+                  <span className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.28em] md:tracking-[0.32em] text-primary/80">
                     <Sparkles className="h-3.5 w-3.5" /> Sélection portfolio
                   </span>
-                  <h3 className="mt-4 text-3xl font-heading font-bold leading-tight text-surface-dark-foreground md:text-5xl">
+                  <h3 className="mt-2 md:mt-4 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight text-surface-dark-foreground">
                     Exploration créative — Logos & identités
                   </h3>
-                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-surface-dark-foreground/62 md:text-base">
+                  <p className="mt-2 md:mt-4 hidden sm:block max-w-2xl text-sm leading-relaxed text-surface-dark-foreground/62 md:text-base">
                     Une sélection de directions créatives fictives imaginées pour illustrer la polyvalence de FRUL’DIGITAL à travers différents univers de marque.
                   </p>
                 </div>
@@ -370,18 +379,18 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
                   type="button"
                   aria-label="Fermer la galerie"
                   onClick={() => onOpenChange(false)}
-                  className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-surface-dark-foreground/80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
+                  className="relative z-10 inline-flex h-9 w-9 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-surface-dark-foreground/80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4 md:h-5 md:w-5" />
                 </button>
               </div>
-              <div className="relative mt-6 flex flex-wrap gap-2.5">
+              <div className="relative mt-3 md:mt-6 -mx-4 md:mx-0 px-4 md:px-0 flex gap-2 md:gap-2.5 overflow-x-auto md:flex-wrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {identityFilters.map((filter) => (
                   <button
                     key={filter}
                     type="button"
                     onClick={() => setActiveFilter(filter)}
-                    className={`rounded-full border px-3.5 py-2 text-[11px] uppercase tracking-[0.24em] transition-all duration-300 ${activeFilter === filter ? "border-primary/45 bg-primary/12 text-primary shadow-[0_0_24px_rgba(239,68,68,0.12)]" : "border-white/10 bg-white/5 text-surface-dark-foreground/50 hover:border-white/20 hover:text-surface-dark-foreground/80"}`}
+                    className={`shrink-0 rounded-full border px-3 md:px-3.5 py-1.5 md:py-2 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.24em] transition-all duration-300 ${activeFilter === filter ? "border-primary/45 bg-primary/12 text-primary shadow-[0_0_24px_rgba(239,68,68,0.12)]" : "border-white/10 bg-white/5 text-surface-dark-foreground/50 hover:border-white/20 hover:text-surface-dark-foreground/80"}`}
                   >
                     {filter}
                   </button>
@@ -389,8 +398,8 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
               </div>
             </div>
 
-            <div className="identity-portfolio-scroll min-h-0 flex-1 overflow-y-auto px-5 pb-5 pt-5 md:px-8 md:pb-8 md:pt-6">
-              <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="identity-portfolio-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4 pt-4 md:px-8 md:pb-8 md:pt-6">
+              <div className="grid auto-rows-fr grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {visibleLogos.map((logo, index) => (
                   <motion.button
                     key={logo.name}
