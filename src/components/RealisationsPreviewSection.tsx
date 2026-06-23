@@ -233,6 +233,32 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
                   </div>
                 </div>
               </>
+            ) : "imageUrl" in p && p.imageUrl ? (
+              <>
+                <img
+                  src={p.imageUrl}
+                  alt={`${p.name} — aperçu de la création immersive`}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30" />
+                <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/80">
+                    <span className="drop-shadow-md">Création immersive</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary/90 backdrop-blur-md">
+                      <ExternalLink className="h-3 w-3" /> Visiter
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/80">
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">WebGL</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Motion</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Premium</span>
+                      <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-primary/90">↗ Externe</span>
+                    </div>
+                  </div>
+                </div>
+              </>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="font-heading font-bold text-3xl md:text-4xl text-white/80 tracking-tight">{p.name}</span>
