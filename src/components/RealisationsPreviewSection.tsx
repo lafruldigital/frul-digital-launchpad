@@ -209,7 +209,7 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
             ) : "landingLab" in p && p.landingLab ? (
               <>
                 <img
-                  src={landingPagesPreview.url}
+                  src="/landing-pages-preview.png"
                   alt="Landing Page Lab — prévisualisations de pages de conversion"
                   className="absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
