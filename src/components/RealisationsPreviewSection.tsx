@@ -212,7 +212,7 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
                 <img
                   src={landingPagesPreview.url}
                   alt="Landing Page Lab — prévisualisations de pages de conversion"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30" />
