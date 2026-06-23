@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import { FrulCarsLogo3D } from "@/components/FrulCarsLogo3D";
 import { LandingPageLabModal } from "@/components/LandingPageLabModal";
+import logoFrulImmo from "@/assets/logo-frulimmo.png.asset.json";
 import landingPagesPreview from "@/assets/landing-pages-preview.png.asset.json";
 import casaNuvea from "@/assets/logo-gallery/casa-nuvea.png.asset.json";
 import vertikLabs from "@/assets/logo-gallery/vertik-labs.png.asset.json";
