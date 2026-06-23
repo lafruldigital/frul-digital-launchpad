@@ -384,7 +384,7 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
                   <X className="h-4 w-4 md:h-5 md:w-5" />
                 </button>
               </div>
-              <div className="relative mt-3 md:mt-6 -mx-4 md:mx-0 px-4 md:px-0 flex gap-2 md:gap-2.5 overflow-x-auto md:flex-wrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="relative mt-3 md:mt-5 -mx-4 lg:mx-0 px-4 lg:px-0 flex gap-2 md:gap-2.5 overflow-x-auto lg:flex-wrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {identityFilters.map((filter) => (
                   <button
                     key={filter}
