@@ -86,7 +86,7 @@ const projects = [
   { name: "Active Theory", type: "Création immersive", benefit: "Notre création la plus poussée : une expérience WebGL premium aux frontières du digital.", tone: "from-blue-900/30 to-slate-900/30", href: "https://activetheory.net/", imageUrl: "/activetheory-preview.png", domain: "activetheory.net" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
   { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20", landingLab: true as const },
-] as const;
+];
 
 export const RealisationsPreviewSection = () => (
   <section className="relative section-dark py-28 md:py-36 overflow-hidden">
