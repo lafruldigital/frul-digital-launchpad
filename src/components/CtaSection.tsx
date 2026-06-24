@@ -51,7 +51,7 @@ export const CtaSection = () => {
                 <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact" state={{ reason: "general", source: "CTA global du site" }}>
               <Button variant="hero-outline" size="lg" className="px-10 py-7 text-base">
                 <MessageCircle className="w-5 h-5 mr-1" />
                 Nous contacter

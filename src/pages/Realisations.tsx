@@ -188,7 +188,7 @@ const Realisations = () => {
             >
               <Link
                 to="/contact"
-                state={{ project: p.title }}
+                state={{ reason: "realisation", project: p.title, source: "Page Réalisations — carte projet" }}
                 className="group block relative overflow-hidden rounded-3xl border border-white/10 bg-surface-dark/70 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_hsl(0_85%_50%/0.45)] transition-all duration-500 h-full"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-surface-darker to-black">
@@ -239,7 +239,7 @@ const Realisations = () => {
             <p className="text-surface-dark-foreground/60 max-w-xl mx-auto mb-8">
               Parlons de votre marque et identifions le levier de croissance le plus puissant à activer.
             </p>
-            <Link to="/contact">
+            <Link to="/contact" state={{ reason: "general", source: "Page Réalisations — CTA final" }}>
               <Button size="lg" className="rounded-full bg-primary text-primary-foreground shadow-[0_0_28px_hsl(0_85%_50%/0.5)]">
                 Démarrer un projet
                 <ArrowUpRight className="w-4 h-4 ml-2" />

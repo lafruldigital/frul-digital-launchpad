@@ -256,7 +256,7 @@ const ServiceBlock = ({
               </li>
             ))}
           </ul>
-          <Link to="/contact">
+          <Link to="/contact" state={{ reason: "service", service: service.title, source: "Page Services" }}>
             <Button variant="hero" size="lg" className="mt-4 group/btn">
               {service.cta}
               <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
@@ -339,11 +339,11 @@ const Services = () => {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <a href="https://calendly.com/lafrul-digital/rendez-vous" target="_blank" rel="noopener noreferrer">
+              <Link to="/contact" state={{ reason: "expert", source: "Page Services — hero" }}>
                 <Button variant="hero-outline" size="lg" className="px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg w-full sm:w-auto">
                   Parler à un expert
                 </Button>
-              </a>
+              </Link>
             </div>
           </AnimatedSection>
         </div>
