@@ -18,6 +18,8 @@ import aetherMetricsFlyer from "@/assets/flyers/aether-metrics-flyer.png.asset.j
 import lunaNoirFlyer from "@/assets/flyers/luna-noir-flyer.png.asset.json";
 import veloraDriveFlyer from "@/assets/flyers/velora-drive-flyer.png.asset.json";
 import nuveaLivingFlyer from "@/assets/flyers/nuvea-living-flyer.png.asset.json";
+import metaAdsSaasFlyer from "@/assets/flyers/meta-ads-saas-flyer.png.asset.json";
+import socialRestoLyonFlyer from "@/assets/flyers/social-resto-lyon-flyer.png.asset.json";
 
 const adFilters = [
   "Tous",
@@ -257,6 +259,32 @@ const flyerProjects: FlyerProject[] = [
     structure: ["Signature", "Promesse", "Sélection biens", "Bénéfices", "Invitation à visiter", "Contact", "Brand block final"],
     imageUrl: nuveaLivingFlyer.url,
     accent: "from-amber-300/20 via-stone-300/12 to-transparent",
+  },
+  {
+    name: "Pulse Ads SaaS",
+    sector: "SaaS marketing & acquisition Meta Ads",
+    filter: "Tech",
+    support: "Affiche campagne acquisition",
+    strategicTag: "Démo produit",
+    objective: "Mettre en avant une plateforme SaaS d'acquisition Meta Ads avec une promesse data-driven et un CTA démo immédiat.",
+    summary: "Création fictive premium SaaS mêlant dashboard analytics, univers Meta Ads et iconographie performance pour incarner un outil expert.",
+    strengths: ["Hero dashboard crédible", "Univers Meta Ads reconnaissable", "KPIs et courbes lisibles", "Cards créas publicitaires", "Promesse acquisition claire", "CTA démo bien identifié"],
+    structure: ["Marque", "Promesse", "Preuves data", "Fonctionnalités", "Bénéfices", "CTA démo", "Réassurance"],
+    imageUrl: metaAdsSaasFlyer.url,
+    accent: "from-blue-500/22 via-indigo-500/14 to-transparent",
+  },
+  {
+    name: "Maison Lyon Social",
+    sector: "Restaurant gastronomique lyonnais",
+    filter: "Restauration",
+    support: "Affiche stratégie social media",
+    strategicTag: "Communauté Instagram",
+    objective: "Vendre une prestation social media premium pour restaurants en montrant un feed Instagram crédible, un calendrier éditorial et de la data d'engagement.",
+    summary: "Support fictif gastronomie & social media inspiré de Lyon, pensé pour rassurer un restaurateur sur la qualité de l'image, du contenu et de la régularité éditoriale.",
+    strengths: ["Feed Instagram cinématique", "Mise en scène ambiance restaurant", "Calendrier de publication clair", "Courbes d'engagement intégrées", "Codes premium chaleureux", "Identité locale lyonnaise"],
+    structure: ["Univers", "Feed", "Calendrier éditorial", "Stats engagement", "Bénéfices", "Offre", "Contact"],
+    imageUrl: socialRestoLyonFlyer.url,
+    accent: "from-amber-500/22 via-orange-500/14 to-transparent",
   },
 ];
 
