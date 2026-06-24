@@ -10,6 +10,14 @@ import mininovaFlyer from "@/assets/flyers/mininova-flyer.png.asset.json";
 import sentraSecureFlyer from "@/assets/flyers/sentra-secure-flyer.png.asset.json";
 import pulseOneFlyer from "@/assets/flyers/pulse-one-flyer.png.asset.json";
 import helionPatrimoineFlyer from "@/assets/flyers/helion-patrimoine-flyer.png.asset.json";
+import azuraEscapeFlyer from "@/assets/flyers/azura-escape-flyer.png.asset.json";
+import noxAtelierFlyer from "@/assets/flyers/nox-atelier-flyer.png.asset.json";
+import bloomoraAtelierFlyer from "@/assets/flyers/bloomora-atelier-flyer.png.asset.json";
+import kintaroLabFlyer from "@/assets/flyers/kintaro-lab-flyer.png.asset.json";
+import aetherMetricsFlyer from "@/assets/flyers/aether-metrics-flyer.png.asset.json";
+import lunaNoirFlyer from "@/assets/flyers/luna-noir-flyer.png.asset.json";
+import veloraDriveFlyer from "@/assets/flyers/velora-drive-flyer.png.asset.json";
+import nuveaLivingFlyer from "@/assets/flyers/nuvea-living-flyer.png.asset.json";
 
 const adFilters = [
   "Tous",
@@ -146,14 +154,120 @@ const flyerProjects: FlyerProject[] = [
     imageUrl: helionPatrimoineFlyer.url,
     accent: "from-amber-400/18 via-blue-500/12 to-transparent",
   },
+  {
+    name: "Azura Escape",
+    sector: "Retraites premium",
+    filter: "Lifestyle",
+    support: "Affiche prestige",
+    strategicTag: "Désir d'évasion",
+    objective: "Projeter immédiatement dans une expérience haut de gamme et déclencher une demande de réservation sur une offre signature.",
+    summary: "Création fictive orientée voyage premium, bien-être et aspiration visuelle, pensée pour vendre une retraite d'exception en un seul regard.",
+    strengths: ["Hero ultra immersif", "Codes luxe & sérénité", "Offre packagée très lisible", "Bloc bénéfices rassurant", "Destination star mise en avant", "CTA de réservation premium"],
+    structure: ["Univers de marque", "Promesse émotionnelle", "Destination phare", "Bénéfices", "Offre / prix", "CTA", "Contacts & destinations"],
+    imageUrl: azuraEscapeFlyer.url,
+    accent: "from-cyan-400/20 via-amber-300/10 to-transparent",
+  },
+  {
+    name: "NOX Atelier",
+    sector: "Streetwear / Techwear",
+    filter: "Lifestyle",
+    support: "Affiche drop produit",
+    strategicTag: "Drop limité",
+    objective: "Créer de la rareté, imposer un univers de marque fort et pousser le trafic vers un lancement produit daté.",
+    summary: "Concept fictif à forte tension graphique conçu pour un drop streetwear premium avec logique de collection limitée.",
+    strengths: ["Direction mode très distinctive", "Hiérarchie typographique impactante", "Produits additionnels visibles", "Date de lancement dominante", "Signal de rareté crédible", "CTA e-commerce direct"],
+    structure: ["Marque", "Nom du drop", "Promesse", "Highlights produit", "Mini catalogue", "Date / rareté", "CTA boutique"],
+    imageUrl: noxAtelierFlyer.url,
+    accent: "from-orange-500/24 via-red-500/12 to-transparent",
+  },
+  {
+    name: "Bloomora Atelier",
+    sector: "Maison florale premium",
+    filter: "Lifestyle",
+    support: "Affiche collection saisonnière",
+    strategicTag: "Collection signature",
+    objective: "Mettre en scène une collection florale avec assez d'élégance pour susciter la visite, la commande et l'attachement à la marque.",
+    summary: "Affiche fictive éditoriale et sensible, conçue pour une boutique florale haut de gamme entre art d'offrir et désir de saison.",
+    strengths: ["Composition éditoriale premium", "Palette douce très cohérente", "Offre promotionnelle élégante", "Produits secondaires bien intégrés", "Infos boutique claires", "Forte désirabilité visuelle"],
+    structure: ["Signature de marque", "Collection", "Argumentaire", "Offre", "Produits associés", "Infos boutique", "Commande & réseaux"],
+    imageUrl: bloomoraAtelierFlyer.url,
+    accent: "from-rose-300/20 via-emerald-300/10 to-transparent",
+  },
+  {
+    name: "Kintaro Lab",
+    sector: "Coaching fitness",
+    filter: "Fitness",
+    support: "Affiche challenge transformation",
+    strategicTag: "Programme 12 semaines",
+    objective: "Rendre une promesse de transformation crédible et énergique pour déclencher l'inscription à un challenge limité dans le temps.",
+    summary: "Création fictive performance-first pensée pour un coach premium : impact visuel, preuve, programme et CTA sans friction.",
+    strengths: ["Visuel athlétique ultra fort", "Offre challenge immédiatement lisible", "Dashboard produit crédible", "Preuves sociales chiffrées", "Avant / après intégré", "CTA très agressif"],
+    structure: ["Promesse", "Offre challenge", "Accompagnement", "Preuves", "Date de départ", "CTA", "Mentions & infos"],
+    imageUrl: kintaroLabFlyer.url,
+    accent: "from-lime-400/24 via-yellow-400/12 to-transparent",
+  },
+  {
+    name: "Aether Metrics",
+    sector: "Data & IA",
+    filter: "Tech",
+    support: "Affiche audit B2B",
+    strategicTag: "Audit offert",
+    objective: "Transformer une offre data/IA en promesse business claire, premium et directement actionnable par un décideur.",
+    summary: "Support fictif B2B conçu pour valoriser expertise, clarté stratégique et valeur perçue autour d'un audit offert.",
+    strengths: ["Dashboard très crédible", "Bénéfice business explicite", "Offre gratuite centrale", "Services structurés", "Codes tech premium", "CTA décisionnel net"],
+    structure: ["Accroche", "Visuel data", "Offre", "Expertises", "Valeur perçue", "CTA", "Réassurance marque"],
+    imageUrl: aetherMetricsFlyer.url,
+    accent: "from-cyan-500/22 via-violet-500/14 to-transparent",
+  },
+  {
+    name: "Luna Noir",
+    sector: "Event luxury nightlife",
+    filter: "Événementiel",
+    support: "Affiche lancement soirée",
+    strategicTag: "Billetterie événement",
+    objective: "Créer un sentiment d'événement rare, désirable et immédiatement réservable autour d'une soirée premium scénarisée.",
+    summary: "Création fictive immersive mêlant codes nocturnes, luxe, mystère et urgence pour vendre une expérience événementielle signature.",
+    strengths: ["Aura visuelle mémorable", "Date et heure ultra visibles", "Univers émotionnel fort", "Line-up et ambiance structurés", "Lieu premium valorisé", "CTA billetterie évident"],
+    structure: ["Teasing", "Nom événement", "Promesse", "Programme", "Lieu", "Réservation", "Mentions pratiques"],
+    imageUrl: lunaNoirFlyer.url,
+    accent: "from-fuchsia-500/20 via-purple-500/14 to-transparent",
+  },
+  {
+    name: "Velora Drive",
+    sector: "Location automobile premium",
+    filter: "Automobile",
+    support: "Affiche offre de réservation",
+    strategicTag: "Réservation immédiate",
+    objective: "Donner envie de conduire un véhicule d'exception et pousser une réservation rapide via une offre lisible et statutaire.",
+    summary: "Support fictif automobile premium pensé pour mélanger aspiration, performance, réassurance et offre claire.",
+    strengths: ["Hero automobile cinématique", "Offres tarifaires bien hiérarchisées", "Bénéfices service visibles", "Statut premium crédible", "Témoignage intégré", "CTA réservation central"],
+    structure: ["Marque", "Promesse", "Bénéfices", "Offres", "Preuve sociale", "CTA", "Coordonnées"],
+    imageUrl: veloraDriveFlyer.url,
+    accent: "from-sky-500/18 via-blue-500/12 to-transparent",
+  },
+  {
+    name: "Nuvéa Living",
+    sector: "Immobilier d'exception",
+    filter: "Immobilier",
+    support: "Affiche collection propriétés",
+    strategicTag: "Rendez-vous privé",
+    objective: "Présenter une sélection immobilière très haut de gamme avec assez de prestige pour déclencher une prise de rendez-vous confidentielle.",
+    summary: "Affiche fictive conçue pour l'immobilier premium, avec codes architecturaux, lumière luxe et offre discrète.",
+    strengths: ["Visuel intérieur aspirationnel", "Galerie propriétés élégante", "Piliers d'expertise rassurants", "Codes luxe intemporels", "Contact discret mais clair", "Très forte cohérence premium"],
+    structure: ["Signature", "Promesse", "Sélection biens", "Bénéfices", "Invitation à visiter", "Contact", "Brand block final"],
+    imageUrl: nuveaLivingFlyer.url,
+    accent: "from-amber-300/20 via-stone-300/12 to-transparent",
+  },
 ];
 
+const adUniverseCount = new Set(flyerProjects.map((project) => project.filter)).size;
+
 const previewCards = [
-  { project: flyerProjects[0], className: "left-2 top-10 w-[28%] -rotate-[12deg] md:left-4 md:top-12" },
-  { project: flyerProjects[2], className: "left-[24%] top-4 w-[30%] rotate-[-5deg] md:left-[22%]" },
-  { project: flyerProjects[6], className: "left-[46%] top-12 z-10 w-[33%] rotate-[4deg] md:left-[44%] md:top-10" },
-  { project: flyerProjects[5], className: "right-3 top-4 w-[28%] rotate-[11deg] md:right-5" },
-  { project: flyerProjects[4], className: "left-[34%] bottom-4 z-20 w-[34%] rotate-[1deg] md:bottom-6" },
+  { project: flyerProjects[8], className: "left-2 top-10 w-[28%] -rotate-[12deg] md:left-4 md:top-12" },
+  { project: flyerProjects[10], className: "left-[24%] top-4 w-[30%] rotate-[-5deg] md:left-[22%]" },
+  { project: flyerProjects[12], className: "left-[46%] top-12 z-10 w-[33%] rotate-[4deg] md:left-[44%] md:top-10" },
+  { project: flyerProjects[13], className: "right-3 top-4 w-[28%] rotate-[11deg] md:right-5" },
+  { project: flyerProjects[15], className: "left-[34%] bottom-4 z-20 w-[34%] rotate-[1deg] md:bottom-6" },
 ] as const;
 
 export const AdGalleryPreview = ({ hovered }: { hovered: boolean }) => {
@@ -196,9 +310,9 @@ export const AdGalleryPreview = ({ hovered }: { hovered: boolean }) => {
           <div className="mt-1 text-sm font-semibold text-white/90">Flyers, affiches, campagnes</div>
         </div>
         <div className="flex flex-wrap justify-end gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/78">
-          <span className="rounded-full border border-white/12 bg-black/40 px-2 py-1 backdrop-blur-md">Food</span>
+          <span className="rounded-full border border-white/12 bg-black/40 px-2 py-1 backdrop-blur-md">Luxe</span>
           <span className="rounded-full border border-white/12 bg-black/40 px-2 py-1 backdrop-blur-md">Tech</span>
-          <span className="rounded-full border border-primary/35 bg-primary/12 px-2 py-1 text-primary/90">+6 univers</span>
+          <span className="rounded-full border border-primary/35 bg-primary/12 px-2 py-1 text-primary/90">+{adUniverseCount} univers</span>
         </div>
       </div>
     </div>
