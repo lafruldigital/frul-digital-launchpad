@@ -13,6 +13,24 @@ import tunnelAcquisition from "@/assets/realisations/tunnel-acquisition.png.asse
 import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
 import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
 import fruluxLogo from "@/assets/logo-gallery/frulux.jpg.asset.json";
+import smashDistrictFlyer from "@/assets/flyers/smash-district-flyer.png.asset.json";
+import chicknFireFlyer from "@/assets/flyers/chickn-fire-flyer.png.asset.json";
+import formaHabitatFlyer from "@/assets/flyers/forma-habitat-flyer.png.asset.json";
+import atelierMietteFlyer from "@/assets/flyers/atelier-miette-flyer.png.asset.json";
+import mininovaFlyer from "@/assets/flyers/mininova-flyer.png.asset.json";
+import sentraSecureFlyer from "@/assets/flyers/sentra-secure-flyer.png.asset.json";
+import pulseOneFlyer from "@/assets/flyers/pulse-one-flyer.png.asset.json";
+import helionPatrimoineFlyer from "@/assets/flyers/helion-patrimoine-flyer.png.asset.json";
+import azuraEscapeFlyer from "@/assets/flyers/azura-escape-flyer.png.asset.json";
+import noxAtelierFlyer from "@/assets/flyers/nox-atelier-flyer.png.asset.json";
+import bloomoraAtelierFlyer from "@/assets/flyers/bloomora-atelier-flyer.png.asset.json";
+import kintaroLabFlyer from "@/assets/flyers/kintaro-lab-flyer.png.asset.json";
+import aetherMetricsFlyer from "@/assets/flyers/aether-metrics-flyer.png.asset.json";
+import lunaNoirFlyer from "@/assets/flyers/luna-noir-flyer.png.asset.json";
+import veloraDriveFlyer from "@/assets/flyers/velora-drive-flyer.png.asset.json";
+import nuveaLivingFlyer from "@/assets/flyers/nuvea-living-flyer.png.asset.json";
+import metaAdsSaasFlyer from "@/assets/flyers/meta-ads-saas-flyer.png.asset.json";
+import socialRestoLyonFlyer from "@/assets/flyers/social-resto-lyon-flyer.png.asset.json";
 
 const categories = ["Tous", "Projets signature", "Sites web", "Publicité", "Réseaux sociaux", "Identité", "Expérience"];
 
@@ -105,6 +123,29 @@ const stats = [
   { label: "ROAS moyen", value: "x4.2" },
   { label: "Satisfaction", value: "4.9/5" },
   { label: "Secteurs couverts", value: "20+" },
+];
+
+type Flyer = { name: string; sector: string; image: string };
+
+const flyers: Flyer[] = [
+  { name: "Smash District", sector: "Fast Food", image: smashDistrictFlyer.url },
+  { name: "Chick'n Fire", sector: "Fast Food", image: chicknFireFlyer.url },
+  { name: "Atelier Miette", sector: "Boulangerie & lifestyle", image: atelierMietteFlyer.url },
+  { name: "Forma Habitat", sector: "Immobilier", image: formaHabitatFlyer.url },
+  { name: "Hélion Patrimoine", sector: "Finance & patrimoine", image: helionPatrimoineFlyer.url },
+  { name: "Nuvéa Living", sector: "Immobilier d'exception", image: nuveaLivingFlyer.url },
+  { name: "Mininova", sector: "Beauté & soin", image: mininovaFlyer.url },
+  { name: "Bloomora Atelier", sector: "Beauté & lifestyle", image: bloomoraAtelierFlyer.url },
+  { name: "Luna Noir", sector: "Événementiel premium", image: lunaNoirFlyer.url },
+  { name: "Azura Escape", sector: "Voyage & hospitality", image: azuraEscapeFlyer.url },
+  { name: "Nox Atelier", sector: "Mode & lifestyle", image: noxAtelierFlyer.url },
+  { name: "Sentra Secure", sector: "Services & sécurité", image: sentraSecureFlyer.url },
+  { name: "Pulse One", sector: "Fitness & coaching", image: pulseOneFlyer.url },
+  { name: "Kintaro Lab", sector: "Tech & SaaS", image: kintaroLabFlyer.url },
+  { name: "Aether Metrics", sector: "SaaS analytics", image: aetherMetricsFlyer.url },
+  { name: "Pulse Ads SaaS", sector: "Acquisition Meta Ads", image: metaAdsSaasFlyer.url },
+  { name: "Velora Drive", sector: "Automobile premium", image: veloraDriveFlyer.url },
+  { name: "Maison Lyon Social", sector: "Restaurant gastronomique", image: socialRestoLyonFlyer.url },
 ];
 
 const Realisations = () => {
@@ -221,6 +262,57 @@ const Realisations = () => {
                     </p>
                   </div>
                   <ArrowUpRight className="w-5 h-5 text-surface-dark-foreground/40 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Affiches & Flyers */}
+      <section className="container mx-auto px-4 pb-20">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-[11px] uppercase tracking-[0.25em] text-primary mb-5">
+            <Sparkles className="w-3 h-3" /> Ad Gallery
+          </span>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-surface-dark-foreground mb-4">
+            Affiches & <span className="gradient-text">Flyers</span>
+          </h2>
+          <p className="text-surface-dark-foreground/60 text-base md:text-lg leading-relaxed">
+            Une sélection d'affiches publicitaires fictives conçues pour différents secteurs : food, immobilier,
+            beauté, événementiel, fitness, tech, automobile. Cliquez sur une création pour en parler avec nous.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {flyers.map((f, i) => (
+            <motion.div
+              key={f.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: (i % 10) * 0.04 }}
+            >
+              <Link
+                to="/contact"
+                state={{ reason: "realisation", project: `Affiche ${f.name} — ${f.sector}`, source: "Page Réalisations — Ad Gallery" }}
+                className="group block relative overflow-hidden rounded-2xl border border-white/10 bg-surface-dark/70 hover:border-primary/40 hover:shadow-[0_18px_50px_-20px_hsl(0_85%_50%/0.5)] transition-all duration-500"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-surface-darker to-black">
+                  <img
+                    src={f.image}
+                    alt={`Affiche ${f.name}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-90" />
+                  <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full text-[9px] uppercase tracking-[0.18em] bg-black/60 backdrop-blur border border-white/10 text-white/80">
+                    Affiche
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <h3 className="text-white font-heading font-semibold text-sm leading-tight">{f.name}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-white/60 mt-1">{f.sector}</p>
                 </div>
               </Link>
             </motion.div>
