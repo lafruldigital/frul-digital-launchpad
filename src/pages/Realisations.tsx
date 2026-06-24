@@ -2,53 +2,101 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowUpRight, TrendingUp, Sparkles, Globe, Smartphone, Megaphone } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import ecommerceMode from "@/assets/realisations/ecommerce-mode.png.asset.json";
+import metaAdsSaas from "@/assets/realisations/meta-ads-saas.png.asset.json";
+import socialRestaurant from "@/assets/realisations/social-restaurant.png.asset.json";
+import coachingApp from "@/assets/realisations/coaching-app.png.asset.json";
+import identiteStartup from "@/assets/realisations/identite-startup.png.asset.json";
+import tunnelAcquisition from "@/assets/realisations/tunnel-acquisition.png.asset.json";
+import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
+import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
+import fruluxLogo from "@/assets/logo-gallery/frulux.jpg.asset.json";
 
-const categories = ["Tous", "Sites web", "Publicité", "Réseaux sociaux", "Identité"];
+const categories = ["Tous", "Projets signature", "Sites web", "Publicité", "Réseaux sociaux", "Identité", "Expérience"];
 
-const projects = [
+type Project = {
+  title: string;
+  category: string;
+  tag: string;
+  image: string;
+  objectFit?: "cover" | "contain";
+  external?: string;
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    title: "FRUL'CARS — Concessionnaire premium",
+    category: "Projets signature",
+    tag: "Site vitrine + catalogue",
+    image: frulCarsLogo.url,
+    objectFit: "contain",
+    external: "https://frulcars.fr",
+    featured: true,
+  },
+  {
+    title: "FRUL'IMMO — Agence immobilière haut de gamme",
+    category: "Projets signature",
+    tag: "Site vitrine premium",
+    image: frulImmoLogo.url,
+    objectFit: "contain",
+    external: "https://frulimmo.fr",
+    featured: true,
+  },
+  {
+    title: "FRULUX — Blog connecté éditorial",
+    category: "Projets signature",
+    tag: "Plateforme éditoriale",
+    image: fruluxLogo.url,
+    objectFit: "contain",
+    external: "https://frulux.fr",
+    featured: true,
+  },
+  {
+    title: "Active Theory — Expérience WebGL immersive",
+    category: "Expérience",
+    tag: "Création la plus poussée",
+    image: "/activetheory-preview.png",
+    external: "https://activetheory.net/",
+    featured: true,
+  },
   {
     title: "Refonte e-commerce — Mode premium",
     category: "Sites web",
     tag: "+182% de conversions",
-    icon: Globe,
-    gradient: "from-rose-500/30 via-primary/20 to-transparent",
-  },
-  {
-    title: "Campagne Meta Ads — SaaS B2B",
-    category: "Publicité",
-    tag: "ROAS x4.7",
-    icon: Megaphone,
-    gradient: "from-amber-500/30 via-primary/20 to-transparent",
-  },
-  {
-    title: "Stratégie social — Restaurant Lyon",
-    category: "Réseaux sociaux",
-    tag: "+38k followers",
-    icon: Sparkles,
-    gradient: "from-fuchsia-500/30 via-primary/20 to-transparent",
+    image: ecommerceMode.url,
   },
   {
     title: "App mobile — Coaching sportif",
     category: "Sites web",
     tag: "Note 4.9 / 5",
-    icon: Smartphone,
-    gradient: "from-sky-500/30 via-primary/20 to-transparent",
+    image: coachingApp.url,
   },
   {
-    title: "Identité visuelle — Startup AI",
-    category: "Identité",
-    tag: "Brand premium",
-    icon: Sparkles,
-    gradient: "from-emerald-500/30 via-primary/20 to-transparent",
+    title: "Campagne Meta Ads — SaaS B2B",
+    category: "Publicité",
+    tag: "ROAS x4.7",
+    image: metaAdsSaas.url,
   },
   {
     title: "Tunnel d'acquisition — Coach business",
     category: "Publicité",
     tag: "CPA -42%",
-    icon: TrendingUp,
-    gradient: "from-primary/40 via-primary/15 to-transparent",
+    image: tunnelAcquisition.url,
+  },
+  {
+    title: "Stratégie social — Restaurant Lyon",
+    category: "Réseaux sociaux",
+    tag: "+38k followers",
+    image: socialRestaurant.url,
+  },
+  {
+    title: "Identité visuelle — Startup AI",
+    category: "Identité",
+    tag: "Brand premium",
+    image: identiteStartup.url,
   },
 ];
 
@@ -131,33 +179,51 @@ const Realisations = () => {
       <section className="container mx-auto px-4 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((p, i) => (
-            <motion.article
+            <motion.div
               key={p.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-surface-dark/70 hover:border-primary/30 transition-all duration-500"
             >
-              <div className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(0_85%_50%/0.25),transparent_50%)]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p.icon className="w-16 h-16 text-surface-dark-foreground/30 group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+              <Link
+                to="/contact"
+                state={{ project: p.title }}
+                className="group block relative overflow-hidden rounded-3xl border border-white/10 bg-surface-dark/70 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_hsl(0_85%_50%/0.45)] transition-all duration-500 h-full"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-surface-darker to-black">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className={`absolute inset-0 w-full h-full ${p.objectFit === "contain" ? "object-contain p-8" : "object-cover"} transition-transform duration-700 group-hover:scale-[1.04]`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] bg-black/60 backdrop-blur border border-white/10 text-white/80">
+                    {p.category}
+                  </span>
+                  <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-primary/90 text-primary-foreground shadow-[0_0_14px_hsl(0_85%_50%/0.5)]">
+                    {p.tag}
+                  </span>
+                  {p.featured && (
+                    <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] bg-primary/15 border border-primary/40 text-primary backdrop-blur">
+                      ★ Signature
+                    </span>
+                  )}
                 </div>
-                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] bg-surface-darker/70 backdrop-blur border border-white/10 text-surface-dark-foreground/70">
-                  {p.category}
-                </span>
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-primary/90 text-primary-foreground shadow-[0_0_14px_hsl(0_85%_50%/0.5)]">
-                  {p.tag}
-                </span>
-              </div>
-              <div className="p-5 flex items-start justify-between gap-3">
-                <h3 className="text-surface-dark-foreground font-heading font-semibold text-base leading-snug">
-                  {p.title}
-                </h3>
-                <ArrowUpRight className="w-5 h-5 text-surface-dark-foreground/40 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
-              </div>
-            </motion.article>
+                <div className="p-5 flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-surface-dark-foreground font-heading font-semibold text-base leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="text-[11px] text-surface-dark-foreground/50 mt-1.5 group-hover:text-primary/80 transition-colors">
+                      Discuter de ce projet →
+                    </p>
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 text-surface-dark-foreground/40 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
