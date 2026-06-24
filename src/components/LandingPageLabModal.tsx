@@ -15,6 +15,10 @@ type LandingDemo = {
   strengths: string[];
   structure: string[];
   variant: "auto" | "food" | "realty" | "school" | "beauty" | "saas" | "fitness" | "travel" | "japan" | "coworking";
+  images: {
+    hero: string;
+    gallery?: [string, string, string];
+  };
   palette: {
     bg: string;
     surface: string;
@@ -42,6 +46,14 @@ const landings: LandingDemo[] = [
     strengths: ["Hero cinématique avec essai immédiat", "Catalogue scrollable filtrable", "Formulaire de pré-qualification en 30s"],
     structure: ["Hero impactant", "Catalogue véhicules", "Configurateur", "Témoignages clients", "Garantie & SAV", "CTA prise de rendez-vous"],
     variant: "auto",
+    images: {
+      hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80",
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80",
+        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0d", surface: "#15151b", text: "#f5f5f7", sub: "#9ca3af", accent: "#ef4444", accentText: "#ffffff", border: "rgba(255,255,255,0.08)" },
   },
   {
@@ -57,6 +69,14 @@ const landings: LandingDemo[] = [
     strengths: ["Galerie photo immersive", "Réservation intégrée en 2 clics", "Story de la maison pour créer du lien"],
     structure: ["Hero ambiance", "Carte signature", "Galerie", "Avis clients", "Le concept", "CTA réservation"],
     variant: "food",
+    images: {
+      hero: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
+        "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&q=80",
+      ],
+    },
     palette: { bg: "#1a0f0a", surface: "#241510", text: "#fef3e8", sub: "#c8a888", accent: "#f97316", accentText: "#1a0f0a", border: "rgba(249,115,22,0.18)" },
   },
   {
@@ -72,6 +92,14 @@ const landings: LandingDemo[] = [
     strengths: ["Calculateur de revenus instantané", "Process en 4 étapes claires", "Wall of trust propriétaires"],
     structure: ["Hero rassurant", "Calculateur revenus", "Notre méthode", "Témoignages propriétaires", "Garanties", "CTA estimation"],
     variant: "realty",
+    images: {
+      hero: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
+      ],
+    },
     palette: { bg: "#f7f5f0", surface: "#ffffff", text: "#1a1a1f", sub: "#6b6b75", accent: "#1a1a1f", accentText: "#ffffff", border: "rgba(0,0,0,0.08)" },
   },
   {
@@ -87,6 +115,14 @@ const landings: LandingDemo[] = [
     strengths: ["Promesse claire dès le hero", "Programme détaillé module par module", "FAQ qui lève toutes les objections"],
     structure: ["Hero promesse forte", "Pour qui c'est", "Programme détaillé", "Résultats élèves", "Garantie", "FAQ", "CTA inscription"],
     variant: "school",
+    images: {
+      hero: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0b1220", surface: "#111a2e", text: "#f1f5f9", sub: "#94a3b8", accent: "#3b82f6", accentText: "#ffffff", border: "rgba(59,130,246,0.18)" },
   },
   {
@@ -102,6 +138,14 @@ const landings: LandingDemo[] = [
     strengths: ["Quiz peau interactif", "Avant / après crédibles", "Routine personnalisée affichée"],
     structure: ["Hero sensoriel", "Quiz peau", "Ingrédients clés", "Avant / après", "Avis clients", "Routine recommandée", "CTA achat"],
     variant: "beauty",
+    images: {
+      hero: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=600&q=80",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80",
+        "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&q=80",
+      ],
+    },
     palette: { bg: "#f9f3ee", surface: "#ffffff", text: "#2a1f1a", sub: "#8a7568", accent: "#c47855", accentText: "#ffffff", border: "rgba(196,120,85,0.18)" },
   },
   {
@@ -117,6 +161,9 @@ const landings: LandingDemo[] = [
     strengths: ["Dashboard preview live", "Cas clients chiffrés", "Démo gratuite sans CB"],
     structure: ["Hero produit", "Dashboard preview", "Use cases", "Logos clients", "Pricing", "FAQ technique", "CTA audit"],
     variant: "saas",
+    images: {
+      hero: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    },
     palette: { bg: "#070a12", surface: "#0e1320", text: "#e2e8f0", sub: "#8b94a8", accent: "#06b6d4", accentText: "#06121a", border: "rgba(6,182,212,0.18)" },
   },
   {
@@ -132,6 +179,14 @@ const landings: LandingDemo[] = [
     strengths: ["Hero choc émotionnel", "Programme jour par jour", "Témoignages vidéo intégrés"],
     structure: ["Hero énergie", "Le programme", "Coach présentation", "Transformations", "Pricing", "Garantie", "CTA challenge"],
     variant: "fitness",
+    images: {
+      hero: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80",
+        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
+        "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0a", surface: "#151515", text: "#ffffff", sub: "#a3a3a3", accent: "#ef4444", accentText: "#ffffff", border: "rgba(239,68,68,0.22)" },
   },
   {
@@ -147,6 +202,14 @@ const landings: LandingDemo[] = [
     strengths: ["Carrousel destinations cinématique", "Process sur mesure clair", "Conciergerie 24/7 mise en avant"],
     structure: ["Hero immersif", "Destinations signature", "Notre process", "Conciergerie", "Témoignages", "CTA devis"],
     variant: "travel",
+    images: {
+      hero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80",
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
+        "https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0f1410", surface: "#1a221c", text: "#f0ebe1", sub: "#a89e8c", accent: "#d4a574", accentText: "#1a1410", border: "rgba(212,165,116,0.2)" },
   },
   {
@@ -162,6 +225,14 @@ const landings: LandingDemo[] = [
     strengths: ["Carte interactive premium", "Univers de marque fort", "Réservation et delivery côte à côte"],
     structure: ["Hero univers", "Carte signature", "Le chef", "Le lieu", "Avis", "CTA réservation / delivery"],
     variant: "japan",
+    images: {
+      hero: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80",
+        "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80",
+        "https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0a", surface: "#141414", text: "#f5f5f5", sub: "#9ca3af", accent: "#dc2626", accentText: "#ffffff", border: "rgba(220,38,38,0.2)" },
   },
   {
@@ -177,6 +248,14 @@ const landings: LandingDemo[] = [
     strengths: ["Visite virtuelle intégrée", "Plans d'abonnement clairs", "Événements communauté"],
     structure: ["Hero urbain", "Espaces & ambiance", "Abonnements", "Communauté", "Événements", "CTA visite"],
     variant: "coworking",
+    images: {
+      hero: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0d14", surface: "#131826", text: "#f1f5f9", sub: "#94a3b8", accent: "#fb923c", accentText: "#0a0d14", border: "rgba(251,146,60,0.2)" },
   },
 ];
@@ -184,7 +263,7 @@ const landings: LandingDemo[] = [
 /* ---------- Mini-mockup component ---------- */
 
 const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; large?: boolean }) => {
-  const { palette: c, variant } = landing;
+  const { palette: c } = landing;
   // Scaling presets
   const s = large
     ? {
@@ -269,15 +348,20 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
             background: `linear-gradient(135deg, ${c.accent}30, ${c.surface} 60%, ${c.bg})`,
           }}
         >
+          <img
+            src={landing.images.hero}
+            alt={landing.name}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div
-            className="absolute inset-0 opacity-25"
+            className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(${c.text}10 1px, transparent 1px), linear-gradient(90deg, ${c.text}10 1px, transparent 1px)`,
-              backgroundSize: large ? "24px 24px" : "8px 8px",
+              background: `linear-gradient(115deg, ${c.bg}f2 0%, ${c.bg}b5 38%, ${c.bg}40 70%, transparent 100%)`,
             }}
           />
           <div
-            className="absolute -right-6 -top-6 h-24 w-24 rounded-full blur-2xl"
+            className="absolute -right-8 -top-8 h-28 w-28 rounded-full blur-2xl"
             style={{ background: `${c.accent}55` }}
           />
           <div className={`relative flex h-full flex-col justify-between ${large ? "p-5" : "p-2"}`}>
@@ -316,7 +400,7 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
         </div>
 
         {/* Sector-specific block */}
-        <VariantBlock variant={variant} c={c} large={large} />
+        <VariantBlock landing={landing} c={c} large={large} />
 
         {/* Benefits row */}
         <div className="grid grid-cols-3 gap-1.5">
@@ -437,93 +521,116 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
   );
 };
 
-const VariantBlock = ({ variant, c, large }: { variant: LandingDemo["variant"]; c: LandingDemo["palette"]; large: boolean }) => {
+const VariantBlock = ({ landing, c, large }: { landing: LandingDemo; c: LandingDemo["palette"]; large: boolean }) => {
+  const variant = landing.variant;
+  const gallery = landing.images.gallery;
   const blockSize = large ? "h-24 md:h-28" : "h-10";
   const microFont = large ? "text-[10px]" : "text-[6px]";
 
-  if (variant === "auto" || variant === "fitness" || variant === "japan") {
-    // Cinematic dark hero block
+  // Variants with a real photo gallery (3 cards)
+  if (gallery && (variant === "auto" || variant === "fitness" || variant === "japan" || variant === "food" || variant === "beauty" || variant === "travel" || variant === "realty" || variant === "coworking")) {
+    const labels: Record<string, [string, string, string]> = {
+      auto: ["GT Coupé", "Roadster", "SUV Sport"],
+      fitness: ["Force", "Endurance", "Mobilité"],
+      japan: ["Omakase", "Signature", "Sashimi"],
+      food: ["Brunch", "Signature", "Dessert"],
+      beauty: ["Sérum", "Rituel", "Soin"],
+      travel: ["Bali", "Kyoto", "Maldives"],
+      realty: ["Villa vue mer", "Loft design", "Appartement"],
+      coworking: ["Open space", "Studio", "Lounge"],
+    };
+    const tagPrice: Record<string, [string, string, string]> = {
+      auto: ["dès 89 000€", "dès 124 000€", "dès 76 000€"],
+      fitness: ["12 sem.", "8 sem.", "6 sem."],
+      japan: ["12 pièces", "Chef's table", "Premium"],
+      food: ["Dès 24€", "Signature", "Maison"],
+      beauty: ["49€", "Routine", "Best-seller"],
+      travel: ["7 nuits", "5 nuits", "10 nuits"],
+      realty: ["1 250 000€", "890 000€", "640 000€"],
+      coworking: ["Dès 29€/j", "Mensuel", "Premium"],
+    };
     return (
-      <div className={`relative ${blockSize} overflow-hidden rounded-md border`} style={{ borderColor: c.border, background: `linear-gradient(135deg, ${c.accent}26, ${c.surface})` }}>
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `linear-gradient(${c.text}10 1px, transparent 1px), linear-gradient(90deg, ${c.text}10 1px, transparent 1px)`,
-          backgroundSize: large ? "20px 20px" : "8px 8px",
-        }} />
-        <div className="absolute inset-0 flex items-end p-2">
-          <span className={microFont} style={{ color: c.text }}>{variant === "auto" ? "GT 2026 — Premium" : variant === "fitness" ? "12 semaines — Pro" : "Omakase — 12 pièces"}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "food" || variant === "beauty" || variant === "travel") {
-    // Visual grid (gallery)
-    return (
-      <div className="grid grid-cols-3 gap-1">
+      <div className="grid grid-cols-3 gap-1.5">
         {[0, 1, 2].map((i) => (
-          <div key={i} className={`${large ? "h-16 md:h-20" : "h-8"} rounded border`} style={{
-            borderColor: c.border,
-            background: `linear-gradient(${135 + i * 30}deg, ${c.accent}${i === 1 ? "55" : "33"}, ${c.surface})`,
-          }} />
+          <div
+            key={i}
+            className={`relative ${large ? "h-24 md:h-28" : "h-10"} overflow-hidden rounded border`}
+            style={{ borderColor: c.border, background: c.surface }}
+          >
+            <img
+              src={gallery[i]}
+              alt={labels[variant][i]}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: `linear-gradient(180deg, transparent 35%, ${c.bg}e8 100%)` }}
+            />
+            {large && (
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-1 p-2">
+                <span className={`font-semibold leading-tight ${microFont}`} style={{ color: c.text }}>
+                  {labels[variant][i]}
+                </span>
+                <span
+                  className="rounded px-1.5 py-0.5 text-[8px] font-semibold"
+                  style={{ background: c.accent, color: c.accentText }}
+                >
+                  {tagPrice[variant][i]}
+                </span>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     );
   }
 
   if (variant === "saas") {
-    // Dashboard preview
+    // Crédible dashboard preview with KPIs + chart
     return (
-      <div className={`${blockSize} rounded-md border p-1.5`} style={{ borderColor: c.border, background: c.surface }}>
-        <div className="flex h-full items-end gap-0.5">
-          {[0.4, 0.7, 0.3, 0.85, 0.55, 0.95, 0.65, 0.8].map((h, i) => (
-            <div key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: c.accent, opacity: 0.6 + h * 0.4 }} />
+      <div className={`${large ? "min-h-[7rem]" : ""} rounded-md border ${large ? "p-3" : "p-1.5"}`} style={{ borderColor: c.border, background: c.surface }}>
+        <div className={`grid grid-cols-3 ${large ? "gap-2" : "gap-1"}`}>
+          {[
+            { k: "MRR", v: "84,2k€", d: "+18%" },
+            { k: "Leads", v: "1 248", d: "+24%" },
+            { k: "Conv.", v: "4,9%", d: "+0,8" },
+          ].map((kpi) => (
+            <div key={kpi.k} className={`rounded border ${large ? "p-2" : "p-1"}`} style={{ borderColor: c.border, background: `${c.bg}88` }}>
+              <div className={microFont} style={{ color: c.sub }}>{large ? kpi.k : ""}</div>
+              <div className={`font-bold ${large ? "text-base" : "text-[8px]"}`} style={{ color: c.text }}>{kpi.v}</div>
+              <div className={microFont} style={{ color: c.accent }}>{large ? kpi.d : "▲"}</div>
+            </div>
+          ))}
+        </div>
+        <div className={`mt-1.5 flex items-end gap-0.5 ${large ? "h-10" : "h-4"}`}>
+          {[0.4, 0.55, 0.45, 0.7, 0.6, 0.78, 0.65, 0.88, 0.72, 0.95, 0.82, 1].map((h, i) => (
+            <div key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: c.accent, opacity: 0.45 + h * 0.55 }} />
           ))}
         </div>
       </div>
     );
   }
 
-  if (variant === "realty") {
-    // Calculator card
-    return (
-      <div className={`${blockSize} rounded-md border p-2 flex flex-col justify-between`} style={{ borderColor: c.border, background: c.surface }}>
-        <span className={microFont} style={{ color: c.sub }}>Revenus estimés / an</span>
-        <span className={`font-bold ${large ? "text-2xl" : "text-[10px]"}`} style={{ color: c.text }}>32 400 €</span>
-        <div className="h-1 rounded-full" style={{ background: `${c.accent}33` }}>
-          <div className="h-full w-3/4 rounded-full" style={{ background: c.accent }} />
-        </div>
-      </div>
-    );
-  }
-
   if (variant === "school") {
-    // Module list
     return (
       <div className="flex flex-col gap-1">
         {["Module 1 — Mindset", "Module 2 — Acquisition", "Module 3 — Conversion"].map((m, i) => (
-          <div key={i} className="flex items-center justify-between rounded border px-1.5 py-1" style={{ borderColor: c.border, background: c.surface }}>
-            <span className={microFont} style={{ color: c.text }}>{large ? m : `M${i + 1}`}</span>
-            <span className={microFont} style={{ color: c.accent }}>✓</span>
+          <div key={i} className={`flex items-center justify-between rounded border ${large ? "px-3 py-2" : "px-1.5 py-1"}`} style={{ borderColor: c.border, background: c.surface }}>
+            <div className="flex items-center gap-2">
+              <span className={`flex items-center justify-center rounded ${large ? "h-6 w-6 text-[10px]" : "h-3 w-3 text-[5px]"} font-bold`} style={{ background: `${c.accent}25`, color: c.accent }}>{i + 1}</span>
+              <span className={microFont} style={{ color: c.text }}>{large ? m : `M${i + 1}`}</span>
+            </div>
+            <span className={microFont} style={{ color: c.accent }}>✓ Acquis</span>
           </div>
         ))}
       </div>
     );
   }
 
-  // coworking
+  // Fallback (no gallery available)
   return (
-    <div className={`${blockSize} grid grid-cols-2 gap-1`}>
-      {[0, 1].map((i) => (
-        <div key={i} className="relative overflow-hidden rounded border" style={{
-          borderColor: c.border,
-          background: `linear-gradient(${i === 0 ? 135 : 45}deg, ${c.accent}55, ${c.surface})`,
-        }}>
-          <div className="absolute bottom-1 left-1">
-            <span className={microFont} style={{ color: c.text }}>{i === 0 ? "Open space" : "Studios"}</span>
-          </div>
-        </div>
-      ))}
-    </div>
+    <div className={`${blockSize} rounded-md border`} style={{ borderColor: c.border, background: `linear-gradient(135deg, ${c.accent}30, ${c.surface})` }} />
   );
 };
 
