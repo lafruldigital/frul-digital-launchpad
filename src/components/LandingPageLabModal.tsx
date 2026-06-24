@@ -46,6 +46,14 @@ const landings: LandingDemo[] = [
     strengths: ["Hero cinématique avec essai immédiat", "Catalogue scrollable filtrable", "Formulaire de pré-qualification en 30s"],
     structure: ["Hero impactant", "Catalogue véhicules", "Configurateur", "Témoignages clients", "Garantie & SAV", "CTA prise de rendez-vous"],
     variant: "auto",
+    images: {
+      hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80",
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80",
+        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0d", surface: "#15151b", text: "#f5f5f7", sub: "#9ca3af", accent: "#ef4444", accentText: "#ffffff", border: "rgba(255,255,255,0.08)" },
   },
   {
@@ -61,6 +69,14 @@ const landings: LandingDemo[] = [
     strengths: ["Galerie photo immersive", "Réservation intégrée en 2 clics", "Story de la maison pour créer du lien"],
     structure: ["Hero ambiance", "Carte signature", "Galerie", "Avis clients", "Le concept", "CTA réservation"],
     variant: "food",
+    images: {
+      hero: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80",
+        "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&q=80",
+      ],
+    },
     palette: { bg: "#1a0f0a", surface: "#241510", text: "#fef3e8", sub: "#c8a888", accent: "#f97316", accentText: "#1a0f0a", border: "rgba(249,115,22,0.18)" },
   },
   {
@@ -76,6 +92,14 @@ const landings: LandingDemo[] = [
     strengths: ["Calculateur de revenus instantané", "Process en 4 étapes claires", "Wall of trust propriétaires"],
     structure: ["Hero rassurant", "Calculateur revenus", "Notre méthode", "Témoignages propriétaires", "Garanties", "CTA estimation"],
     variant: "realty",
+    images: {
+      hero: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
+      ],
+    },
     palette: { bg: "#f7f5f0", surface: "#ffffff", text: "#1a1a1f", sub: "#6b6b75", accent: "#1a1a1f", accentText: "#ffffff", border: "rgba(0,0,0,0.08)" },
   },
   {
@@ -91,6 +115,14 @@ const landings: LandingDemo[] = [
     strengths: ["Promesse claire dès le hero", "Programme détaillé module par module", "FAQ qui lève toutes les objections"],
     structure: ["Hero promesse forte", "Pour qui c'est", "Programme détaillé", "Résultats élèves", "Garantie", "FAQ", "CTA inscription"],
     variant: "school",
+    images: {
+      hero: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0b1220", surface: "#111a2e", text: "#f1f5f9", sub: "#94a3b8", accent: "#3b82f6", accentText: "#ffffff", border: "rgba(59,130,246,0.18)" },
   },
   {
@@ -106,6 +138,14 @@ const landings: LandingDemo[] = [
     strengths: ["Quiz peau interactif", "Avant / après crédibles", "Routine personnalisée affichée"],
     structure: ["Hero sensoriel", "Quiz peau", "Ingrédients clés", "Avant / après", "Avis clients", "Routine recommandée", "CTA achat"],
     variant: "beauty",
+    images: {
+      hero: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=600&q=80",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80",
+        "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&q=80",
+      ],
+    },
     palette: { bg: "#f9f3ee", surface: "#ffffff", text: "#2a1f1a", sub: "#8a7568", accent: "#c47855", accentText: "#ffffff", border: "rgba(196,120,85,0.18)" },
   },
   {
@@ -121,6 +161,9 @@ const landings: LandingDemo[] = [
     strengths: ["Dashboard preview live", "Cas clients chiffrés", "Démo gratuite sans CB"],
     structure: ["Hero produit", "Dashboard preview", "Use cases", "Logos clients", "Pricing", "FAQ technique", "CTA audit"],
     variant: "saas",
+    images: {
+      hero: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    },
     palette: { bg: "#070a12", surface: "#0e1320", text: "#e2e8f0", sub: "#8b94a8", accent: "#06b6d4", accentText: "#06121a", border: "rgba(6,182,212,0.18)" },
   },
   {
@@ -136,6 +179,14 @@ const landings: LandingDemo[] = [
     strengths: ["Hero choc émotionnel", "Programme jour par jour", "Témoignages vidéo intégrés"],
     structure: ["Hero énergie", "Le programme", "Coach présentation", "Transformations", "Pricing", "Garantie", "CTA challenge"],
     variant: "fitness",
+    images: {
+      hero: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80",
+        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
+        "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0a", surface: "#151515", text: "#ffffff", sub: "#a3a3a3", accent: "#ef4444", accentText: "#ffffff", border: "rgba(239,68,68,0.22)" },
   },
   {
@@ -151,6 +202,14 @@ const landings: LandingDemo[] = [
     strengths: ["Carrousel destinations cinématique", "Process sur mesure clair", "Conciergerie 24/7 mise en avant"],
     structure: ["Hero immersif", "Destinations signature", "Notre process", "Conciergerie", "Témoignages", "CTA devis"],
     variant: "travel",
+    images: {
+      hero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80",
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
+        "https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0f1410", surface: "#1a221c", text: "#f0ebe1", sub: "#a89e8c", accent: "#d4a574", accentText: "#1a1410", border: "rgba(212,165,116,0.2)" },
   },
   {
@@ -166,6 +225,14 @@ const landings: LandingDemo[] = [
     strengths: ["Carte interactive premium", "Univers de marque fort", "Réservation et delivery côte à côte"],
     structure: ["Hero univers", "Carte signature", "Le chef", "Le lieu", "Avis", "CTA réservation / delivery"],
     variant: "japan",
+    images: {
+      hero: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80",
+        "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80",
+        "https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0a0a", surface: "#141414", text: "#f5f5f5", sub: "#9ca3af", accent: "#dc2626", accentText: "#ffffff", border: "rgba(220,38,38,0.2)" },
   },
   {
@@ -181,6 +248,14 @@ const landings: LandingDemo[] = [
     strengths: ["Visite virtuelle intégrée", "Plans d'abonnement clairs", "Événements communauté"],
     structure: ["Hero urbain", "Espaces & ambiance", "Abonnements", "Communauté", "Événements", "CTA visite"],
     variant: "coworking",
+    images: {
+      hero: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+      ],
+    },
     palette: { bg: "#0a0d14", surface: "#131826", text: "#f1f5f9", sub: "#94a3b8", accent: "#fb923c", accentText: "#0a0d14", border: "rgba(251,146,60,0.2)" },
   },
 ];
