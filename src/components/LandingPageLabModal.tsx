@@ -400,7 +400,7 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
         </div>
 
         {/* Sector-specific block */}
-        <VariantBlock variant={variant} c={c} large={large} />
+        <VariantBlock landing={landing} c={c} large={large} />
 
         {/* Benefits row */}
         <div className="grid grid-cols-3 gap-1.5">
