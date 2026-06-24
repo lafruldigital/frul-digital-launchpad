@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import { FrulCarsLogo3D } from "@/components/FrulCarsLogo3D";
 import { LandingPageLabModal } from "@/components/LandingPageLabModal";
+import { AdGalleryModal, AdGalleryPreview } from "@/components/AdGalleryModal";
 import logoFrulImmo from "@/assets/logo-frulimmo.png.asset.json";
 import casaNuvea from "@/assets/logo-gallery/casa-nuvea.png.asset.json";
 import vertikLabs from "@/assets/logo-gallery/vertik-labs.png.asset.json";
@@ -82,7 +83,7 @@ const identityFilters = ["Tous", "Luxe", "Tech", "Food", "Architecture", "Immobi
 const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
   { name: "FRUL'IMMO", type: "Immobilier", benefit: "Site vitrine premium pour agence immobilière haut de gamme.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulimmo.fr", logo3d: true as const, logoUrl: logoFrulImmo.url, domain: "frulimmo.fr" },
-  { name: "FRULUX", type: "Blog Connecté", benefit: "Plateforme éditoriale premium mêlant culture, lifestyle et tech.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulux.fr", logo3d: true as const, logoUrl: fruluxLogo.url, domain: "frulux.fr" },
+  { name: "Affiches Publicitaires", type: "Affiches & Flyers", benefit: "Des visuels conçus pour capter l’attention, déclencher l’envie et vendre une offre en quelques secondes.", tone: "from-red-600/30 to-zinc-900/35", adGallery: true as const },
   { name: "Active Theory", type: "Création immersive", benefit: "Notre création la plus poussée : une expérience WebGL premium aux frontières du digital.", tone: "from-blue-900/30 to-slate-900/30", href: "https://activetheory.net/", imageUrl: "/activetheory-preview.png", domain: "activetheory.net" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
   { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20", landingLab: true as const },
@@ -130,6 +131,7 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
   const [hovered, setHovered] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [landingLabOpen, setLandingLabOpen] = useState(false);
+  const [adGalleryOpen, setAdGalleryOpen] = useState(false);
 
   const inner = (
     <motion.div
@@ -233,6 +235,26 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
                   </div>
                 </div>
               </>
+            ) : "adGallery" in p && p.adGallery ? (
+              <>
+                <AdGalleryPreview hovered={hovered} />
+                <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/80">
+                    <span className="drop-shadow-md">Affiches & Flyers</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary/90 backdrop-blur-md">
+                      <Sparkles className="h-3 w-3" /> Explorer
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/80">
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Fast Food</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Tech</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Services</span>
+                      <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-primary/90">+8 flyers</span>
+                    </div>
+                  </div>
+                </div>
+              </>
             ) : "imageUrl" in p && p.imageUrl ? (
               <>
                 <img
@@ -278,6 +300,7 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
           {p.href && <span className="text-[10px] font-normal text-primary/70 uppercase tracking-wider">↗ Visiter</span>}
           {"portfolioModal" in p && p.portfolioModal && <span className="text-[10px] font-normal text-primary/70 uppercase tracking-wider">↗ Explorer</span>}
           {"landingLab" in p && p.landingLab && <span className="text-[10px] font-normal text-primary/70 uppercase tracking-wider">↗ Conversion showcase</span>}
+          {"adGallery" in p && p.adGallery && <span className="text-[10px] font-normal text-primary/70 uppercase tracking-wider">↗ Explorer</span>}
         </h3>
         <p className="text-sm text-surface-dark-foreground/55 leading-relaxed">{p.benefit}</p>
       </div>
@@ -302,6 +325,17 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
           {inner}
         </button>
         <LandingPageLabModal open={landingLabOpen} onOpenChange={setLandingLabOpen} />
+      </>
+    );
+  }
+
+  if ("adGallery" in p && p.adGallery) {
+    return (
+      <>
+        <button type="button" onClick={() => setAdGalleryOpen(true)} className="block h-full w-full text-left">
+          {inner}
+        </button>
+        <AdGalleryModal open={adGalleryOpen} onOpenChange={setAdGalleryOpen} />
       </>
     );
   }
