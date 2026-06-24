@@ -433,9 +433,33 @@ export const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="max-w-md mx-auto pb-12"
+              className="max-w-md mx-auto pb-12 relative"
             >
-              <ul className="space-y-1">
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                className="absolute -top-2 right-0 inline-flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] text-surface-dark-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label="Fermer le menu"
+              >
+                <X size={18} />
+              </button>
+
+              <ul className="space-y-1 pt-12">
+                <li>
+                  <Link
+                    to="/"
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "block px-4 py-3.5 rounded-xl text-base font-medium transition-colors border",
+                      location.pathname === "/"
+                        ? "bg-primary/15 text-primary border-primary/40 shadow-[0_0_20px_-5px_hsl(0_85%_50%/0.6)]"
+                        : "border-white/5 text-surface-dark-foreground/85 hover:text-primary hover:border-primary/20",
+                    )}
+                  >
+                    Accueil
+                  </Link>
+                </li>
+
                 {navItems.map((item) => {
                   if (item.type === "link") {
                     const active = isActiveItem(location.pathname, item);
