@@ -263,7 +263,7 @@ const flyerProjects: FlyerProject[] = [
   {
     name: "Pulse Ads SaaS",
     sector: "SaaS marketing & acquisition Meta Ads",
-    filter: "SaaS & Tech",
+    filter: "Tech",
     support: "Affiche campagne acquisition",
     strategicTag: "Démo produit",
     objective: "Mettre en avant une plateforme SaaS d'acquisition Meta Ads avec une promesse data-driven et un CTA démo immédiat.",
@@ -276,7 +276,7 @@ const flyerProjects: FlyerProject[] = [
   {
     name: "Maison Lyon Social",
     sector: "Restaurant gastronomique lyonnais",
-    filter: "Restaurant",
+    filter: "Restauration",
     support: "Affiche stratégie social media",
     strategicTag: "Communauté Instagram",
     objective: "Vendre une prestation social media premium pour restaurants en montrant un feed Instagram crédible, un calendrier éditorial et de la data d'engagement.",
