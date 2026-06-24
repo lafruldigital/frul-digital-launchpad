@@ -521,93 +521,116 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
   );
 };
 
-const VariantBlock = ({ variant, c, large }: { variant: LandingDemo["variant"]; c: LandingDemo["palette"]; large: boolean }) => {
+const VariantBlock = ({ landing, c, large }: { landing: LandingDemo; c: LandingDemo["palette"]; large: boolean }) => {
+  const variant = landing.variant;
+  const gallery = landing.images.gallery;
   const blockSize = large ? "h-24 md:h-28" : "h-10";
   const microFont = large ? "text-[10px]" : "text-[6px]";
 
-  if (variant === "auto" || variant === "fitness" || variant === "japan") {
-    // Cinematic dark hero block
+  // Variants with a real photo gallery (3 cards)
+  if (gallery && (variant === "auto" || variant === "fitness" || variant === "japan" || variant === "food" || variant === "beauty" || variant === "travel" || variant === "realty" || variant === "coworking")) {
+    const labels: Record<string, [string, string, string]> = {
+      auto: ["GT Coupé", "Roadster", "SUV Sport"],
+      fitness: ["Force", "Endurance", "Mobilité"],
+      japan: ["Omakase", "Signature", "Sashimi"],
+      food: ["Brunch", "Signature", "Dessert"],
+      beauty: ["Sérum", "Rituel", "Soin"],
+      travel: ["Bali", "Kyoto", "Maldives"],
+      realty: ["Villa vue mer", "Loft design", "Appartement"],
+      coworking: ["Open space", "Studio", "Lounge"],
+    };
+    const tagPrice: Record<string, [string, string, string]> = {
+      auto: ["dès 89 000€", "dès 124 000€", "dès 76 000€"],
+      fitness: ["12 sem.", "8 sem.", "6 sem."],
+      japan: ["12 pièces", "Chef's table", "Premium"],
+      food: ["Dès 24€", "Signature", "Maison"],
+      beauty: ["49€", "Routine", "Best-seller"],
+      travel: ["7 nuits", "5 nuits", "10 nuits"],
+      realty: ["1 250 000€", "890 000€", "640 000€"],
+      coworking: ["Dès 29€/j", "Mensuel", "Premium"],
+    };
     return (
-      <div className={`relative ${blockSize} overflow-hidden rounded-md border`} style={{ borderColor: c.border, background: `linear-gradient(135deg, ${c.accent}26, ${c.surface})` }}>
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `linear-gradient(${c.text}10 1px, transparent 1px), linear-gradient(90deg, ${c.text}10 1px, transparent 1px)`,
-          backgroundSize: large ? "20px 20px" : "8px 8px",
-        }} />
-        <div className="absolute inset-0 flex items-end p-2">
-          <span className={microFont} style={{ color: c.text }}>{variant === "auto" ? "GT 2026 — Premium" : variant === "fitness" ? "12 semaines — Pro" : "Omakase — 12 pièces"}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "food" || variant === "beauty" || variant === "travel") {
-    // Visual grid (gallery)
-    return (
-      <div className="grid grid-cols-3 gap-1">
+      <div className="grid grid-cols-3 gap-1.5">
         {[0, 1, 2].map((i) => (
-          <div key={i} className={`${large ? "h-16 md:h-20" : "h-8"} rounded border`} style={{
-            borderColor: c.border,
-            background: `linear-gradient(${135 + i * 30}deg, ${c.accent}${i === 1 ? "55" : "33"}, ${c.surface})`,
-          }} />
+          <div
+            key={i}
+            className={`relative ${large ? "h-24 md:h-28" : "h-10"} overflow-hidden rounded border`}
+            style={{ borderColor: c.border, background: c.surface }}
+          >
+            <img
+              src={gallery[i]}
+              alt={labels[variant][i]}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: `linear-gradient(180deg, transparent 35%, ${c.bg}e8 100%)` }}
+            />
+            {large && (
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-1 p-2">
+                <span className={`font-semibold leading-tight ${microFont}`} style={{ color: c.text }}>
+                  {labels[variant][i]}
+                </span>
+                <span
+                  className="rounded px-1.5 py-0.5 text-[8px] font-semibold"
+                  style={{ background: c.accent, color: c.accentText }}
+                >
+                  {tagPrice[variant][i]}
+                </span>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     );
   }
 
   if (variant === "saas") {
-    // Dashboard preview
+    // Crédible dashboard preview with KPIs + chart
     return (
-      <div className={`${blockSize} rounded-md border p-1.5`} style={{ borderColor: c.border, background: c.surface }}>
-        <div className="flex h-full items-end gap-0.5">
-          {[0.4, 0.7, 0.3, 0.85, 0.55, 0.95, 0.65, 0.8].map((h, i) => (
-            <div key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: c.accent, opacity: 0.6 + h * 0.4 }} />
+      <div className={`${large ? "min-h-[7rem]" : ""} rounded-md border ${large ? "p-3" : "p-1.5"}`} style={{ borderColor: c.border, background: c.surface }}>
+        <div className={`grid grid-cols-3 ${large ? "gap-2" : "gap-1"}`}>
+          {[
+            { k: "MRR", v: "84,2k€", d: "+18%" },
+            { k: "Leads", v: "1 248", d: "+24%" },
+            { k: "Conv.", v: "4,9%", d: "+0,8" },
+          ].map((kpi) => (
+            <div key={kpi.k} className={`rounded border ${large ? "p-2" : "p-1"}`} style={{ borderColor: c.border, background: `${c.bg}88` }}>
+              <div className={microFont} style={{ color: c.sub }}>{large ? kpi.k : ""}</div>
+              <div className={`font-bold ${large ? "text-base" : "text-[8px]"}`} style={{ color: c.text }}>{kpi.v}</div>
+              <div className={microFont} style={{ color: c.accent }}>{large ? kpi.d : "▲"}</div>
+            </div>
+          ))}
+        </div>
+        <div className={`mt-1.5 flex items-end gap-0.5 ${large ? "h-10" : "h-4"}`}>
+          {[0.4, 0.55, 0.45, 0.7, 0.6, 0.78, 0.65, 0.88, 0.72, 0.95, 0.82, 1].map((h, i) => (
+            <div key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: c.accent, opacity: 0.45 + h * 0.55 }} />
           ))}
         </div>
       </div>
     );
   }
 
-  if (variant === "realty") {
-    // Calculator card
-    return (
-      <div className={`${blockSize} rounded-md border p-2 flex flex-col justify-between`} style={{ borderColor: c.border, background: c.surface }}>
-        <span className={microFont} style={{ color: c.sub }}>Revenus estimés / an</span>
-        <span className={`font-bold ${large ? "text-2xl" : "text-[10px]"}`} style={{ color: c.text }}>32 400 €</span>
-        <div className="h-1 rounded-full" style={{ background: `${c.accent}33` }}>
-          <div className="h-full w-3/4 rounded-full" style={{ background: c.accent }} />
-        </div>
-      </div>
-    );
-  }
-
   if (variant === "school") {
-    // Module list
     return (
       <div className="flex flex-col gap-1">
         {["Module 1 — Mindset", "Module 2 — Acquisition", "Module 3 — Conversion"].map((m, i) => (
-          <div key={i} className="flex items-center justify-between rounded border px-1.5 py-1" style={{ borderColor: c.border, background: c.surface }}>
-            <span className={microFont} style={{ color: c.text }}>{large ? m : `M${i + 1}`}</span>
-            <span className={microFont} style={{ color: c.accent }}>✓</span>
+          <div key={i} className={`flex items-center justify-between rounded border ${large ? "px-3 py-2" : "px-1.5 py-1"}`} style={{ borderColor: c.border, background: c.surface }}>
+            <div className="flex items-center gap-2">
+              <span className={`flex items-center justify-center rounded ${large ? "h-6 w-6 text-[10px]" : "h-3 w-3 text-[5px]"} font-bold`} style={{ background: `${c.accent}25`, color: c.accent }}>{i + 1}</span>
+              <span className={microFont} style={{ color: c.text }}>{large ? m : `M${i + 1}`}</span>
+            </div>
+            <span className={microFont} style={{ color: c.accent }}>✓ Acquis</span>
           </div>
         ))}
       </div>
     );
   }
 
-  // coworking
+  // Fallback (no gallery available)
   return (
-    <div className={`${blockSize} grid grid-cols-2 gap-1`}>
-      {[0, 1].map((i) => (
-        <div key={i} className="relative overflow-hidden rounded border" style={{
-          borderColor: c.border,
-          background: `linear-gradient(${i === 0 ? 135 : 45}deg, ${c.accent}55, ${c.surface})`,
-        }}>
-          <div className="absolute bottom-1 left-1">
-            <span className={microFont} style={{ color: c.text }}>{i === 0 ? "Open space" : "Studios"}</span>
-          </div>
-        </div>
-      ))}
-    </div>
+    <div className={`${blockSize} rounded-md border`} style={{ borderColor: c.border, background: `linear-gradient(135deg, ${c.accent}30, ${c.surface})` }} />
   );
 };
 
