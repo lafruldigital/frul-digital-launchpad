@@ -348,15 +348,20 @@ const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; l
             background: `linear-gradient(135deg, ${c.accent}30, ${c.surface} 60%, ${c.bg})`,
           }}
         >
+          <img
+            src={landing.images.hero}
+            alt={landing.name}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div
-            className="absolute inset-0 opacity-25"
+            className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(${c.text}10 1px, transparent 1px), linear-gradient(90deg, ${c.text}10 1px, transparent 1px)`,
-              backgroundSize: large ? "24px 24px" : "8px 8px",
+              background: `linear-gradient(115deg, ${c.bg}f2 0%, ${c.bg}b5 38%, ${c.bg}40 70%, transparent 100%)`,
             }}
           />
           <div
-            className="absolute -right-6 -top-6 h-24 w-24 rounded-full blur-2xl"
+            className="absolute -right-8 -top-8 h-28 w-28 rounded-full blur-2xl"
             style={{ background: `${c.accent}55` }}
           />
           <div className={`relative flex h-full flex-col justify-between ${large ? "p-5" : "p-2"}`}>
