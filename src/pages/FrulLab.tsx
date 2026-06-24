@@ -522,7 +522,7 @@ const FrulLab = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact">
+                <Link to="/contact" state={{ reason: "premium", source: "FRUL'LAB — Passer au Premium" }}>
                   <Button variant="hero" size="lg" className="w-full mt-8 py-6 text-base glow-red">
                     Passer au Premium
                     <ArrowRight className="w-5 h-5 ml-2" />

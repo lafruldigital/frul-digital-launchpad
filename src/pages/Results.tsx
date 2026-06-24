@@ -253,7 +253,7 @@ const Results = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <Link to="/contact">
+            <Link to="/contact" state={{ reason: "audit", source: "Page Résultats — audit" }}>
               <Button variant="hero" size="lg" className="px-10 py-7 text-lg">
                 Obtenir mon audit gratuit
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -455,7 +455,7 @@ const Results = () => {
             <p className="text-base text-primary-foreground/60 mb-12">
               ⏰ Places limitées chaque mois — ne manquez pas votre opportunité.
             </p>
-            <Link to="/contact">
+            <Link to="/contact" state={{ reason: "general", source: "Page Résultats — CTA final" }}>
               <Button
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-heading font-bold px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl shadow-2xl transition-all duration-300 hover:scale-105"
