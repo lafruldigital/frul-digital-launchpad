@@ -26,7 +26,7 @@ export const AuthoritySection = () => {
         </AnimatedSection>
 
         {/* Partner badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 mobile-carousel mobile-carousel-xs">
           {badges.map((b, i) => (
             <AnimatedSection key={b.label} delay={i * 0.1}>
               <div className="bg-surface-dark border border-primary/10 rounded-2xl p-6 text-center card-hover">

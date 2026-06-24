@@ -141,7 +141,7 @@ export const TestimonialsSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+              className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mobile-carousel"
             >
               {currentTestimonials.map((t) => (
                 <div

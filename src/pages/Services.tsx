@@ -492,7 +492,7 @@ const Services = () => {
 
           {/* Stats */}
           <AnimatedSection delay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-20 mobile-carousel mobile-carousel-xs">
               {[
                 { value: 250, suffix: "+", label: "Campagnes lancées" },
                 { value: 120, suffix: "+", label: "Entreprises accompagnées" },
@@ -512,7 +512,7 @@ const Services = () => {
           </AnimatedSection>
 
           {/* Mini case studies */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mobile-carousel">
             {[
               {
                 company: "E-commerce Mode",

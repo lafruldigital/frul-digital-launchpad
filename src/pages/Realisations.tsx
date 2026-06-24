@@ -179,7 +179,7 @@ const Realisations = () => {
           </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto mobile-carousel mobile-carousel-xs">
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -218,7 +218,7 @@ const Realisations = () => {
 
       {/* Grid */}
       <section className="container mx-auto px-4 pb-20">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mobile-carousel">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
@@ -284,7 +284,7 @@ const Realisations = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mobile-carousel mobile-carousel-xs">
           {flyers.map((f, i) => (
             <motion.div
               key={f.name}

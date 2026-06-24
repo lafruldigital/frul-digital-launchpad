@@ -273,7 +273,7 @@ const Process = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mobile-carousel mobile-carousel-xs">
             {[
               { icon: FileText, title: "Reporting régulier", desc: "Rapports clairs sur vos performances chaque mois." },
               { icon: Eye, title: "Accès aux données", desc: "Transparence totale sur toutes les métriques." },
@@ -351,7 +351,7 @@ const Process = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mobile-carousel mobile-carousel-xs">
             {[
               { icon: MapPin, title: "Entreprises locales", desc: "Restaurants, cliniques, commerces — développez votre clientèle locale." },
               { icon: ShoppingCart, title: "E-commerce", desc: "Boutiques en ligne qui veulent booster leurs ventes et leur acquisition." },

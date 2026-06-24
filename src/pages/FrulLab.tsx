@@ -198,7 +198,7 @@ const FrulLab = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mobile-carousel">
             {[
               { icon: Scan, title: "Analyse automatique", desc: "Scan complet de votre présence en ligne en quelques minutes." },
               { icon: Gauge, title: "Score de maturité", desc: "Un score clair et actionnable pour comprendre votre niveau digital." },
@@ -563,7 +563,7 @@ const FrulLab = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mobile-carousel mobile-carousel-xs">
             {[
               { icon: Search, title: "Moteur de diagnostic", desc: "Analysez n'importe quelle entreprise en quelques clics." },
               { icon: Users, title: "Qualification prospects", desc: "Identifiez instantanément le niveau de maturité digitale." },
