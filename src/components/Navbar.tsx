@@ -1,6 +1,6 @@
 import { Menu, X, ChevronDown, ArrowUpRight, User, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -105,6 +105,51 @@ export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileSection, setMobileSection] = useState<string | null>("Services");
   const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
+
+  const mobilePanelVariants = useMemo<Variants>(() => {
+    if (prefersReducedMotion) {
+      return { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
+    }
+    return {
+      hidden: { opacity: 0, x: "100%" },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: { type: "spring", damping: 28, stiffness: 260, opacity: { duration: 0.2 } },
+      },
+      exit: { opacity: 0, x: "100%", transition: { duration: 0.25, ease: "easeIn" } },
+    };
+  }, [prefersReducedMotion]);
+
+  const mobileListContainerVariants = useMemo<Variants>(() => {
+    if (prefersReducedMotion) {
+      return { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
+    }
+    return {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.05, delayChildren: 0.08 },
+      },
+      exit: { opacity: 0, transition: { duration: 0.15 } },
+    };
+  }, [prefersReducedMotion]);
+
+  const mobileListItemVariants = useMemo<Variants>(() => {
+    if (prefersReducedMotion) {
+      return { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
+    }
+    return {
+      hidden: { opacity: 0, y: 14 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { type: "spring", damping: 24, stiffness: 280 },
+      },
+      exit: { opacity: 0, y: 8, transition: { duration: 0.15 } },
+    };
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -422,30 +467,32 @@ export const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            variants={mobilePanelVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="lg:hidden fixed inset-0 top-0 z-40 bg-[hsl(0_0%_4%/0.96)] backdrop-blur-xl pt-24 px-4 overflow-y-auto"
           >
             <motion.div
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              variants={mobileListContainerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
               className="max-w-md mx-auto pb-12 relative"
             >
-              <button
+              <motion.button
                 type="button"
                 onClick={() => setMobileOpen(false)}
+                variants={mobileListItemVariants}
                 className="absolute -top-2 right-0 inline-flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] text-surface-dark-foreground hover:border-primary/40 hover:text-primary transition-colors"
                 aria-label="Fermer le menu"
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.92 }}
               >
                 <X size={18} />
-              </button>
+              </motion.button>
 
-              <ul className="space-y-1 pt-12">
-                <li>
+              <motion.ul className="space-y-1 pt-12" variants={mobileListContainerVariants} initial="hidden" animate="visible" exit="exit">
+                <motion.li variants={mobileListItemVariants}>
                   <Link
                     to="/"
                     onClick={() => setMobileOpen(false)}
@@ -458,13 +505,13 @@ export const Navbar = () => {
                   >
                     Accueil
                   </Link>
-                </li>
+                </motion.li>
 
                 {navItems.map((item) => {
                   if (item.type === "link") {
                     const active = isActiveItem(location.pathname, item);
                     return (
-                      <li key={item.label}>
+                      <motion.li key={item.label} variants={mobileListItemVariants}>
                         <Link
                           to={item.href}
                           onClick={() => setMobileOpen(false)}
@@ -477,12 +524,12 @@ export const Navbar = () => {
                         >
                           {item.label}
                         </Link>
-                      </li>
+                      </motion.li>
                     );
                   }
                   const open = mobileSection === item.label;
                   return (
-                    <li key={item.label}>
+                    <motion.li key={item.label} variants={mobileListItemVariants}>
                       <button
                         type="button"
                         onClick={() => setMobileSection(open ? null : item.label)}
@@ -526,12 +573,12 @@ export const Navbar = () => {
                           </motion.ul>
                         )}
                       </AnimatePresence>
-                    </li>
+                    </motion.li>
                   );
                 })}
-              </ul>
+              </motion.ul>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <motion.div variants={mobileListItemVariants} className="mt-6 grid grid-cols-2 gap-3">
                 <Link to="/login" onClick={() => setMobileOpen(false)}>
                   <Button
                     variant="outline"
@@ -547,7 +594,7 @@ export const Navbar = () => {
                     <ArrowUpRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
