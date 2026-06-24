@@ -15,6 +15,10 @@ type LandingDemo = {
   strengths: string[];
   structure: string[];
   variant: "auto" | "food" | "realty" | "school" | "beauty" | "saas" | "fitness" | "travel" | "japan" | "coworking";
+  images: {
+    hero: string;
+    gallery?: [string, string, string];
+  };
   palette: {
     bg: string;
     surface: string;
