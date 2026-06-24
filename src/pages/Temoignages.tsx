@@ -196,7 +196,7 @@ const Temoignages = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mobile-carousel">
             {featured.map((t, i) => (
               <AnimatedSection key={t.name} delay={i * 0.1}>
                 <div className="relative bg-surface-dark border border-primary/10 rounded-3xl p-8 md:p-10 flex flex-col justify-between h-full group hover:border-primary/25 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.08)]">
@@ -275,7 +275,7 @@ const Temoignages = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mobile-carousel mobile-carousel-xs">
             {clientResults.map((cr, i) => (
               <AnimatedSection key={cr.name} delay={i * 0.1}>
                 <div className="bg-surface-dark border border-primary/10 rounded-2xl p-7 text-center card-hover group h-full flex flex-col justify-between">
@@ -358,7 +358,7 @@ const Temoignages = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mobile-carousel mobile-carousel-xs">
             {whyStay.map((w, i) => (
               <AnimatedSection key={w.title} delay={i * 0.1}>
                 <div className="bg-surface-dark border border-primary/10 rounded-2xl p-7 h-full card-hover group">

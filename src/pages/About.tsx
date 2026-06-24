@@ -119,7 +119,7 @@ const About = () => {
       {/* ── STATS ── */}
       <section className="section-dark py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mobile-carousel mobile-carousel-xs">
             <StatCard value={150} suffix="+" label="Clients satisfaits" delay={0} />
             <StatCard value={200} suffix="+" label="Projets livrés" delay={0.1} />
             <StatCard value={250} suffix="%" label="ROI moyen" delay={0.2} />
@@ -178,7 +178,7 @@ const About = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mobile-carousel">
             {/* Omar à gauche */}
             <FounderCard
               name="Omar (Frulux)"
@@ -247,7 +247,7 @@ const About = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mobile-carousel mobile-carousel-xs">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.1}>
                 <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center h-full">
@@ -288,7 +288,7 @@ const About = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mobile-carousel mobile-carousel-xs">
             {trustBlocks.map((t, i) => (
               <AnimatedSection key={t.title} delay={i * 0.1}>
                 <div className="bg-surface-dark border border-primary/10 rounded-2xl p-7 card-hover h-full">

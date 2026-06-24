@@ -137,7 +137,7 @@ const CaseStudyBlock = ({ cs, index }: { cs: (typeof caseStudies)[0]; index: num
             <span className="text-surface-dark-foreground/70 font-medium">Problématique :</span> {cs.problem}
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mobile-carousel">
             <div>
               <h4 className="text-sm font-heading font-semibold text-primary mb-3 uppercase tracking-wider">Objectifs</h4>
               <ul className="space-y-2">
@@ -166,7 +166,7 @@ const CaseStudyBlock = ({ cs, index }: { cs: (typeof caseStudies)[0]; index: num
         {/* Results */}
         <div className="p-8 md:p-12 border-b border-primary/5">
           <h4 className="text-sm font-heading font-semibold text-primary mb-6 uppercase tracking-wider">Résultats</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mobile-carousel mobile-carousel-xs">
             {cs.results.map((r) => (
               <div key={r.label} className="text-center">
                 <div className={`text-3xl md:text-4xl font-heading font-bold ${r.color} mb-1`}>{r.value}</div>
@@ -179,7 +179,7 @@ const CaseStudyBlock = ({ cs, index }: { cs: (typeof caseStudies)[0]; index: num
         {/* Before / After */}
         <div className="p-8 md:p-12 border-b border-primary/5">
           <h4 className="text-sm font-heading font-semibold text-primary mb-6 uppercase tracking-wider">Avant / Après</h4>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mobile-carousel">
             <div className="bg-surface-darker/80 rounded-xl p-6 border border-primary/5">
               <span className="text-xs font-semibold text-surface-dark-foreground/30 uppercase tracking-wider">Avant</span>
               <div className="space-y-3 mt-4">
@@ -266,7 +266,7 @@ const Results = () => {
       {/* ── STATS BAR ── */}
       <section className="py-16 md:py-20 border-y border-primary/10 section-darker">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mobile-carousel mobile-carousel-xs">
             {[
               { value: 340, suffix: "%", label: "Croissance moyenne" },
               { value: 12, suffix: "M+", label: "Impressions générées" },
@@ -317,7 +317,7 @@ const Results = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mobile-carousel mobile-carousel-xs">
             {[
               { icon: Share2, title: "Social Media", result: "+420%", desc: "engagement moyen" },
               { icon: Megaphone, title: "Publicité Ads", result: "x5.2", desc: "ROAS moyen" },
@@ -389,7 +389,7 @@ const Results = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mobile-carousel">
             {[
               { name: "Pierre Martin", role: "DG — TechVision", quote: "ROI de x4 en 3 mois. L'équipe la plus data-driven avec laquelle j'ai travaillé.", rating: 5 },
               { name: "Amina Bensaid", role: "CMO — GreenLux", quote: "Notre acquisition client a été divisée par 2 tout en doublant le volume de leads.", rating: 5 },
