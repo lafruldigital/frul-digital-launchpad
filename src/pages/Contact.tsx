@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnimatedSection, CountUp } from "@/components/AnimatedSection";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Zap, Users, Target, Cpu, Mail, Phone, Clock, ShieldCheck, Lock, Star,
   ChevronDown, ArrowRight, Send, Sparkles, MessageSquare, BarChart3, Calendar
@@ -59,20 +59,24 @@ const FaqItem = ({ q, a, delay }: { q: string; a: string; delay: number }) => {
 };
 
 /* ───── Quick choice card ───── */
-const ChoiceCard = ({ icon: Icon, title, text, cta, delay }: {
-  icon: React.ElementType; title: string; text: string; cta: string; delay: number;
+const ChoiceCard = ({ icon: Icon, title, text, cta, delay, onSelect }: {
+  icon: React.ElementType; title: string; text: string; cta: string; delay: number; onSelect: () => void;
 }) => (
   <AnimatedSection delay={delay} className="h-full">
-    <div className="bg-surface-darker border border-primary/10 rounded-3xl p-6 sm:p-8 md:p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
-      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.3)] transition-shadow">
-        <Icon className="w-8 h-8 text-primary" />
+    <button type="button" onClick={onSelect} className="text-left w-full h-full">
+      <div className="bg-surface-darker border border-primary/10 rounded-3xl p-6 sm:p-8 md:p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.3)] transition-shadow">
+          <Icon className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="text-2xl font-heading font-bold mb-4">{title}</h3>
+        <p className="text-surface-dark-foreground/55 leading-relaxed mb-8 flex-1">{text}</p>
+        <Button variant="hero" className="w-full group/btn" asChild={false}>
+          <span className="inline-flex items-center justify-center w-full">
+            {cta} <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+          </span>
+        </Button>
       </div>
-      <h3 className="text-2xl font-heading font-bold mb-4">{title}</h3>
-      <p className="text-surface-dark-foreground/55 leading-relaxed mb-8 flex-1">{text}</p>
-      <Button variant="hero" className="w-full group/btn">
-        {cta} <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-      </Button>
-    </div>
+    </button>
   </AnimatedSection>
 );
 
@@ -96,6 +100,75 @@ const whyBlocks = [
 const Contact = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
+  const location = useLocation();
+
+  type ContactState = {
+    reason?: "expert" | "audit" | "premium" | "realisation" | "service" | "temoignage" | "general";
+    project?: string;
+    service?: string;
+    source?: string;
+  };
+
+  const stateFromNav = (location.state || null) as ContactState | null;
+  const [prefill, setPrefill] = useState<ContactState | null>(stateFromNav);
+  const [formKey, setFormKey] = useState(0);
+
+  const objectifMap: Record<NonNullable<ContactState["reason"]>, string> = {
+    expert: "autre",
+    audit: "visibilite",
+    premium: "autre",
+    realisation: "branding",
+    service: "leads",
+    temoignage: "leads",
+    general: "autre",
+  };
+
+  const buildMessage = (s: ContactState | null): string => {
+    if (!s || !s.reason) return "";
+    const ctxProject = s.project ? ` "${s.project}"` : "";
+    const ctxService = s.service ? ` "${s.service}"` : "";
+    const ctxSource = s.source ? ` (depuis : ${s.source})` : "";
+    switch (s.reason) {
+      case "expert":
+        return `Bonjour,\n\nJe souhaite échanger avec un expert FRUL'DIGITAL pour discuter de mes enjeux digitaux${ctxSource}.\n\nMerci de me recontacter pour fixer un créneau.`;
+      case "audit":
+        return `Bonjour,\n\nJe souhaite recevoir un audit gratuit et personnalisé de ma présence digitale${ctxSource}.\n\nVoici un aperçu de mon activité :`;
+      case "premium":
+        return `Bonjour,\n\nJe souhaite passer au plan Premium FRUL'LAB${ctxSource} et être accompagné par votre équipe.\n\nPouvez-vous me présenter les prochaines étapes ?`;
+      case "realisation":
+        return `Bonjour,\n\nJ'ai découvert votre réalisation${ctxProject} et je souhaite discuter d'un projet similaire avec votre équipe.\n\nVoici quelques précisions sur mon besoin :`;
+      case "service":
+        return `Bonjour,\n\nJe suis intéressé(e) par votre service${ctxService} et je souhaite obtenir plus d'informations${ctxSource}.\n\nVoici le contexte de mon projet :`;
+      case "temoignage":
+        return `Bonjour,\n\nVos témoignages clients m'ont convaincu(e) et je souhaite démarrer un projet avec FRUL'DIGITAL${ctxSource}.\n\nVoici le contexte de mon besoin :`;
+      default:
+        return `Bonjour,\n\nJe souhaite être recontacté(e) par FRUL'DIGITAL${ctxSource}.`;
+    }
+  };
+
+  const defaultObjectif = useMemo(
+    () => (prefill?.reason ? objectifMap[prefill.reason] : ""),
+    [prefill]
+  );
+  const defaultMessage = useMemo(() => buildMessage(prefill), [prefill]);
+
+  const scrollToForm = () => {
+    const el = document.getElementById("contact-form");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const triggerPrefill = (next: ContactState) => {
+    setPrefill(next);
+    setFormKey((k) => k + 1);
+    setTimeout(scrollToForm, 80);
+  };
+
+  useEffect(() => {
+    if (stateFromNav?.reason) {
+      setTimeout(scrollToForm, 250);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -191,7 +264,7 @@ const Contact = () => {
             </h2>
           </AnimatedSection>
 
-          <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6">
+          <form key={formKey} onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <AnimatedSection delay={0}>
                 <input type="text" name="nom" placeholder="Nom *" required className={inputClass} maxLength={100} />
@@ -223,7 +296,7 @@ const Contact = () => {
                 </select>
               </AnimatedSection>
               <AnimatedSection delay={0.3}>
-                <select name="objectif" className={inputClass + " appearance-none"} defaultValue="">
+                <select name="objectif" className={inputClass + " appearance-none"} defaultValue={defaultObjectif}>
                   <option value="" disabled>Objectif principal</option>
                   <option value="leads">Générer des leads</option>
                   <option value="ventes">Augmenter les ventes</option>
@@ -234,7 +307,15 @@ const Contact = () => {
               </AnimatedSection>
             </div>
             <AnimatedSection delay={0.35}>
-              <textarea name="message" placeholder="Votre message *" required rows={5} className={inputClass + " resize-none"} maxLength={1000} />
+              <textarea
+                name="message"
+                placeholder="Votre message *"
+                required
+                rows={6}
+                className={inputClass + " resize-none"}
+                maxLength={1000}
+                defaultValue={defaultMessage}
+              />
             </AnimatedSection>
             <AnimatedSection delay={0.4}>
               <Button
