@@ -13,6 +13,24 @@ import tunnelAcquisition from "@/assets/realisations/tunnel-acquisition.png.asse
 import frulCarsLogo from "@/assets/logo-gallery/frul-cars.jpg.asset.json";
 import frulImmoLogo from "@/assets/logo-gallery/frul-immo.png.asset.json";
 import fruluxLogo from "@/assets/logo-gallery/frulux.jpg.asset.json";
+import smashDistrictFlyer from "@/assets/flyers/smash-district-flyer.png.asset.json";
+import chicknFireFlyer from "@/assets/flyers/chickn-fire-flyer.png.asset.json";
+import formaHabitatFlyer from "@/assets/flyers/forma-habitat-flyer.png.asset.json";
+import atelierMietteFlyer from "@/assets/flyers/atelier-miette-flyer.png.asset.json";
+import mininovaFlyer from "@/assets/flyers/mininova-flyer.png.asset.json";
+import sentraSecureFlyer from "@/assets/flyers/sentra-secure-flyer.png.asset.json";
+import pulseOneFlyer from "@/assets/flyers/pulse-one-flyer.png.asset.json";
+import helionPatrimoineFlyer from "@/assets/flyers/helion-patrimoine-flyer.png.asset.json";
+import azuraEscapeFlyer from "@/assets/flyers/azura-escape-flyer.png.asset.json";
+import noxAtelierFlyer from "@/assets/flyers/nox-atelier-flyer.png.asset.json";
+import bloomoraAtelierFlyer from "@/assets/flyers/bloomora-atelier-flyer.png.asset.json";
+import kintaroLabFlyer from "@/assets/flyers/kintaro-lab-flyer.png.asset.json";
+import aetherMetricsFlyer from "@/assets/flyers/aether-metrics-flyer.png.asset.json";
+import lunaNoirFlyer from "@/assets/flyers/luna-noir-flyer.png.asset.json";
+import veloraDriveFlyer from "@/assets/flyers/velora-drive-flyer.png.asset.json";
+import nuveaLivingFlyer from "@/assets/flyers/nuvea-living-flyer.png.asset.json";
+import metaAdsSaasFlyer from "@/assets/flyers/meta-ads-saas-flyer.png.asset.json";
+import socialRestoLyonFlyer from "@/assets/flyers/social-resto-lyon-flyer.png.asset.json";
 
 const categories = ["Tous", "Projets signature", "Sites web", "Publicité", "Réseaux sociaux", "Identité", "Expérience"];
 
@@ -105,6 +123,29 @@ const stats = [
   { label: "ROAS moyen", value: "x4.2" },
   { label: "Satisfaction", value: "4.9/5" },
   { label: "Secteurs couverts", value: "20+" },
+];
+
+type Flyer = { name: string; sector: string; image: string };
+
+const flyers: Flyer[] = [
+  { name: "Smash District", sector: "Fast Food", image: smashDistrictFlyer.url },
+  { name: "Chick'n Fire", sector: "Fast Food", image: chicknFireFlyer.url },
+  { name: "Atelier Miette", sector: "Boulangerie & lifestyle", image: atelierMietteFlyer.url },
+  { name: "Forma Habitat", sector: "Immobilier", image: formaHabitatFlyer.url },
+  { name: "Hélion Patrimoine", sector: "Finance & patrimoine", image: helionPatrimoineFlyer.url },
+  { name: "Nuvéa Living", sector: "Immobilier d'exception", image: nuveaLivingFlyer.url },
+  { name: "Mininova", sector: "Beauté & soin", image: mininovaFlyer.url },
+  { name: "Bloomora Atelier", sector: "Beauté & lifestyle", image: bloomoraAtelierFlyer.url },
+  { name: "Luna Noir", sector: "Événementiel premium", image: lunaNoirFlyer.url },
+  { name: "Azura Escape", sector: "Voyage & hospitality", image: azuraEscapeFlyer.url },
+  { name: "Nox Atelier", sector: "Mode & lifestyle", image: noxAtelierFlyer.url },
+  { name: "Sentra Secure", sector: "Services & sécurité", image: sentraSecureFlyer.url },
+  { name: "Pulse One", sector: "Fitness & coaching", image: pulseOneFlyer.url },
+  { name: "Kintaro Lab", sector: "Tech & SaaS", image: kintaroLabFlyer.url },
+  { name: "Aether Metrics", sector: "SaaS analytics", image: aetherMetricsFlyer.url },
+  { name: "Pulse Ads SaaS", sector: "Acquisition Meta Ads", image: metaAdsSaasFlyer.url },
+  { name: "Velora Drive", sector: "Automobile premium", image: veloraDriveFlyer.url },
+  { name: "Maison Lyon Social", sector: "Restaurant gastronomique", image: socialRestoLyonFlyer.url },
 ];
 
 const Realisations = () => {
@@ -230,6 +271,8 @@ const Realisations = () => {
 
       {/* CTA */}
       <section className="container mx-auto px-4 pb-24">
+        {/* placeholder */}
+      </section>
         <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-surface-dark to-surface-darker p-10 md:p-16 text-center">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/15 blur-[100px] rounded-full" />
           <div className="relative">
