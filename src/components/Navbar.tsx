@@ -105,6 +105,54 @@ export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileSection, setMobileSection] = useState<string | null>("Services");
   const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
+
+  const mobilePanelVariants = useMemo(
+    () =>
+      prefersReducedMotion
+        ? { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } }
+        : {
+            hidden: { opacity: 0, x: "100%" },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { type: "spring", damping: 28, stiffness: 260, opacity: { duration: 0.2 } },
+            },
+            exit: { opacity: 0, x: "100%", transition: { duration: 0.25, ease: "easeIn" } },
+          },
+    [prefersReducedMotion],
+  );
+
+  const mobileListContainerVariants = useMemo(
+    () =>
+      prefersReducedMotion
+        ? { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } }
+        : {
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.05, delayChildren: 0.08 },
+            },
+            exit: { opacity: 0, transition: { duration: 0.15 } },
+          },
+    [prefersReducedMotion],
+  );
+
+  const mobileListItemVariants = useMemo(
+    () =>
+      prefersReducedMotion
+        ? { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } }
+        : {
+            hidden: { opacity: 0, y: 14 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { type: "spring", damping: 24, stiffness: 280 },
+            },
+            exit: { opacity: 0, y: 8, transition: { duration: 0.15 } },
+          },
+    [prefersReducedMotion],
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
