@@ -269,10 +269,59 @@ const Realisations = () => {
         </div>
       </section>
 
+      {/* Affiches & Flyers */}
+      <section className="container mx-auto px-4 pb-20">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-[11px] uppercase tracking-[0.25em] text-primary mb-5">
+            <Sparkles className="w-3 h-3" /> Ad Gallery
+          </span>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-surface-dark-foreground mb-4">
+            Affiches & <span className="gradient-text">Flyers</span>
+          </h2>
+          <p className="text-surface-dark-foreground/60 text-base md:text-lg leading-relaxed">
+            Une sélection d'affiches publicitaires fictives conçues pour différents secteurs : food, immobilier,
+            beauté, événementiel, fitness, tech, automobile. Cliquez sur une création pour en parler avec nous.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {flyers.map((f, i) => (
+            <motion.div
+              key={f.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: (i % 10) * 0.04 }}
+            >
+              <Link
+                to="/contact"
+                state={{ reason: "realisation", project: `Affiche ${f.name} — ${f.sector}`, source: "Page Réalisations — Ad Gallery" }}
+                className="group block relative overflow-hidden rounded-2xl border border-white/10 bg-surface-dark/70 hover:border-primary/40 hover:shadow-[0_18px_50px_-20px_hsl(0_85%_50%/0.5)] transition-all duration-500"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-surface-darker to-black">
+                  <img
+                    src={f.image}
+                    alt={`Affiche ${f.name}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-90" />
+                  <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full text-[9px] uppercase tracking-[0.18em] bg-black/60 backdrop-blur border border-white/10 text-white/80">
+                    Affiche
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <h3 className="text-white font-heading font-semibold text-sm leading-tight">{f.name}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-white/60 mt-1">{f.sector}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="container mx-auto px-4 pb-24">
-        {/* placeholder */}
-      </section>
         <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-surface-dark to-surface-darker p-10 md:p-16 text-center">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/15 blur-[100px] rounded-full" />
           <div className="relative">
