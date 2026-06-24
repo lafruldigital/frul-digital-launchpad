@@ -45,7 +45,7 @@ export const CaseStudiesSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mobile-carousel">
           {cases.map((c, i) => (
             <AnimatedSection key={c.name} delay={i * 0.15}>
               <div className="group bg-surface-darker border border-primary/10 rounded-2xl p-8 card-hover h-full">

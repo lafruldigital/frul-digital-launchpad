@@ -104,7 +104,7 @@ export const RealisationsPreviewSection = () => (
         </AnimatedSection>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mobile-carousel">
         {projects.map((p, i) => {
           return (
             <AnimatedSection key={p.name} delay={(i % 3) * 0.1}>
@@ -444,7 +444,7 @@ const IdentityPortfolioModal = ({ open, onOpenChange }: { open: boolean; onOpenC
             </div>
 
             <div className="px-4 pb-10 pt-4 md:px-8 md:pb-12 md:pt-6">
-              <div className="grid auto-rows-fr grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid auto-rows-fr grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mobile-carousel mobile-carousel-xs">
                 {visibleLogos.map((logo, index) => (
                   <motion.button
                     key={logo.name}

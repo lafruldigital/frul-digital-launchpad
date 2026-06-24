@@ -39,7 +39,7 @@ export const WhyUsSection = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-8 mobile-carousel">
             {features.map((f, i) => (
               <AnimatedSection key={f.title} delay={i * 0.1}>
                 <div className="bg-surface-darker border border-primary/10 rounded-2xl p-7 card-hover">

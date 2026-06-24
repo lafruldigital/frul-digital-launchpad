@@ -21,7 +21,7 @@ export const CredibilityBar = () => (
         </h2>
       </AnimatedSection>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mobile-carousel mobile-carousel-xs">
         {credibility.map((c, i) => (
           <AnimatedSection key={c.label} delay={(i % 3) * 0.08}>
             <motion.div

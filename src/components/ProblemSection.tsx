@@ -25,7 +25,7 @@ export const ProblemSection = () => (
         </p>
       </AnimatedSection>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mobile-carousel">
         {problems.map((p, i) => (
           <AnimatedSection key={p.title} delay={i * 0.1}>
             <motion.div

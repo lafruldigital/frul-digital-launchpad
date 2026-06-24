@@ -45,7 +45,7 @@ export const ServicesSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mobile-carousel">
           {services.map((s, i) => (
             <AnimatedSection key={s.title} delay={i * 0.1}>
               <motion.div
