@@ -263,7 +263,7 @@ const landings: LandingDemo[] = [
 /* ---------- Mini-mockup component ---------- */
 
 const LandingMiniMockup = ({ landing, large = false }: { landing: LandingDemo; large?: boolean }) => {
-  const { palette: c, variant } = landing;
+  const { palette: c } = landing;
   // Scaling presets
   const s = large
     ? {
