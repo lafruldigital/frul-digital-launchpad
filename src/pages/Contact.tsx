@@ -230,32 +230,22 @@ const Contact = () => {
               text="Recevez une analyse claire de votre présence digitale et découvrez vos opportunités de croissance."
               cta="Lancer mon audit"
               delay={0}
+              onSelect={() => triggerPrefill({ reason: "audit", source: "Carte « Audit gratuit »" })}
             />
-            <AnimatedSection delay={0.1} className="h-full">
-              <a
-                href="https://calendly.com/lafrul-digital/rendez-vous"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <div className="bg-surface-darker border border-primary/10 rounded-3xl p-6 sm:p-8 md:p-10 h-full flex flex-col card-hover group hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(0_85%_50%/0.12)]">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_hsl(0_85%_50%/0.3)] transition-shadow">
-                    <MessageSquare className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-heading font-bold mb-4">Parler à un expert</h3>
-                  <p className="text-surface-dark-foreground/55 leading-relaxed mb-8 flex-1">Un échange rapide pour comprendre vos enjeux et identifier les meilleures stratégies.</p>
-                  <Button variant="hero" className="w-full group/btn">
-                    Prendre rendez-vous <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </a>
-            </AnimatedSection>
+            <ChoiceCard
+              icon={MessageSquare}
+              title="Parler à un expert"
+              text="Un échange rapide pour comprendre vos enjeux et identifier les meilleures stratégies."
+              cta="Remplir ma demande"
+              delay={0.1}
+              onSelect={() => triggerPrefill({ reason: "expert", source: "Carte « Parler à un expert »" })}
+            />
           </div>
         </div>
       </section>
 
       {/* ── FORMULAIRE ── */}
-      <section className="section-darker py-24 md:py-32">
+      <section id="contact-form" className="section-darker py-24 md:py-32 scroll-mt-24">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-14">
             <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Formulaire</span>
@@ -405,11 +395,10 @@ const Contact = () => {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <a
-                href="https://calendly.com/lafrul-digital/rendez-vous"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
+              <button
+                type="button"
+                onClick={() => triggerPrefill({ reason: "expert", source: "Bloc « Rendez-vous »" })}
+                className="block h-full w-full text-left"
               >
                 <div className="bg-surface-dark border border-primary/10 rounded-2xl p-8 card-hover text-center h-full hover:border-primary/30 hover:shadow-[0_0_24px_hsl(0_85%_50%/0.15)] transition-all duration-300">
                   <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -417,10 +406,10 @@ const Contact = () => {
                   </div>
                   <h3 className="font-heading font-semibold mb-2">Rendez-vous</h3>
                   <span className="text-primary hover:text-primary/80 transition-colors text-sm">
-                    Réserver un créneau
+                    Remplir ma demande
                   </span>
                 </div>
-              </a>
+              </button>
             </AnimatedSection>
           </div>
         </div>
