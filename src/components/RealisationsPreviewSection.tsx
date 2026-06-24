@@ -83,7 +83,7 @@ const projects = [
   { name: "FRUL'CARS", type: "Automobile", benefit: "Site vitrine + catalogue véhicules pour concessionnaire premium.", tone: "from-red-600/30 to-rose-900/20", href: "https://frulcars.fr", logo3d: true as const },
   { name: "FRUL'IMMO", type: "Immobilier", benefit: "Site vitrine premium pour agence immobilière haut de gamme.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulimmo.fr", logo3d: true as const, logoUrl: logoFrulImmo.url, domain: "frulimmo.fr" },
   { name: "FRULUX", type: "Blog Connecté", benefit: "Plateforme éditoriale premium mêlant culture, lifestyle et tech.", tone: "from-red-600/30 to-zinc-900/30", href: "https://frulux.fr", logo3d: true as const, logoUrl: fruluxLogo.url, domain: "frulux.fr" },
-  { name: "Restaurant Premium", type: "Site & contenu", benefit: "Expérience digitale qui inspire confiance.", tone: "from-amber-500/20 to-rose-900/20" },
+  { name: "Active Theory", type: "Création immersive", benefit: "Notre création la plus poussée : une expérience WebGL premium aux frontières du digital.", tone: "from-blue-900/30 to-slate-900/30", href: "https://activetheory.net/", imageUrl: "/activetheory-preview.png", domain: "activetheory.net" },
   { name: "Identité Visuelle", type: "Logo & système graphique", benefit: "Une marque reconnaissable en 3 secondes.", tone: "from-rose-500/25 to-zinc-900/30", portfolioModal: true as const },
   { name: "Landing Page", type: "Tunnel de conversion", benefit: "Visiteurs transformés en prospects qualifiés.", tone: "from-red-500/25 to-fuchsia-900/20", landingLab: true as const },
 ];
@@ -229,6 +229,32 @@ const ProjectCard = ({ project: p }: { project: Project }) => {
                       <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Food</span>
                       <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Immo</span>
                       <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-primary/90">+6</span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : "imageUrl" in p && p.imageUrl ? (
+              <>
+                <img
+                  src={p.imageUrl}
+                  alt={`${p.name} — aperçu de la création immersive`}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30" />
+                <div className="absolute inset-0 px-5 py-5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/80">
+                    <span className="drop-shadow-md">Création immersive</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary/90 backdrop-blur-md">
+                      <ExternalLink className="h-3 w-3" /> Visiter
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.24em] text-white/80">
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">WebGL</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Motion</span>
+                      <span className="rounded-full border border-white/15 bg-black/40 backdrop-blur-sm px-2 py-0.5">Premium</span>
+                      <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-primary/90">↗ Externe</span>
                     </div>
                   </div>
                 </div>
