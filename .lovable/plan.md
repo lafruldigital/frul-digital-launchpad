@@ -1,59 +1,73 @@
-## Objectif
+# Espace Client & Espace Admin — Frul'digital
 
-Sortir le site de l'aspect "générique" en ajoutant une couche de décor ambiant cinématique présente sur toutes les pages (desktop + mobile, allégée), sans toucher au contenu existant ni casser la structure publique/SaaS.
+## Vue d'ensemble
+Mise en place d'un système complet de tickets/dossiers clients avec messagerie temps réel, classé par les 10 services Frul'digital, plus un back-office d'administration avec workflow de clôture/SAV.
 
-## Concept créatif
+## 1. Navigation & Authentification
 
-Une atmosphère "studio sombre & braise rouge" cohérente avec l'identité FRUL'DIGITAL :
+- Ajout dans `Navbar.tsx` (desktop + mobile) de deux boutons : **Connexion** et **S'inscrire** (style rouge accentué).
+- Pages dédiées : `/connexion` et `/inscription` (refonte / réutilisation des pages Login/Signup existantes, design dark + accents rouges).
+- Sous le formulaire de connexion : lien discret **"Espace administrateur"** → ouvre un modal/page dédié avec un second formulaire qui vérifie les identifiants codés en dur côté Edge Function (pas exposés au client) :
+  - `lafrul.digital@gmail.com` / `KoffietFrulux229212`
+  - En cas de succès, attribution du rôle `admin` au compte (via table `user_roles` + fonction `has_role`) puis redirection vers `/admin`.
 
-- une nappe lumineuse rouge qui respire doucement derrière le contenu
-- des particules/étincelles très discrètes qui flottent
-- une grille technique très estompée (signature "digital")
-- un grain subtil pour casser le côté plat
-- un halo qui suit légèrement le curseur (desktop uniquement)
+## 2. Modèle de données (Lovable Cloud / Supabase)
 
-Le tout en couche fixe `pointer-events-none` derrière le contenu — aucune interaction ni lecture ne sont impactées.
+Migration unique avec GRANTs + RLS :
 
-## Composants à créer
+- **enum `app_role`** : `admin`, `client`
+- **enum `service_category`** : 10 valeurs strictes correspondant aux services
+- **enum `request_status`** : `open`, `in_progress`, `closed`
+- **table `user_roles`** (id, user_id, role) + fonction `has_role(uuid, app_role)` SECURITY DEFINER
+- **table `requests`** : id, client_id, service (enum), title, form_data (jsonb — récap du formulaire soumis), status, closed_at, reopened_for_sav (bool), created_at, updated_at
+- **table `messages`** : id, request_id, sender_id, sender_role, content, created_at
+- **RLS** :
+  - `requests` : client voit/édite ses propres dossiers ; admin voit tout
+  - `messages` : lecture si propriétaire du dossier ou admin ; insertion bloquée si `status = 'closed'` ET pas `reopened_for_sav` (via policy WITH CHECK)
+- Realtime activé sur `requests` et `messages`.
 
-1. `**src/components/AmbientBackground.tsx**` — couche fixe globale :
-  - 2-3 "blobs" radiaux rouges/orangés animés (translation + scale très lente, 20-30s)
-  - Grille SVG ultra-faible opacité (mask radial pour fade sur les bords)
-  - Canvas léger (~25 particules desktop / ~10 mobile) en `requestAnimationFrame`, pause si onglet caché
-  - Halo curseur via CSS variable mise à jour sur `pointermove` (desktop uniquement, désactivé si `pointer: coarse`)
-  - Overlay grain SVG en `mix-blend-overlay` à très faible opacité
-  - Respect strict de `prefers-reduced-motion` : animations désactivées, blobs statiques
-2. **Montage global** dans `src/App.tsx` (ou `src/main.tsx`) :
-  - Rendu une seule fois, au-dessus du `<BrowserRouter>`, en `z-index: 0`
-  - Le contenu existant reçoit `relative z-10` via wrapper minimal
-3. **Tokens CSS** dans `src/index.css` :
-  - keyframes `ambient-drift`, `ambient-pulse`
-  - classe `.ambient-layer` (fixed inset-0, pointer-events-none, mix-blend modes)
-  - variantes mobile (moins de blur, moins de blobs)
+## 3. Espace Client (`/dashboard`)
 
-## Adaptations mobile
+- Vue d'ensemble groupée par les **10 catégories de services** (sections collapsibles ou tabs), avec compteurs et badges de statut.
+- Bouton **"Nouvelle demande"** → formulaire en 2 étapes : choix du service (10 cartes), puis formulaire générique (titre, description, budget, deadline, détails libres) — payload stocké dans `form_data`.
+- Clic sur une demande → page `/dashboard/demande/:id` :
+  - Récapitulatif du formulaire soumis (lecture seule)
+  - Interface **Tchat** en dessous (bulles, scroll auto, indicateur "envoi…", realtime)
+  - Si `status = 'closed'` et pas rouvert : tchat grisé + bouton **"Rouvrir pour SAV"** → passe `reopened_for_sav = true`, `status = 'open'`.
 
-- Canvas particules : nombre divisé par ~2.5, taille réduite
-- Halo curseur : désactivé (`@media (pointer: coarse)`)
-- Blobs : 2 au lieu de 3, blur réduit pour préserver les FPS
-- Grain : opacité réduite
-- Tout reste `pointer-events-none` → zéro impact sur le scroll/tap
+## 4. Espace Admin (`/admin`)
 
-## Garde-fous
+- Accès gardé par `has_role(uid, 'admin')`.
+- Tableau de bord type **liste filtrable + Kanban** :
+  - Filtres par service (10), par statut (ouvert / en cours / clôturé), recherche par client/titre
+  - Vue Kanban avec colonnes Ouvert / En cours / Clôturé
+  - Compteurs par service dans la sidebar
+- Détail dossier `/admin/dossier/:id` :
+  - Infos client + formulaire soumis
+  - Tchat identique côté admin (envoi de messages)
+  - Toggle **"Dossier traité / Terminé"** :
+    - Coché → `status = 'closed'`, `reopened_for_sav = false` → UI grisée des deux côtés, historique préservé
+    - Si client clique "Rouvrir SAV" → notification (toast + indicateur dans la liste admin) + tchat redevient actif
 
-- Ne modifie **aucune section existante** (Hero, Services, Témoignages, dashboard SaaS, etc.)
-- Ne change **aucun lien, CTA, formulaire, route**
-- N'altère pas la structure publique vs SaaS (les deux héritent de la même couche ambiante)
-- `prefers-reduced-motion` strictement respecté
-- Performances : `will-change` ciblé, `transform/opacity` uniquement, pause hors-écran
+## 5. UI / UX
 
-## Détails techniques
+- Dark mode existant + accents **rouge** Frul'digital (tokens déjà définis dans `index.css`).
+- Sidebar admin dédiée avec navigation par service.
+- Cards de dossiers : badge service coloré, badge statut, dernier message preview, timestamp.
+- Tchat : bulles différenciées admin/client, avatar/initiales, état "clôturé" avec bandeau explicatif.
+- Responsive mobile (sliders horizontaux pour les colonnes Kanban, sheet pour détail dossier).
+- Respect de `prefers-reduced-motion`.
 
-- Pas de nouvelle dépendance (canvas natif + CSS + framer-motion déjà installé)
-- Z-index : ambient = 0, contenu = 10, navbar/modales inchangés
-- Couleurs via tokens HSL existants (`--primary` rouge)
-- Composant testé via Playwright après build (screenshot desktop 1280 + mobile 390)
+## 6. Détails techniques
 
-## Livrable
+- **Auth** : Email/password (déjà en place) + Google par défaut (Lovable Cloud).
+- **Sécurité** : identifiants admin vérifiés dans une Edge Function `admin-login` (jamais dans le bundle client). À la réussite, insertion du rôle `admin` dans `user_roles` pour ce compte (ou validation à chaque requête via secret).
+- **Realtime** : subscription Supabase channels (`postgres_changes`) sur `messages` filtré par `request_id` et sur `requests` pour notifs admin.
+- **Notifications SAV** : toast côté admin via subscription sur `requests` où `reopened_for_sav = true`.
+- **Composants nouveaux** : `RequestCard`, `RequestForm`, `ServiceCategoryGrid`, `ChatThread`, `ChatMessage`, `ChatComposer`, `AdminKanban`, `AdminRequestList`, `AdminSidebar`, `CloseToggle`, `ReopenSavButton`.
+- **Routes ajoutées** : `/connexion`, `/inscription`, `/dashboard`, `/dashboard/demande/:id`, `/admin`, `/admin/dossier/:id`.
 
-Une ambiance visuelle signature, discrète mais perceptible, qui donne immédiatement une sensation de site premium sans rien casser de l'existant. avec des image aussi si possible de temps en temps 
+## 7. Hors scope (à confirmer ensuite)
+- Pas de notifications email (uniquement in-app).
+- Pas d'upload de fichiers dans le tchat (peut être ajouté plus tard via Storage).
+- Pas de modification du formulaire après soumission par le client.

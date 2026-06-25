@@ -22,6 +22,12 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Subscription from "./pages/Subscription";
 import Dashboard from "./pages/Dashboard";
+import EspaceClient from "./pages/EspaceClient";
+import EspaceClientNouvelleDemande from "./pages/EspaceClientNouvelleDemande";
+import EspaceClientDemande from "./pages/EspaceClientDemande";
+import AdminLogin from "./pages/AdminLogin";
+import AdminSpace from "./pages/AdminSpace";
+import AdminDossier from "./pages/AdminDossier";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +57,12 @@ const App = () => (
             <Route path="/subscription" element={<Subscription />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/espace-client" element={<EspaceClient />} />
+            <Route path="/espace-client/nouvelle-demande" element={<EspaceClientNouvelleDemande />} />
+            <Route path="/espace-client/demande/:id" element={<EspaceClientDemande />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminSpace />} />
+            <Route path="/admin/dossier/:id" element={<AdminDossier />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

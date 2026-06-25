@@ -21,7 +21,7 @@ const Login = () => {
     if (error) {
       toast({ title: "Erreur de connexion", description: error.message, variant: "destructive" });
     } else {
-      navigate("/dashboard");
+      navigate("/espace-client");
     }
   };
 
@@ -71,6 +71,12 @@ const Login = () => {
               Créer un compte
             </Link>
           </p>
+
+          <div className="mt-8 pt-6 border-t border-white/5 text-center">
+            <Link to="/admin-login" className="text-xs text-surface-dark-foreground/40 hover:text-primary transition-colors inline-flex items-center gap-1">
+              <span className="opacity-60">→</span> Espace administrateur
+            </Link>
+          </div>
         </div>
       </div>
     </div>

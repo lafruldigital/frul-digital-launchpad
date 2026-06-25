@@ -14,6 +14,41 @@ export type Database = {
   }
   public: {
     Tables: {
+      messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          request_id: string
+          sender_id: string
+          sender_role: Database["public"]["Enums"]["app_role"]
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          request_id: string
+          sender_id: string
+          sender_role: Database["public"]["Enums"]["app_role"]
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          request_id?: string
+          sender_id?: string
+          sender_role?: Database["public"]["Enums"]["app_role"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -41,15 +76,93 @@ export type Database = {
         }
         Relationships: []
       }
+      requests: {
+        Row: {
+          client_id: string
+          closed_at: string | null
+          created_at: string
+          form_data: Json
+          id: string
+          reopened_for_sav: boolean
+          service: Database["public"]["Enums"]["service_category"]
+          status: Database["public"]["Enums"]["request_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          client_id: string
+          closed_at?: string | null
+          created_at?: string
+          form_data?: Json
+          id?: string
+          reopened_for_sav?: boolean
+          service: Database["public"]["Enums"]["service_category"]
+          status?: Database["public"]["Enums"]["request_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string
+          closed_at?: string | null
+          created_at?: string
+          form_data?: Json
+          id?: string
+          reopened_for_sav?: boolean
+          service?: Database["public"]["Enums"]["service_category"]
+          status?: Database["public"]["Enums"]["request_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "client"
+      request_status: "open" | "in_progress" | "closed"
+      service_category:
+        | "dev_web"
+        | "strategie_digitale"
+        | "branding"
+        | "email_marketing"
+        | "creation_contenu"
+        | "videos_courtes"
+        | "publicite_digitale"
+        | "seo"
+        | "gestion_reseaux"
+        | "community_management"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -176,6 +289,21 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "client"],
+      request_status: ["open", "in_progress", "closed"],
+      service_category: [
+        "dev_web",
+        "strategie_digitale",
+        "branding",
+        "email_marketing",
+        "creation_contenu",
+        "videos_courtes",
+        "publicite_digitale",
+        "seo",
+        "gestion_reseaux",
+        "community_management",
+      ],
+    },
   },
 } as const
